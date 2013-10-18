@@ -11,11 +11,11 @@
       // hair/boy flat/Gruppo/Tracciato
       ctx.save();
       ctx.beginPath();
-      ctx.moveTo(90.8, 214.0);
-      ctx.bezierCurveTo(90.8, 214.0, 155.8, 302.0, 265.3, 223.0);
-      ctx.bezierCurveTo(265.3, 223.0, 285.3, 253.3, 330.8, 242.3);
-      ctx.bezierCurveTo(330.8, 242.3, 354.5, 136.2, 217.0, 134.2);
-      ctx.bezierCurveTo(82.5, 132.3, 90.8, 214.0, 90.8, 214.0);
+      ctx.moveTo(197.4, 314.3);
+      ctx.bezierCurveTo(197.4, 314.3, 262.4, 402.3, 371.9, 323.3);
+      ctx.bezierCurveTo(371.9, 323.3, 391.8, 353.6, 437.3, 342.6);
+      ctx.bezierCurveTo(437.3, 342.6, 461.0, 236.5, 323.5, 234.5);
+      ctx.bezierCurveTo(189.0, 232.5, 197.4, 314.3, 197.4, 314.3);
       ctx.closePath();
       ctx.fillStyle = "rgb(76, 76, 76)";
       ctx.fill();
@@ -23,10 +23,10 @@
       // hair/boy flat/Gruppo/Tracciato
       ctx.globalAlpha = alpha * 0.30;
       ctx.beginPath();
-      ctx.moveTo(196.6, 144.9);
-      ctx.bezierCurveTo(196.6, 144.9, 107.3, 204.6, 141.0, 246.9);
-      ctx.bezierCurveTo(141.0, 246.9, 87.0, 213.7, 91.3, 203.3);
-      ctx.bezierCurveTo(95.6, 192.9, 130.3, 126.2, 196.6, 144.9);
+      ctx.moveTo(303.2, 245.2);
+      ctx.bezierCurveTo(303.2, 245.2, 213.8, 304.8, 247.5, 347.2);
+      ctx.bezierCurveTo(247.5, 347.2, 193.5, 314.0, 197.8, 303.6);
+      ctx.bezierCurveTo(202.2, 293.2, 236.8, 226.5, 303.2, 245.2);
       ctx.closePath();
       ctx.fillStyle = "rgb(0, 0, 0)";
       ctx.fill();
@@ -36,33 +36,33 @@
       ctx.beginPath();
 
       // hair/boy flat/Gruppo/Tracciato composto/Tracciato
-      ctx.moveTo(177.0, 266.9);
-      ctx.bezierCurveTo(116.9, 266.9, 83.4, 222.4, 82.0, 220.6);
-      ctx.bezierCurveTo(80.8, 219.0, 80.1, 217.1, 79.9, 215.1);
-      ctx.bezierCurveTo(79.8, 213.9, 77.2, 185.6, 99.9, 160.4);
-      ctx.bezierCurveTo(122.2, 135.7, 160.0, 123.2, 212.3, 123.2);
-      ctx.bezierCurveTo(213.9, 123.2, 215.5, 123.2, 217.1, 123.2);
-      ctx.bezierCurveTo(266.8, 124.0, 302.6, 137.8, 323.6, 164.4);
-      ctx.bezierCurveTo(351.2, 199.4, 341.9, 242.9, 341.5, 244.7);
-      ctx.bezierCurveTo(340.6, 248.8, 337.5, 252.1, 333.4, 253.0);
-      ctx.bezierCurveTo(325.9, 254.8, 318.6, 255.7, 311.6, 255.7);
-      ctx.bezierCurveTo(287.8, 255.7, 272.1, 245.4, 263.7, 237.6);
-      ctx.bezierCurveTo(234.2, 257.1, 205.1, 266.9, 177.0, 266.9);
+      ctx.moveTo(283.5, 367.2);
+      ctx.bezierCurveTo(223.5, 367.2, 189.9, 322.7, 188.5, 320.8);
+      ctx.bezierCurveTo(187.3, 319.2, 186.6, 317.4, 186.4, 315.4);
+      ctx.bezierCurveTo(186.3, 314.2, 183.7, 285.8, 206.4, 260.7);
+      ctx.bezierCurveTo(228.7, 236.0, 266.5, 223.5, 318.8, 223.5);
+      ctx.bezierCurveTo(320.4, 223.5, 322.0, 223.5, 323.7, 223.5);
+      ctx.bezierCurveTo(373.3, 224.2, 409.1, 238.1, 430.1, 264.7);
+      ctx.bezierCurveTo(457.8, 299.7, 448.5, 343.2, 448.1, 345.0);
+      ctx.bezierCurveTo(447.1, 349.1, 444.0, 352.3, 439.9, 353.3);
+      ctx.bezierCurveTo(432.5, 355.1, 425.1, 356.0, 418.1, 356.0);
+      ctx.bezierCurveTo(394.3, 356.0, 378.6, 345.6, 370.2, 337.8);
+      ctx.bezierCurveTo(340.7, 357.3, 311.6, 367.2, 283.5, 367.2);
       ctx.closePath();
 
       // hair/boy flat/Gruppo/Tracciato composto/Tracciato
-      ctx.moveTo(101.7, 209.9);
-      ctx.bezierCurveTo(109.1, 218.3, 135.7, 244.9, 177.0, 244.9);
-      ctx.bezierCurveTo(203.0, 244.9, 230.5, 234.6, 258.9, 214.1);
-      ctx.bezierCurveTo(261.4, 212.3, 264.4, 211.5, 267.4, 212.1);
-      ctx.bezierCurveTo(270.3, 212.7, 272.9, 214.4, 274.5, 216.9);
-      ctx.bezierCurveTo(275.4, 218.1, 286.8, 233.7, 311.6, 233.7);
-      ctx.bezierCurveTo(314.7, 233.7, 317.8, 233.5, 321.0, 233.1);
-      ctx.bezierCurveTo(322.0, 221.5, 321.7, 197.4, 306.2, 177.9);
-      ctx.bezierCurveTo(289.5, 156.8, 259.4, 145.9, 216.8, 145.2);
-      ctx.bezierCurveTo(215.3, 145.2, 213.8, 145.2, 212.3, 145.2);
-      ctx.bezierCurveTo(167.4, 145.2, 134.3, 155.4, 116.5, 174.8);
-      ctx.bezierCurveTo(103.8, 188.7, 101.9, 203.6, 101.7, 209.9);
+      ctx.moveTo(208.3, 310.2);
+      ctx.bezierCurveTo(215.6, 318.5, 242.3, 345.2, 283.5, 345.2);
+      ctx.bezierCurveTo(309.5, 345.2, 337.1, 334.8, 365.4, 314.4);
+      ctx.bezierCurveTo(367.9, 312.6, 370.9, 311.8, 373.9, 312.4);
+      ctx.bezierCurveTo(376.9, 313.0, 379.4, 314.6, 381.0, 317.2);
+      ctx.bezierCurveTo(381.9, 318.4, 393.3, 334.0, 418.1, 334.0);
+      ctx.bezierCurveTo(421.2, 334.0, 424.3, 333.8, 427.5, 333.3);
+      ctx.bezierCurveTo(428.5, 321.7, 428.3, 297.7, 412.7, 278.1);
+      ctx.bezierCurveTo(396.0, 257.1, 365.9, 246.1, 323.3, 245.5);
+      ctx.bezierCurveTo(321.8, 245.5, 320.3, 245.5, 318.8, 245.5);
+      ctx.bezierCurveTo(273.9, 245.5, 240.8, 255.7, 223.0, 275.0);
+      ctx.bezierCurveTo(210.3, 288.9, 208.4, 303.9, 208.3, 310.2);
       ctx.closePath();
       ctx.fillStyle = "rgb(34, 30, 31)";
       ctx.fill();
@@ -70,9 +70,9 @@
       // hair/boy flat/Gruppo/Tracciato
       ctx.globalAlpha = alpha * 0.20;
       ctx.beginPath();
-      ctx.moveTo(259.5, 159.7);
-      ctx.bezierCurveTo(259.5, 159.7, 304.1, 170.2, 312.7, 219.7);
-      ctx.bezierCurveTo(312.7, 219.7, 293.0, 179.2, 259.5, 159.7);
+      ctx.moveTo(366.0, 260.0);
+      ctx.bezierCurveTo(366.0, 260.0, 410.6, 270.5, 419.3, 320.0);
+      ctx.bezierCurveTo(419.3, 320.0, 399.5, 279.5, 366.0, 260.0);
       ctx.closePath();
       ctx.fillStyle = "rgb(255, 255, 255)";
       ctx.fill();

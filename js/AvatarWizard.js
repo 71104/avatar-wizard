@@ -24,7 +24,6 @@ function AvatarWizard(descriptor, canvas, ready) {
 			height: height
 		});
 		context.setTransform(1, 0, 0, 1, 0, 0);
-		context.translate(width / 2, height / 2);
 		context.scale(width / canonicalWidth, height / canonicalHeight);
 	}
 
@@ -57,7 +56,9 @@ function AvatarWizard(descriptor, canvas, ready) {
 		[
 			'shadow',
 			'base/white',
+			'hair/boy_flat',
 			'hair/girl4',
+			'hair/blond',
 			// TODO
 		].forEach(function (path) {
 			count++;
@@ -66,6 +67,7 @@ function AvatarWizard(descriptor, canvas, ready) {
 				functions[path] = draw;
 				if (!--count) {
 					drawAll();
+					ready();
 				}
 			}, 'text');
 		});

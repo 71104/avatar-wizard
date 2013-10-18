@@ -35,7 +35,15 @@ canvas#canvas {
 	height: 100%;
 }
 
-#part-selector {
+.selector li:hover {
+	background-color: lightblue;
+}
+
+.selector li.selected {
+	background-color: blue;
+}
+
+#category-selector {
 	display: inline-block;
 	width: 100px;
 	height: 100%;
