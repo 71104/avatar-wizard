@@ -17,6 +17,7 @@ html,body {
 #main {
 	margin-left: 200px;
 	margin-right: 200px;
+	height: 100%;
 }
 
 #canvas-container {
