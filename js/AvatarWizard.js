@@ -162,6 +162,10 @@ function AvatarWizard(canvas, ready) {
 			return thisObject;
 		};
 
+		function getThumbnail(width, height) {
+			// TODO
+		}
+
 		/**
 		 * TODO
 		 *
@@ -170,9 +174,7 @@ function AvatarWizard(canvas, ready) {
 		 * @param height Number TODO
 		 * @return HTMLElement TODO
 		 */
-		thisObject.getThumbnail = function (width, height) {
-			// TODO
-		};
+		thisObject.getThumbnail = getThumbnail;
 
 		/**
 		 * TODO
@@ -183,7 +185,7 @@ function AvatarWizard(canvas, ready) {
 		 * @return String TODO
 		 */
 		thisObject.getEncodedThumbnail = function (width, height) {
-			// TODO
+			return getThumbnail(width, height).toDataURL('image/png');
 		};
 	});
 }
