@@ -23,10 +23,14 @@ function AvatarWizard(descriptor, canvas, ready) {
 				height: height
 			});
 			context.setTransform(1, 0, 0, 1, 0, 0);
-			if (height / settings.canonicalHeight < width / settings.canonicalWidth) {
-				context.scale(height / settings.canonicalHeight, height / settings.canonicalHeight);
+			var ratio1 = width / settings.canonicalWidth;
+			var ratio2 = height / settings.canonicalHeight;
+			if (ratio2 < ratio1) {
+				context.translate((width - settings.canonicalWidth * ratio2) / 2, 0);
+				context.scale(ratio2, ratio2);
 			} else {
-				context.scale(width / settings.canonicalWidth, width / settings.canonicalWidth);
+				context.translate(0, (height - settings.canonicalHeight * ratio1) / 2);
+				context.scale(ratio1, ratio1);
 			}
 		}
 
