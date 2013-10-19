@@ -28,25 +28,47 @@
 				</ul>
 			</div><div id="base-selector" class="selector image-selector">
 				<ul>
-					<li class="image" data-image="white"><img src="thumbnails/base/white.png" alt=""/></li>
+					<li class="image selected" data-image="white"><img src="thumbnails/base/white.png" alt=""/></li>
 				</ul>
 			</div><div id="body-selector" class="selector image-selector" style="display: none">
+				<ul>
+					<li class="image" data-image="bellyman"><img src="thumbnails/body/bellyman.png" alt=""/></li>
+					<li class="image" data-image="jumper_orange"><img src="thumbnails/body/jumper_orange.png" alt=""/></li>
+					<li class="image" data-image="small_black"><img src="thumbnails/body/small_black.png" alt=""/></li>
+					<li class="image" data-image="cheer"><img src="thumbnails/body/cheer.png" alt=""/></li>
+					<li class="image" data-image="track_brown"><img src="thumbnails/body/track_brown.png" alt=""/></li>
+					<li class="image" data-image="pants"><img src="thumbnails/body/pants.png" alt=""/></li>
+					<li class="image" data-image="brown"><img src="thumbnails/body/brown.png" alt=""/></li>
+					<li class="image" data-image="stripes"><img src="thumbnails/body/stripes.png" alt=""/></li>
+					<li class="image" data-image="jeans"><img src="thumbnails/body/jeans.png" alt=""/></li>
+					<li class="image" data-image="skull"><img src="thumbnails/body/skull.png" alt=""/></li>
+					<li class="image" data-image="sweater"><img src="thumbnails/body/sweater.png" alt=""/></li>
+					<li class="image" data-image="tie"><img src="thumbnails/body/tie.png" alt=""/></li>
+				</ul>
 			</div><div id="hair-selector" class="selector image-selector" style="display: none">
+				<ul>
+					<li class="image" data-image="boy_flat"><img src="thumbnails/hair/boy_flat.png" alt=""/></li>
+					<li class="image" data-image="girl4"><img src="thumbnails/hair/girl4.png" alt=""/></li>
+					<li class="image" data-image="blond"><img src="thumbnails/hair/blond.png" alt=""/></li>
+					<li class="image" data-image="girl3"><img src="thumbnails/hair/girl3.png" alt=""/></li>
+					<li class="image" data-image="girl2"><img src="thumbnails/hair/girl2.png" alt=""/></li>
+					<li class="image" data-image="girl1"><img src="thumbnails/hair/girl1.png" alt=""/></li>
+					<li class="image" data-image="cherokee"><img src="thumbnails/hair/cherokee.png" alt=""/></li>
+					<li class="image" data-image="afro"><img src="thumbnails/hair/afro.png" alt=""/></li>
+					<li class="image" data-image="boy1"><img src="thumbnails/hair/boy1.png" alt=""/></li>
+					<li class="image" data-image="boy2"><img src="thumbnails/hair/boy2.png" alt=""/></li>
+				</ul>
 			</div><div id="eyes-selector" class="selector image-selector" style="display: none">
 			</div><div id="mouth-selector" class="selector image-selector" style="display: none">
-			</div><div id="facial-details-selector" class="selector image-selector" style="display: none">
+			</div><div id="facial_details-selector" class="selector image-selector" style="display: none">
 			</div><div id="accessories-selector" class="selector image-selector" style="display: none">
-			</div><div id="special-head-selector" class="selector image-selector" style="display: none">
-			</div><div id="special-body-selector" class="selector image-selector" style="display: none">
+			</div><div id="special_head-selector" class="selector image-selector" style="display: none">
+			</div><div id="special_body-selector" class="selector image-selector" style="display: none">
 		</div>
 	</div>
 	<script>
 $(function () {
-	var wizard = new AvatarWizard({
-		base: 'white',
-		hair: 'boy2',
-		body: 'jumper_orange'
-	}, 'canvas#canvas', function () {
+	var wizard = new AvatarWizard('canvas#canvas', function () {
 		var currentCategory = 'base';
 		$('.category').click(function () {
 			$('.category').removeClass('selected');
@@ -58,7 +80,6 @@ $(function () {
 		});
 	});
 	$(window).resize(function () {
-		debugger;
 		wizard.resetDimensions();
 	});
 });

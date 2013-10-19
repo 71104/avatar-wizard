@@ -3,11 +3,10 @@
  *
  * @class AvatarWizard
  * @constructor
- * @param descriptor Object TODO
  * @param canvas Mixed TODO
  * @param ready Function TODO
  */
-function AvatarWizard(descriptor, canvas, ready) {
+function AvatarWizard(canvas, ready) {
 	var thisObject = this;
 	$.getJSON('settings.json', function (settings) {
 		var functions = {};
@@ -36,7 +35,7 @@ function AvatarWizard(descriptor, canvas, ready) {
 
 		setDimensions();
 
-		descriptor = $.extend({}, descriptor);
+		descriptor = {};
 
 		var drawing = false;
 
@@ -91,12 +90,27 @@ function AvatarWizard(descriptor, canvas, ready) {
 		 * TODO
 		 *
 		 * @method resetDimensions
+		 * @chainable
 		 */
 		thisObject.resetDimensions = function () {
 			if (!drawing) {
 				setDimensions();
 				requestAnimationFrame(drawAll);
 			}
+			return thisObject;
+		};
+
+		/**
+		 * TODO
+		 *
+		 * @method loadAvatar
+		 * @chainable
+		 * @param newDescriptor Object TODO
+		 */
+		thisObject.loadAvatar = function (newDescriptor) {
+			descriptor = $.extend({}, newDescriptor);
+			drawAll();
+			return thisObject;
 		};
 
 		/**
@@ -113,6 +127,7 @@ function AvatarWizard(descriptor, canvas, ready) {
 		 * TODO
 		 *
 		 * @method select
+		 * @chainable
 		 * @param category String TODO
 		 * @param id String TODO
 		 */
@@ -120,10 +135,26 @@ function AvatarWizard(descriptor, canvas, ready) {
 			if (functions.hasOwnProperty(category + '/' + id)) {
 				descriptor[category] = id;
 				drawAll();
-				return true;
 			} else {
-				return false;
+				throw 'Unregistered category or image ID: "' + category + '", "' + id + '"';
 			}
+			return thisObject;
+		};
+
+		/**
+		 * TODO
+		 *
+		 * @method setColor
+		 * @chainable
+		 * @param category String TODO
+		 * @param color String TODO
+		 */
+		thisObject.setColor = function (category, color) {
+			if (!drawing) {
+				// TODO
+				requestAnimationFrame(drawAll());
+			}
+			return thisObject;
 		};
 
 		/**
@@ -132,8 +163,21 @@ function AvatarWizard(descriptor, canvas, ready) {
 		 * @method getThumbnail
 		 * @param width Number TODO
 		 * @param height Number TODO
+		 * @return HTMLElement TODO
 		 */
 		thisObject.getThumbnail = function (width, height) {
+			// TODO
+		};
+
+		/**
+		 * TODO
+		 *
+		 * @method getEncodedThumbnail
+		 * @param width Number TODO
+		 * @param height Number TODO
+		 * @return String TODO
+		 */
+		thisObject.getEncodedThumbnail = function (width, height) {
 			// TODO
 		};
 	});
