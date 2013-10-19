@@ -56,7 +56,8 @@ function AvatarWizard(canvas, ready) {
 			context.restore();
 			functions.shadow(context);
 			drawElement('base');
-			if (!drawElement('special_body')) {
+			var specialBody = drawElement('special_body');
+			if (!specialBody) {
 				drawElement('body');
 			}
 			if (!drawElement('special_head')) {
@@ -65,7 +66,9 @@ function AvatarWizard(canvas, ready) {
 				drawElement('facial_details');
 				drawElement('hair');
 			}
-			drawElement('accessories');
+			if (!specialBody) {
+				drawElement('accessories');
+			}
 			drawing = false;
 		}
 
