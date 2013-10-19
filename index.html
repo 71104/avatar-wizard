@@ -97,6 +97,21 @@
 					<li class="image" data-category="facial_details" data-image="beard1"><img src="thumbnails/facial_details/beard1.png" alt=""/></li>
 				</ul>
 			</div><div id="accessories-selector" class="selector image-selector" style="display: none">
+				<ul>
+					<li class="image" data-category="accessories" data-image="pendant"><img src="thumbnails/accessories/pendant.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="heart"><img src="thumbnails/accessories/heart.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="glasses"><img src="thumbnails/accessories/glasses.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="glasses_dark"><img src="thumbnails/accessories/glasses_dark.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="cap_back"><img src="thumbnails/accessories/cap_back.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="cap"><img src="thumbnails/accessories/cap.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="sheriff"><img src="thumbnails/accessories/sheriff.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="ball"><img src="thumbnails/accessories/ball.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="baseball"><img src="thumbnails/accessories/baseball.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="cheer"><img src="thumbnails/accessories/cheer.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="gun"><img src="thumbnails/accessories/gun.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="phone"><img src="thumbnails/accessories/phone.png" alt=""/></li>
+					<li class="image" data-category="accessories" data-image="hands"><img src="thumbnails/accessories/hands.png" alt=""/></li>
+				</ul>
 			</div><div id="special_head-selector" class="selector image-selector" style="display: none">
 				<ul>
 					<li class="image" data-category="special_head" data-image="alien"><img src="thumbnails/special_head/alien.png" alt=""/></li>
@@ -138,7 +153,8 @@ $(function () {
 			wizard.select(category, $(this).addClass('selected').data('image'));
 		});
 		wizard.loadAvatar({
-			base: 'white'
+			base: 'white',
+			accessories: 'hands'
 		});
 	});
 	$(window).resize(function () {
