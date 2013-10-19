@@ -48,30 +48,34 @@ function AvatarWizard(descriptor, canvas, ready) {
 		drawElement('body');
 		drawElement('facial_details');
 		drawElement('hair');
-		// TODO
+		drawElement('accessories');
 		drawing = false;
 	}
 
-	(function (count) {
-		[
-			'shadow',
-			'base/white',
-			'hair/boy_flat',
-			'hair/girl4',
-			'hair/blond',
-			// TODO
-		].forEach(function (path) {
+	$.getJSON('parts.json', function (parts) {
+		var count = 0;
+
+		function fetchPart(name) {
 			count++;
-			$.get('parts/' + path + '.js', function (code) {
+			$.get('parts/' + name + '.js', function (code) {
 				eval(code);
-				functions[path] = draw;
+				functions[name] = draw;
 				if (!--count) {
 					drawAll();
 					ready();
 				}
 			}, 'text');
-		});
-	})(0);
+		}
+
+		fetchPart('shadow');
+		for (var category in parts) {
+			if (parts.hasOwnProperty(category)) {
+				parts[category].forEach(function (image) {
+					fetchPart(category + '/' + image);
+				});
+			}
+		}
+	});
 
 	$(canvas).resize(function (event) {
 		if (!drawing) {
