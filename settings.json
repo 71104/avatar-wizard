@@ -10,7 +10,14 @@
 			"jumper_orange",
 			"small_black",
 			"cheer",
-			"track_brown"
+			"track_brown",
+			"pants",
+			"brown",
+			"stripes",
+			"jeans",
+			"skull",
+			"sweater",
+			"tie"
 		],
 		"hair": [
 			"boy_flat",
@@ -29,6 +36,11 @@
 		"mouth": [
 		],
 		"facial_details": [
+			"beard",
+			"goatie",
+			"cheeks",
+			"sun_drops",
+			"beard1"
 		],
 		"accessories": [
 		],

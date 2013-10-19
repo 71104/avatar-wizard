@@ -23,7 +23,11 @@ function AvatarWizard(descriptor, canvas, ready) {
 				height: height
 			});
 			context.setTransform(1, 0, 0, 1, 0, 0);
-			context.scale(width / settings.canonicalWidth, height / settings.canonicalHeight);
+			if (height / settings.canonicalHeight < width / settings.canonicalWidth) {
+				context.scale(height / settings.canonicalHeight, height / settings.canonicalHeight);
+			} else {
+				context.scale(width / settings.canonicalWidth, width / settings.canonicalWidth);
+			}
 		}
 
 		setDimensions();
@@ -43,10 +47,16 @@ function AvatarWizard(descriptor, canvas, ready) {
 
 		function drawAll() {
 			functions.shadow(context);
-			drawElement('base');
-			drawElement('body');
-			drawElement('facial_details');
-			drawElement('hair');
+			if (!drawElement('special_bottom')) {
+				drawElement('base');
+				drawElement('body');
+			}
+			if (!drawElement('special_head')) {
+				drawElement('mouth');
+				drawElement('eyes');
+				drawElement('facial_details');
+				drawElement('hair');
+			}
 			drawElement('accessories');
 			drawing = false;
 		}
@@ -73,12 +83,17 @@ function AvatarWizard(descriptor, canvas, ready) {
 			}
 		})(0);
 
-		$(canvas).resize(function (event) {
+		/**
+		 * TODO
+		 *
+		 * @method resetDimensions
+		 */
+		thisObject.resetDimensions = function () {
 			if (!drawing) {
 				setDimensions();
 				requestAnimationFrame(drawAll);
 			}
-		});
+		};
 
 		/**
 		 * TODO
@@ -86,7 +101,7 @@ function AvatarWizard(descriptor, canvas, ready) {
 		 * @method getAvatar
 		 * @return Object
 		 */
-		this.getAvatar = function () {
+		thisObject.getAvatar = function () {
 			return $.extend({}, descriptor);
 		};
 
@@ -97,7 +112,7 @@ function AvatarWizard(descriptor, canvas, ready) {
 		 * @param category String TODO
 		 * @param id String TODO
 		 */
-		this.select = function (category, id) {
+		thisObject.select = function (category, id) {
 			if (functions.hasOwnProperty(category + '/' + id)) {
 				descriptor[category] = id;
 				drawAll();
@@ -114,7 +129,7 @@ function AvatarWizard(descriptor, canvas, ready) {
 		 * @param width Number TODO
 		 * @param height Number TODO
 		 */
-		this.getThumbnail = function (width, height) {
+		thisObject.getThumbnail = function (width, height) {
 			// TODO
 		};
 	});

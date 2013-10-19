@@ -16,7 +16,7 @@
 		<div id="right-pane">
 			<div id="category-selector" class="selector">
 				<ul>
-					<li class="category" data-category="base"><img src="thumbnails/base.png" alt=""/></li>
+					<li class="category selected" data-category="base"><img src="thumbnails/base.png" alt=""/></li>
 					<li class="category" data-category="body"><img src="thumbnails/body.png" alt=""/></li>
 					<li class="category" data-category="hair"><img src="thumbnails/hair.png" alt=""/></li>
 					<li class="category" data-category="eyes"><img src="thumbnails/eyes.png" alt=""/></li>
@@ -56,6 +56,10 @@ $(function () {
 			$('.image').removeClass('selected');
 			wizard.select(currentCategory, $(this).addClass('selected').data('image'));
 		});
+	});
+	$(window).resize(function () {
+		debugger;
+		wizard.resetDimensions();
 	});
 });
 	</script>
