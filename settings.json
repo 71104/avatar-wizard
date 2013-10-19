@@ -1,0 +1,40 @@
+{
+	"canonicalWidth": 637,
+	"canonicalHeight": 960,
+	"parts": {
+		"base": [
+			"white"
+		],
+		"body": [
+			"bellyman",
+			"jumper_orange",
+			"small_black",
+			"cheer",
+			"track_brown"
+		],
+		"hair": [
+			"boy_flat",
+			"girl4",
+			"blond",
+			"girl3",
+			"girl2",
+			"girl1",
+			"cherokee",
+			"afro",
+			"boy1",
+			"boy2"
+		],
+		"eyes": [
+		],
+		"mouth": [
+		],
+		"facial_details": [
+		],
+		"accessories": [
+		],
+		"special_head": [
+		],
+		"special_body": [
+		]
+	}
+}
