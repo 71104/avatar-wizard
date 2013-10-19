@@ -1,10 +1,19 @@
 /**
- * TODO
+ * Manages the composition of a user avatar using predefined graphic parts. This
+ * class requires jQuery.
+ *
+ * The constructor need to fetch a `settings.json` file through AJAX and its
+ * methods may not be invoked until this has been done. The user-defined `ready`
+ * callback is invoked by the `AvatarWizard` object when it is ready.
  *
  * @class AvatarWizard
  * @constructor
- * @param canvas Mixed TODO
- * @param ready Function TODO
+ * @param canvas Mixed Specifies the HTML5 canvas where the avatar has to be
+ * drawn. It can be specified as a HTMLCanvasElement object, string CSS selector
+ * or jQuery object.
+ * @param ready Function A user-defined callback function invoked after the
+ * `AvatarWizard` object has read its configuration file and its ready to
+ * receive method invocations.
  */
 function AvatarWizard(canvas, ready) {
 	var thisObject = this;
@@ -95,7 +104,12 @@ function AvatarWizard(canvas, ready) {
 		})(0);
 
 		/**
-		 * TODO
+		 * Recalculates the coordinate reference. This method must be invoked
+		 * every time the dimensions of the canvas change.
+		 *
+		 * This method may be called in response to `resize` events at a high
+		 * rate because the redraw rate is throttled down through
+		 * `requestAnimationFrame`.
 		 *
 		 * @method resetDimensions
 		 * @chainable
