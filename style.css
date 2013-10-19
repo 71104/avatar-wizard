@@ -31,17 +31,23 @@ canvas#canvas {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 300px;
+	width: 200px;
 	height: 100%;
 }
 
 .selector {
 	display: inline-block;
 	vertical-align: top;
-	width: 150px;
+	width: 100px;
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
+}
+
+.selector ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 .selector li:hover {
