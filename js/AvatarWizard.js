@@ -55,8 +55,8 @@ function AvatarWizard(canvas, ready) {
 			context.clearRect(0, 0, width, height);
 			context.restore();
 			functions.shadow(context);
-			if (!drawElement('special_bottom')) {
-				drawElement('base');
+			drawElement('base');
+			if (!drawElement('special_body')) {
 				drawElement('body');
 			}
 			if (!drawElement('special_head')) {

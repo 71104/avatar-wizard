@@ -71,6 +71,15 @@
 		"special_head": [
 		],
 		"special_body": [
+			"alien_body",
+			"rambo",
+			"work",
+			"indian_girl",
+			"cat_suit",
+			"batman_suit",
+			"cosmo_suit",
+			"chief",
+			"ninja_suit"
 		]
 	}
 }
