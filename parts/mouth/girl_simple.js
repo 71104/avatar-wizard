@@ -22,6 +22,7 @@
       ctx.bezierCurveTo(338.0, 456.0, 343.5, 461.5, 343.5, 468.3);
       ctx.lineTo(343.5, 468.3);
       ctx.closePath();
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // mouth/girlsimple/Gruppo/Gruppo

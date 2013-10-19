@@ -52,7 +52,7 @@
       ctx.lineTo(389.1, 577.4);
       ctx.lineTo(389.1, 589.4);
       ctx.closePath();
-      ctx.fillStyle = "rgb(0, 0, 0)";
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // body/cheer/Tracciato
@@ -157,7 +157,7 @@
       ctx.lineTo(331.6, 546.9);
       ctx.bezierCurveTo(327.5, 543.3, 322.3, 541.3, 316.8, 541.3);
       ctx.closePath();
-      ctx.fillStyle = "rgb(0, 0, 0)";
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // body/cheer/Tracciato composto

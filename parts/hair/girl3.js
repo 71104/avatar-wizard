@@ -63,7 +63,7 @@
       ctx.bezierCurveTo(359.1, 196.6, 368.8, 206.2, 368.8, 218.1);
       ctx.lineTo(368.8, 218.1);
       ctx.closePath();
-      ctx.fillStyle = "rgb(0, 0, 0)";
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // hair/girl3/Gruppo/Tracciato composto

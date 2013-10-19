@@ -50,7 +50,7 @@
       ctx.bezierCurveTo(458.3, 292.4, 462.1, 289.6, 465.0, 285.8);
       ctx.bezierCurveTo(473.3, 274.8, 471.1, 259.1, 460.1, 250.7);
       ctx.closePath();
-      ctx.fillStyle = "rgb(0, 0, 0)";
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // hair/blond/Gruppo/Tracciato
