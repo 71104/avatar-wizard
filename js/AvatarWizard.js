@@ -13,10 +13,11 @@ function AvatarWizard(canvas, ready) {
 
 		canvas = $(canvas);
 		var context = canvas[0].getContext('2d');
+		var width, height;
 
 		function setDimensions() {
-			var width = canvas.innerWidth();
-			var height = canvas.innerHeight();
+			width = canvas.innerWidth();
+			height = canvas.innerHeight();
 			canvas.attr({
 				width: width,
 				height: height
@@ -49,6 +50,10 @@ function AvatarWizard(canvas, ready) {
 		}
 
 		function drawAll() {
+			context.save();
+			context.setTransform(1, 0, 0, 1, 0, 0);
+			context.clearRect(0, 0, width, height);
+			context.restore();
 			functions.shadow(context);
 			if (!drawElement('special_bottom')) {
 				drawElement('base');

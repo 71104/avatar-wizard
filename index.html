@@ -73,6 +73,8 @@ $(function () {
 		$('.category').click(function () {
 			$('.category').removeClass('selected');
 			currentCategory = $(this).addClass('selected').data('category');
+			$('.image-selector').hide();
+			$('#' + currentCategory + '-selector').show();
 		});
 		$('.image').click(function () {
 			$('.image').removeClass('selected');

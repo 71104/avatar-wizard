@@ -31,8 +31,17 @@ canvas#canvas {
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 200px;
+	width: 300px;
 	height: 100%;
+}
+
+.selector {
+	display: inline-block;
+	vertical-align: top;
+	width: 150px;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .selector li:hover {
@@ -41,16 +50,4 @@ canvas#canvas {
 
 .selector li.selected {
 	background-color: blue;
-}
-
-#category-selector {
-	display: inline-block;
-	width: 100px;
-	height: 100%;
-}
-
-.image-selector {
-	display: inline-block;
-	width: 100px;
-	height: 100%;
 }
