@@ -1,4 +1,4 @@
-    function draw(ctx) {
+    function draw(ctx, color) {
 
       // hair/girl3
       ctx.save();
@@ -15,7 +15,7 @@
       ctx.bezierCurveTo(285.5, 248.8, 260.1, 217.4, 260.1, 178.5);
       ctx.bezierCurveTo(260.1, 139.7, 285.5, 108.3, 316.8, 108.3);
       ctx.closePath();
-      ctx.fillStyle = "rgb(50, 50, 50)";
+      ctx.fillStyle = color || "rgb(50, 50, 50)";
       ctx.fill();
 
       // hair/girl3/Gruppo/Tracciato
@@ -99,7 +99,7 @@
       ctx.bezierCurveTo(171.4, 335.5, 169.0, 229.5, 261.2, 229.8);
       ctx.lineTo(376.2, 229.8);
       ctx.closePath();
-      ctx.fillStyle = "rgb(50, 50, 50)";
+      ctx.fillStyle = color || "rgb(50, 50, 50)";
       ctx.fill();
 
       // hair/girl3/Gruppo/Tracciato

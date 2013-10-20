@@ -1,4 +1,4 @@
-    function draw(ctx) {
+    function draw(ctx, color) {
 
       // hair/1
       ctx.save();
@@ -38,7 +38,7 @@
       ctx.bezierCurveTo(427.7, 372.9, 449.5, 371.7, 449.5, 362.9);
       ctx.bezierCurveTo(449.6, 360.7, 449.6, 314.7, 449.2, 305.2);
       ctx.closePath();
-      ctx.fillStyle = "rgb(34, 30, 31)";
+      ctx.fillStyle = color || "rgb(34, 30, 31)";
       ctx.fill();
 
       // hair/1/Gruppo/Tracciato

@@ -1,4 +1,4 @@
-    function draw(ctx) {
+    function draw(ctx, color) {
 
       // base/Gruppo
       ctx.save();
@@ -17,7 +17,7 @@
       ctx.lineTo(250.4, 510.0);
       ctx.lineTo(385.7, 510.0);
       ctx.closePath();
-      ctx.fillStyle = "rgb(238, 181, 133)";
+      ctx.fillStyle = color || "rgb(238, 181, 133)";
       ctx.fill();
 
       // base/Gruppo/Gruppo
@@ -234,7 +234,7 @@
       ctx.lineTo(390.5, 279.4);
       ctx.bezierCurveTo(411.1, 279.4, 427.9, 296.2, 427.9, 316.9);
       ctx.closePath();
-      ctx.fillStyle = "rgb(238, 181, 133)";
+      ctx.fillStyle = color || "rgb(238, 181, 133)";
       ctx.fill();
 
       // base/Gruppo/Gruppo

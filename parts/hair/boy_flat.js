@@ -1,4 +1,4 @@
-    function draw(ctx) {
+    function draw(ctx, color) {
 
       var alpha = ctx.globalAlpha;
 
@@ -17,7 +17,7 @@
       ctx.bezierCurveTo(437.3, 342.6, 461.0, 236.5, 323.5, 234.5);
       ctx.bezierCurveTo(189.0, 232.5, 197.4, 314.3, 197.4, 314.3);
       ctx.closePath();
-      ctx.fillStyle = "rgb(76, 76, 76)";
+      ctx.fillStyle = color || "rgb(76, 76, 76)";
       ctx.fill();
 
       // hair/boy flat/Gruppo/Tracciato

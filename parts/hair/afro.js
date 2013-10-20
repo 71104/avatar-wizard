@@ -1,4 +1,4 @@
-    function draw(ctx) {
+    function draw(ctx, color) {
 
       // hair/afro
       ctx.save();
@@ -56,7 +56,7 @@
       ctx.bezierCurveTo(476.1, 372.2, 478.8, 369.0, 478.8, 365.1);
       ctx.bezierCurveTo(478.8, 362.1, 477.3, 359.6, 475.0, 358.1);
       ctx.closePath();
-      ctx.fillStyle = "rgb(34, 30, 31)";
+      ctx.fillStyle = color || "rgb(34, 30, 31)";
       ctx.fill();
 
       // hair/afro/Gruppo/Gruppo/Gruppo/Tracciato

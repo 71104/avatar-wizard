@@ -1,4 +1,4 @@
-    function draw(ctx) {
+    function draw(ctx, color) {
 
       // hair/cherokee
       ctx.save();
@@ -22,7 +22,7 @@
       ctx.bezierCurveTo(337.0, 184.6, 362.2, 195.9, 362.2, 213.0);
       ctx.lineTo(350.8, 310.3);
       ctx.closePath();
-      ctx.fillStyle = "rgb(41, 215, 57)";
+      ctx.fillStyle = color || "rgb(41, 215, 57)";
       ctx.fill();
 
       // hair/cherokee/Gruppo/Gruppo/Tracciato composto

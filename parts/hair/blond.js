@@ -1,4 +1,4 @@
-    function draw(ctx) {
+    function draw(ctx, color) {
 
       var alpha = ctx.globalAlpha;
 
@@ -23,7 +23,7 @@
       ctx.bezierCurveTo(492.8, 312.0, 515.4, 281.7, 515.4, 246.1);
       ctx.bezierCurveTo(515.4, 200.8, 478.7, 164.0, 433.3, 164.0);
       ctx.closePath();
-      ctx.fillStyle = "rgb(243, 243, 58)";
+      ctx.fillStyle = color || "rgb(243, 243, 58)";
       ctx.fill();
 
       // hair/blond/Gruppo/Tracciato
@@ -75,7 +75,7 @@
       ctx.bezierCurveTo(180.1, 365.5, 128.6, 233.5, 313.6, 233.5);
       ctx.bezierCurveTo(498.6, 233.5, 457.2, 365.5, 457.2, 365.5);
       ctx.bezierCurveTo(320.3, 381.5, 318.6, 287.5, 318.6, 287.5);
-      ctx.fillStyle = "rgb(243, 243, 58)";
+      ctx.fillStyle = color || "rgb(243, 243, 58)";
       ctx.fill();
 
       // hair/blond/Gruppo/Tracciato
