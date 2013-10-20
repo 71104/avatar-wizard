@@ -174,7 +174,7 @@ function AvatarWizard(canvas, ready) {
 		thisObject.setColor = function (category, color) {
 			if (!drawing) {
 				// TODO
-				requestAnimationFrame(drawAll());
+				requestAnimationFrame(drawAll);
 			}
 			return thisObject;
 		};

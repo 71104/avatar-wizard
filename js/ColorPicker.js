@@ -27,19 +27,17 @@ function ColorPicker(huePicker, brightnessPicker) {
 		element = $(element);
 		var width = element.innerWidth();
 		var height = element.innerHeight();
-		var dragging = false;
 		element.mousedown(function (event) {
-			dragging = true;
-			handler(event.clientX / width, event.clientY / height);
-			return false;
-		}).mousemove(function (event) {
-			if (dragging) {
+			if (event.which === 1) {
 				handler(event.clientX / width, event.clientY / height);
 				return false;
 			}
-		}).mouseup(function () {
-			dragging = false;
-		});
+		}).mousemove(function (event) {
+			if (event.which === 1) {
+				handler(event.clientX / width, event.clientY / height);
+				return false;
+			}
+		}).mouseup(false);
 	}
 
 	handle(huePicker, setHue);
