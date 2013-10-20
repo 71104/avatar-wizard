@@ -31,8 +31,6 @@ canvas#canvas {
 
 #left-pane {
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 200px;
 	height: 100%;
 }
@@ -43,6 +41,17 @@ canvas#canvas {
 	width: 100px;
 	height: 100%;
 	overflow: hidden;
+	cursor: crosshair;
+}
+
+#color-overview {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100px;
+	height: 100px;
+	border: 2px solid black;
+	border-radius: 4px;
 }
 
 #right-pane {
