@@ -2,6 +2,7 @@ function ColorPicker(huePicker, brightnessPicker) {
 	EventEmitter.call(this);
 	var thisObject = this;
 
+	this.register('hue');
 	this.register('pick');
 
 	var hue, saturation, brightness;
@@ -13,6 +14,7 @@ function ColorPicker(huePicker, brightnessPicker) {
 	function setHue(x, y) {
 		saturation = x;
 		hue = y;
+		thisObject.emit('hue', hue, saturation);
 		thisObject.emit('pick', getColor());
 	}
 
