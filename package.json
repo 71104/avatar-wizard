@@ -1,0 +1,9 @@
+{
+	"name": "avatar-wizard",
+	"version": "0.1.0",
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-yuidoc": "~0.4.0"
+	},
+	"private": true
+}
