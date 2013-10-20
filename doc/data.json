@@ -1,0 +1,178 @@
+{
+    "project": {
+        "name": "Avatar Wizard",
+        "version": "0.1.0"
+    },
+    "files": {
+        "js\\AvatarWizard.js": {
+            "name": "js\\AvatarWizard.js",
+            "modules": {},
+            "classes": {
+                "AvatarWizard": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "AvatarWizard": {
+            "name": "AvatarWizard",
+            "shortname": "AvatarWizard",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js\\AvatarWizard.js",
+            "line": 1,
+            "description": "Manages the composition of a user avatar using predefined graphic parts. This\nclass requires jQuery.\n\nThe constructor needs to fetch a `settings.json` file through AJAX and its\nmethods may not be invoked until this has been done. The user-defined `ready`\ncallback is invoked by the `AvatarWizard` object when it is ready.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "canvas",
+                    "description": "Mixed Specifies the HTML5 canvas where the avatar has to be\ndrawn. It can be specified as a HTMLCanvasElement object, string CSS selector\nor jQuery object."
+                },
+                {
+                    "name": "ready",
+                    "description": "Function A user-defined callback function invoked after the\n`AvatarWizard` object has read its configuration file and its ready to\nreceive method invocations."
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 110,
+            "description": "Recalculates the coordinate reference. This method must be invoked\nevery time the dimensions of the canvas change.\n\nThis method may be called in response to `resize` events at a high\nrate because the redraw rate is throttled down through\n`requestAnimationFrame`.",
+            "itemtype": "method",
+            "name": "resetDimensions",
+            "chainable": 1,
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 129,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "loadAvatar",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "newDescriptor",
+                    "description": "Object TODO"
+                }
+            ],
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 142,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getAvatar",
+            "return": {
+                "description": "Object"
+            },
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 152,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "select",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "category",
+                    "description": "String TODO"
+                },
+                {
+                    "name": "type",
+                    "description": "String TODO"
+                }
+            ],
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 178,
+            "description": "Returns the current color for the specified category.\n\nThis value can be set per-category with the\n{{#crossLink \"AvatarWizard/setColor\"}}setColor{{/crossLink}} method\nor in the avatar descriptor specified to the\n{{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nmethod.\n\nThe return value is undefined if no color has been set.",
+            "itemtype": "method",
+            "name": "getColor",
+            "params": [
+                {
+                    "name": "category",
+                    "description": "String The category to set the color for."
+                }
+            ],
+            "return": {
+                "description": "String The current CSS color for the specified category, or\n`undefined` if no color is set."
+            },
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 202,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "setColor",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "category",
+                    "description": "String TODO"
+                },
+                {
+                    "name": "color",
+                    "description": "String TODO"
+                }
+            ],
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 231,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getThumbnail",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "Number TODO"
+                },
+                {
+                    "name": "height",
+                    "description": "Number TODO"
+                }
+            ],
+            "return": {
+                "description": "HTMLElement TODO"
+            },
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 241,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "getEncodedThumbnail",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "Number TODO"
+                },
+                {
+                    "name": "height",
+                    "description": "Number TODO"
+                }
+            ],
+            "return": {
+                "description": "String TODO"
+            },
+            "class": "AvatarWizard"
+        }
+    ],
+    "warnings": []
+}
