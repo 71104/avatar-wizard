@@ -5,7 +5,9 @@ function ColorPicker(huePicker, brightnessPicker) {
 	this.register('hue');
 	this.register('pick');
 
-	var hue, saturation, brightness;
+	var hue = 0;
+	var saturation = 1;
+	var brightness = 0.5;
 
 	function getColor() {
 		return 'hsl(' + Math.round(hue * 360) + ', ' + Math.round(saturation * 100) + '%, ' + Math.round(brightness * 100) + '%)';
