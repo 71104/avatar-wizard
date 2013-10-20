@@ -23,6 +23,7 @@
       ctx.lineTo(492.8, 383.7);
       ctx.bezierCurveTo(496.6, 378.2, 495.1, 370.8, 489.6, 367.1);
       ctx.closePath();
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // specialshead/rambo/Gruppo/Gruppo/Gruppo
@@ -91,6 +92,7 @@
       ctx.lineTo(488.2, 349.6);
       ctx.bezierCurveTo(494.8, 348.7, 499.4, 342.6, 498.4, 336.1);
       ctx.closePath();
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // specialshead/rambo/Gruppo/Gruppo/Gruppo
@@ -568,6 +570,7 @@
       ctx.bezierCurveTo(434.8, 313.8, 440.4, 319.5, 440.4, 326.4);
       ctx.lineTo(440.4, 348.4);
       ctx.closePath();
+      ctx.fillStyle = "rgb(229, 60, 46)";
       ctx.fill();
 
       // specialshead/rambo/Gruppo/Gruppo/Gruppo
