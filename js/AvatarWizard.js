@@ -51,7 +51,11 @@ function AvatarWizard(canvas, ready) {
 
 		function drawElement(category) {
 			if (descriptor.hasOwnProperty(category)) {
-				functions[category + '/' + descriptor[category]](context);
+				if (typeof descriptor[category] !== 'string') {
+					functions[category + '/' + descriptor[category].type](context, descriptor[category].color);
+				} else {
+					functions[category + '/' + descriptor[category]](context);
+				}
 				return true;
 			} else {
 				return false;
@@ -151,14 +155,22 @@ function AvatarWizard(canvas, ready) {
 		 * @method select
 		 * @chainable
 		 * @param category String TODO
-		 * @param id String TODO
+		 * @param type String TODO
 		 */
-		thisObject.select = function (category, id) {
-			if (functions.hasOwnProperty(category + '/' + id)) {
-				descriptor[category] = id;
+		thisObject.select = function (category, type) {
+			if (functions.hasOwnProperty(category + '/' + type)) {
+				if (descriptor.hasOwnProperty(category)) {
+					if (typeof descriptor[category] !== 'string') {
+						descriptor[category].type = type;
+					} else {
+						descriptor[category] = type;
+					}
+				} else {
+					descriptor[category] = type;
+				}
 				drawAll();
 			} else {
-				throw 'Unregistered category or image ID: "' + category + '", "' + id + '"';
+				throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
 			}
 			return thisObject;
 		};
@@ -173,7 +185,16 @@ function AvatarWizard(canvas, ready) {
 		 */
 		thisObject.setColor = function (category, color) {
 			if (!drawing) {
-				// TODO
+				if (descriptor.hasOwnProperty(category)) {
+					if (typeof descriptor[category] !== 'string') {
+						descriptor[category].color = color;
+					} else {
+						descriptor[category] = {
+							type: descriptor[category],
+							color: color
+						};
+					}
+				}
 				requestAnimationFrame(drawAll);
 			}
 			return thisObject;
