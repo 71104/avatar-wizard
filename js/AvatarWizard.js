@@ -2,7 +2,7 @@
  * Manages the composition of a user avatar using predefined graphic parts. This
  * class requires jQuery.
  *
- * The constructor need to fetch a `settings.json` file through AJAX and its
+ * The constructor needs to fetch a `settings.json` file through AJAX and its
  * methods may not be invoked until this has been done. The user-defined `ready`
  * callback is invoked by the `AvatarWizard` object when it is ready.
  *
@@ -119,8 +119,8 @@ function AvatarWizard(canvas, ready) {
 		 * @chainable
 		 */
 		thisObject.resetDimensions = function () {
+			setDimensions();
 			if (!drawing) {
-				setDimensions();
 				requestAnimationFrame(drawAll);
 			}
 			return thisObject;
@@ -176,6 +176,30 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		/**
+		 * Returns the current color for the specified category.
+		 *
+		 * This value can be set per-category with the
+		 * {{#crossLink "AvatarWizard/setColor"}}setColor{{/crossLink}} method
+		 * or in the avatar descriptor specified to the
+		 * {{#crossLink "AvatarWizard/loadAvatar"}}loadAvatar{{/crossLink}}
+		 * method.
+		 *
+		 * The return value is undefined if no color has been set.
+		 *
+		 * @method getColor
+		 * @param category String The category to set the color for.
+		 * @return String The current CSS color for the specified category, or
+		 * `undefined` if no color is set.
+		 */
+		thisObject.getColor = function (category) {
+			if (descriptor.hasOwnProperty(category)) {
+				if (typeof descriptor[category] !== 'string') {
+					return descriptor[category].color;
+				}
+			}
+		};
+
+		/**
 		 * TODO
 		 *
 		 * @method setColor
@@ -184,17 +208,17 @@ function AvatarWizard(canvas, ready) {
 		 * @param color String TODO
 		 */
 		thisObject.setColor = function (category, color) {
-			if (!drawing) {
-				if (descriptor.hasOwnProperty(category)) {
-					if (typeof descriptor[category] !== 'string') {
-						descriptor[category].color = color;
-					} else {
-						descriptor[category] = {
-							type: descriptor[category],
-							color: color
-						};
-					}
+			if (descriptor.hasOwnProperty(category)) {
+				if (typeof descriptor[category] !== 'string') {
+					descriptor[category].color = color;
+				} else {
+					descriptor[category] = {
+						type: descriptor[category],
+						color: color
+					};
 				}
+			}
+			if (!drawing) {
 				requestAnimationFrame(drawAll);
 			}
 			return thisObject;
