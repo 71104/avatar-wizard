@@ -2,19 +2,6 @@
 
       var alpha = ctx.globalAlpha;
 
-      // frame/Tracciato
-      ctx.save();
-      ctx.beginPath();
-      ctx.moveTo(496.5, 679.5);
-      ctx.lineTo(2.5, 679.5);
-      ctx.lineTo(2.5, 2.5);
-      ctx.lineTo(496.5, 2.5);
-      ctx.lineTo(496.5, 679.5);
-      ctx.closePath();
-      ctx.lineWidth = 5.0;
-      ctx.stroke();
-      ctx.restore();
-
       // outfits/7
       ctx.save();
 

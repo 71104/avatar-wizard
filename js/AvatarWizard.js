@@ -341,7 +341,12 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		function getThumbnail(width, height) {
+			var canvas = document.createElement('canvas');
+			canvas.width = width;
+			canvas.height = height;
+			var context = canvas.getContext('2d');
 			// TODO
+			return canvas;
 		}
 
 		/**
