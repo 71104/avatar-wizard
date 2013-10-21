@@ -6,6 +6,52 @@
  * methods may not be invoked until this has been done. The user-defined `ready`
  * callback is invoked by the `AvatarWizard` object when it is ready.
  *
+ * The `settings.json` file must have the following format:
+ *
+ *	{
+ *		"canonicalWidth": 123,
+ *		"canonicalHeight": 456,
+ *		"path": "path/to/parts",
+ *		"parts": {
+ *			"category1": [
+ *				"type1",
+ *				"type2",
+ *				...
+ *			],
+ *			"category2": [
+ *				"type1",
+ *				"type2",
+ *				...
+ *			],
+ *			"category3": [
+ *				.
+ *				.
+ *				.
+ *			],
+ *		}
+ *	}
+ *
+ * `canonicalWidth` and `canonicalHeight` are the dimensions of a rectangular
+ * area the coordinates in the js image files refer to. Modifying these
+ * parameters influences the size of the avatar relative to the destination
+ * canvas.
+ *
+ * `path` is the path of the directory tree containing the js image files. The
+ * directory represented by `path` must contain one subdirectory for each
+ * category; each category directory must in turn contain one `.js` file for
+ * each part/type.
+ *
+ * Finally, "parts" is the set of registered parts and categories. The "parts"
+ * object maps category names to part arrays (each key is a category name and
+ * its value is an array of part names).
+ *
+ * The full path of a part is build as follows:
+ *
+ *	path/category/part.json
+ *
+ * which means that the "path" option is prepended, the category name follows,
+ * the part name follows and the `.json` file extension is appended.
+ *
  * @class AvatarWizard
  * @constructor
  * @param canvas Mixed Specifies the HTML5 canvas where the avatar has to be
@@ -18,6 +64,10 @@
 function AvatarWizard(canvas, ready) {
 	var thisObject = this;
 	$.getJSON('settings.json', function (settings) {
+		if (!/\/$/.test(settings.path)) {
+			settings.path += '/';
+		}
+
 		var functions = {};
 
 		canvas = $(canvas);
@@ -88,7 +138,7 @@ function AvatarWizard(canvas, ready) {
 		(function (count) {
 			function fetchPart(name) {
 				count++;
-				$.get('parts/' + name + '.js', function (code) {
+				$.get(settings.path + name + '.js', function (code) {
 					eval(code);
 					functions[name] = draw;
 					if (!--count) {
@@ -127,11 +177,43 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		/**
-		 * TODO
+		 * Loads the avatar described by the specified JSON object and updates
+		 * the rendering on the canvas.
+		 *
+		 * The specified object must have the following format:
+		 *
+		 *	{
+		 *		"category1": "type3",
+		 *		"category2": {
+		 *			"type": "type2",
+		 *			"color": "#abcdef"
+		 *		},
+		 *		"category3": {
+		 *			"type": "type1",
+		 *			"color": "rgb(12, 34, 56)"
+		 *		},
+		 *		.
+		 *		.
+		 *		.
+		 *	}
+		 *
+		 * Each key must be a valid category name (one registered in the
+		 * `settings.json` file, as documented in the
+		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}})
+		 * and its value can be either a string (a valid part/type name
+		 * registered for that category) or an object; in the latter case it
+		 * contains a mandatory `type` field specifying the part/type name and
+		 * an optional `color` field specifying a CSS color for the part.
+		 *
+		 * Note that the specified JSON object is deep-copied, so subsequent
+		 * modifications to it do not have any effect on the avatar managed by
+		 * this object. To modify the managed avatar use the
+		 * {{#crossLink "AvatarWizard/select"}}select{{/crossLink}} method.
 		 *
 		 * @method loadAvatar
 		 * @chainable
-		 * @param newDescriptor Object TODO
+		 * @param newDescriptor Object A JSON object describing the avatar to
+		 * load.
 		 */
 		thisObject.loadAvatar = function (newDescriptor) {
 			descriptor = $.extend({}, newDescriptor);
@@ -140,22 +222,37 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		/**
-		 * TODO
+		 * Returns a JSON object that describes the current avatar as modified
+		 * by {{#crossLink "AvatarWizard/loadAvatar"}}loadAvatar{{/crossLink}}
+		 * and {{#crossLink "AvatarWizard/select"}}select{{/crossLink}} calls.
+		 *
+		 * See {{#crossLink "AvatarWizard/loadAvatar"}}loadAvatar{{/crossLink}}
+		 * for information about the JSON format of avatar descriptors.
+		 *
+		 * The returned object is a deep copy of the object mainatined
+		 * internally by the AvatarWizard instance.
 		 *
 		 * @method getAvatar
-		 * @return Object
+		 * @return Object A JSON object that describes the current avatar.
 		 */
 		thisObject.getAvatar = function () {
 			return $.extend({}, descriptor);
 		};
 
 		/**
-		 * TODO
+		 * Selects the specified part for the specified category and updates the
+		 * rendering of the avatar on the canvas.
+		 *
+		 * Both the category and part/type names must be valid names registered
+		 * in the `settings.json` file, as explained in the
+		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}}.
 		 *
 		 * @method select
 		 * @chainable
-		 * @param category String TODO
-		 * @param type String TODO
+		 * @param category String The category the part is being selected for.
+		 * @param type String The part name.
+		 * @example
+		 *	wizard.select('hair', 'blonde1');
 		 */
 		thisObject.select = function (category, type) {
 			if (functions.hasOwnProperty(category + '/' + type)) {

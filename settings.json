@@ -1,6 +1,7 @@
 {
 	"canonicalWidth": 637,
 	"canonicalHeight": 960,
+	"path": "parts",
 	"parts": {
 		"base": [
 			"white"
