@@ -141,29 +141,29 @@
 				</ul>
 			</div><div id="special_body-selector" class="selector image-selector" style="display: none">
 				<ul>
-					<li class="image" data-category="special_body" data-image="alien_body"><img src="thumbnails/special_body/alien_body.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="rambo"><img src="thumbnails/special_body/rambo.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="work"><img src="thumbnails/special_body/work.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="indian_girl"><img src="thumbnails/special_body/indian_girl.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="cat_suit"><img src="thumbnails/special_body/cat_suit.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="batman_suit"><img src="thumbnails/special_body/batman_suit.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="cosmo_suit"><img src="thumbnails/special_body/cosmo_suit.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="chief"><img src="thumbnails/special_body/chief.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="ninja_suit"><img src="thumbnails/special_body/ninja_suit.png" alt=""/></li>
-					<li class="image" data-category="special_body" data-image="iron"><img src="thumbnails/special_body/iron.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="1"><img src="thumbnails/special_body/1.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="2"><img src="thumbnails/special_body/2.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="3"><img src="thumbnails/special_body/3.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="4"><img src="thumbnails/special_body/4.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="5"><img src="thumbnails/special_body/5.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="6"><img src="thumbnails/special_body/6.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="7"><img src="thumbnails/special_body/7.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="8"><img src="thumbnails/special_body/8.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="9"><img src="thumbnails/special_body/9.png" alt=""/></li>
+					<li class="image" data-category="special_body" data-image="10"><img src="thumbnails/special_body/10.png" alt=""/></li>
 				</ul>
 			</div><div id="special_head-selector" class="selector image-selector" style="display: none">
 				<ul>
-					<li class="image" data-category="special_head" data-image="alien"><img src="thumbnails/special_head/alien.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="rambo"><img src="thumbnails/special_head/rambo.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="work"><img src="thumbnails/special_head/work.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="indian_girl"><img src="thumbnails/special_head/indian_girl.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="catwoman"><img src="thumbnails/special_head/catwoman.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="batman"><img src="thumbnails/special_head/batman.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="cosmo"><img src="thumbnails/special_head/cosmo.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="chief"><img src="thumbnails/special_head/chief.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="ninja"><img src="thumbnails/special_head/ninja.png" alt=""/></li>
-					<li class="image" data-category="special_head" data-image="iron"><img src="thumbnails/special_head/iron.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="1"><img src="thumbnails/special_head/1.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="2"><img src="thumbnails/special_head/2.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="3"><img src="thumbnails/special_head/3.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="4"><img src="thumbnails/special_head/4.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="5"><img src="thumbnails/special_head/5.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="6"><img src="thumbnails/special_head/6.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="7"><img src="thumbnails/special_head/7.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="8"><img src="thumbnails/special_head/8.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="9"><img src="thumbnails/special_head/9.png" alt=""/></li>
+					<li class="image" data-category="special_head" data-image="10"><img src="thumbnails/special_head/10.png" alt=""/></li>
 				</ul>
 			</div>
 		</div>
@@ -179,7 +179,7 @@ $(function () {
 		$('.image').click(function () {
 			var category = $(this).data('category');
 			$('#' + category + '-selector .image').removeClass('selected');
-			wizard.select(category, $(this).addClass('selected').data('image'));
+			wizard.select(category, $(this).addClass('selected').data('image') + '');
 		});
 		wizard.loadAvatar({
 			shadow: '1',
