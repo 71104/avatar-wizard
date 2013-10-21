@@ -3,108 +3,56 @@
 	"canonicalHeight": 960,
 	"path": "parts",
 	"parts": {
-		"base": [
-			"white"
+		"head": [
+			"1"
 		],
 		"body": [
-			"bellyman",
-			"jumper_orange",
-			"small_black",
-			"cheer",
-			"track_brown",
-			"pants",
-			"brown",
-			"stripes",
-			"jeans",
-			"skull",
-			"sweater",
-			"tie"
+			"1"
 		],
 		"hair": [
-			"boy_flat",
-			"girl4",
-			"blond",
-			"girl3",
-			"girl2",
-			"girl1",
-			"cherokee",
-			"afro",
-			"boy1",
-			"boy2"
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"10"
 		],
-		"eyes": [
-			"eyes6",
-			"eyes5",
-			"eyes4",
-			"smile",
-			"big_simple",
-			"sweet",
-			"girl3",
-			"panoramic",
-			"yello",
-			"eyes3",
-			"girl2",
-			"girl1",
-			"eyes2",
-			"eyes1"
+		"outfits": [
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"10",
+			"11",
+			"12"
 		],
 		"mouth": [
-			"mouth3",
-			"mouth2",
-			"girl_simple",
-			"girl",
-			"mouth1",
-			"smile2",
-			"ble",
-			"simple_smile",
-			"tongue",
-			"smile1"
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"10"
 		],
 		"facial_details": [
-			"beard",
-			"goatie",
-			"cheeks",
-			"sun_drops",
-			"beard1"
-		],
-		"accessories": [
-			"pendant",
-			"heart",
-			"glasses",
-			"glasses_dark",
-			"cap_back",
-			"cap",
-			"sheriff",
-			"ball",
-			"baseball",
-			"cheer",
-			"gun",
-			"phone",
-			"hands"
-		],
-		"special_head": [
-			"alien",
-			"rambo",
-			"work",
-			"indian_girl",
-			"catwoman",
-			"batman",
-			"cosmo",
-			"chief",
-			"ninja",
-			"iron"
-		],
-		"special_body": [
-			"alien_body",
-			"rambo",
-			"work",
-			"indian_girl",
-			"cat_suit",
-			"batman_suit",
-			"cosmo_suit",
-			"chief",
-			"ninja_suit",
-			"iron"
+			"1",
+			"2",
+			"3",
+			"4",
+			"5"
 		]
 	}
 }

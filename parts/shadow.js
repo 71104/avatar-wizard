@@ -1,15 +1,15 @@
     function draw(ctx) {
 
-      // shadow/Tracciato
+      // shadow/1
       ctx.save();
       ctx.beginPath();
-      ctx.moveTo(422.8, 633.2);
-      ctx.bezierCurveTo(422.8, 640.0, 374.8, 645.5, 315.5, 645.5);
-      ctx.bezierCurveTo(256.2, 645.5, 208.2, 640.0, 208.2, 633.2);
-      ctx.bezierCurveTo(208.2, 626.4, 256.2, 620.8, 315.5, 620.8);
-      ctx.bezierCurveTo(374.8, 620.8, 422.8, 626.4, 422.8, 633.2);
+      ctx.moveTo(361.8, 537.2);
+      ctx.bezierCurveTo(361.8, 544.0, 313.8, 549.5, 254.5, 549.5);
+      ctx.bezierCurveTo(195.2, 549.5, 147.2, 544.0, 147.2, 537.2);
+      ctx.bezierCurveTo(147.2, 530.4, 195.2, 524.8, 254.5, 524.8);
+      ctx.bezierCurveTo(313.8, 524.8, 361.8, 530.4, 361.8, 537.2);
       ctx.closePath();
-      ctx.fillStyle = "rgb(187, 189, 191)";
+      ctx.fillStyle = "rgb(188, 190, 192)";
       ctx.fill();
       ctx.restore();
     }
