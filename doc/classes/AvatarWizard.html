@@ -320,6 +320,13 @@ receive method invocations.</p>
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_getSelected">getSelected</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_getThumbnail">getThumbnail</a>
 
                                 
@@ -493,7 +500,7 @@ internally by the AvatarWizard instance.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l273"><code>js\AvatarWizard.js:273</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l293"><code>js\AvatarWizard.js:293</code></a>
         
         </p>
 
@@ -611,7 +618,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l336"><code>js\AvatarWizard.js:336</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l357"><code>js\AvatarWizard.js:357</code></a>
         
         </p>
 
@@ -686,6 +693,115 @@ method.</p>
 </div>
 
                 
+                    <div id="method_getSelected" class="method item">
+    <h3 class="name"><code>getSelected</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>category</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_AvatarWizard.js.html#l240"><code>js\AvatarWizard.js:240</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the currently selected part type for the specified category,
+or <code>undefined</code> if no part is selected.</p>
+<p>Parts can be selected per-category using the
+<a href="..\classes\AvatarWizard.html#method_select" class="crosslink">select</a> method.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">category</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>String A category name.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>String The selected part type, or <code>undefined</code> if no part is
+selected for the specified category.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_getThumbnail" class="method item">
     <h3 class="name"><code>getThumbnail</code></h3>
 
@@ -738,7 +854,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l326"><code>js\AvatarWizard.js:326</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l347"><code>js\AvatarWizard.js:347</code></a>
         
         </p>
 
@@ -1043,7 +1159,7 @@ rate because the redraw rate is throttled down through
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l240"><code>js\AvatarWizard.js:240</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l260"><code>js\AvatarWizard.js:260</code></a>
         
         </p>
 
@@ -1169,7 +1285,7 @@ in the <code>settings.json</code> file, as explained in the
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l297"><code>js\AvatarWizard.js:297</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l317"><code>js\AvatarWizard.js:317</code></a>
         
         </p>
 
@@ -1180,7 +1296,8 @@ in the <code>settings.json</code> file, as explained in the
     </div>
 
     <div class="description">
-        <p>TODO</p>
+        <p>Sets the color of the currently selected part for the specified
+category.</p>
 
     </div>
 
@@ -1199,7 +1316,7 @@ in the <code>settings.json</code> file, as explained in the
                     
 
                     <div class="param-description">
-                        <p>String TODO</p>
+                        <p>String A category name.</p>
 
                     </div>
 
@@ -1215,7 +1332,7 @@ in the <code>settings.json</code> file, as explained in the
                     
 
                     <div class="param-description">
-                        <p>String TODO</p>
+                        <p>String A CSS color value.</p>
 
                     </div>
 

@@ -238,11 +238,16 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		/**
-		 * TODO
+		 * Returns the currently selected part type for the specified category,
+		 * or `undefined` if no part is selected.
+		 *
+		 * Parts can be selected per-category using the
+		 * {{#crossLink "AvatarWizard/select"}}select{{/crossLink}} method.
 		 *
 		 * @method getSelected
-		 * @param category String TODO
-		 * @return String TODO
+		 * @param category String A category name.
+		 * @return String The selected part type, or `undefined` if no part is
+		 * selected for the specified category.
 		 */
 		thisObject.getSelected = function (category) {
 			if (typeof descriptor[category] === 'string') {

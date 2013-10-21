@@ -79,6 +79,23 @@
         {
             "file": "js\\AvatarWizard.js",
             "line": 240,
+            "description": "Returns the currently selected part type for the specified category,\nor `undefined` if no part is selected.\n\nParts can be selected per-category using the\n{{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} method.",
+            "itemtype": "method",
+            "name": "getSelected",
+            "params": [
+                {
+                    "name": "category",
+                    "description": "String A category name."
+                }
+            ],
+            "return": {
+                "description": "String The selected part type, or `undefined` if no part is\nselected for the specified category."
+            },
+            "class": "AvatarWizard"
+        },
+        {
+            "file": "js\\AvatarWizard.js",
+            "line": 260,
             "description": "Selects the specified part for the specified category and updates the\nrendering of the avatar on the canvas.\n\nBoth the category and part/type names must be valid names registered\nin the `settings.json` file, as explained in the\n{{#crossLink \"AvatarWizard\"}}AvatarWizard constructor{{/crossLink}}.",
             "itemtype": "method",
             "name": "select",
@@ -100,7 +117,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 273,
+            "line": 293,
             "description": "Returns the current color for the specified category.\n\nThis value can be set per-category with the\n{{#crossLink \"AvatarWizard/setColor\"}}setColor{{/crossLink}} method\nor in the avatar descriptor specified to the\n{{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nmethod.\n\nThe return value is undefined if no color has been set.",
             "itemtype": "method",
             "name": "getColor",
@@ -117,26 +134,26 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 297,
-            "description": "TODO",
+            "line": 317,
+            "description": "Sets the color of the currently selected part for the specified\ncategory.",
             "itemtype": "method",
             "name": "setColor",
             "chainable": 1,
             "params": [
                 {
                     "name": "category",
-                    "description": "String TODO"
+                    "description": "String A category name."
                 },
                 {
                     "name": "color",
-                    "description": "String TODO"
+                    "description": "String A CSS color value."
                 }
             ],
             "class": "AvatarWizard"
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 326,
+            "line": 347,
             "description": "TODO",
             "itemtype": "method",
             "name": "getThumbnail",
@@ -157,7 +174,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 336,
+            "line": 357,
             "description": "TODO",
             "itemtype": "method",
             "name": "getEncodedThumbnail",
