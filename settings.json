@@ -9,6 +9,9 @@
 		"body": [
 			"1"
 		],
+		"hands": [
+			"1"
+		],
 		"hair": [
 			"1",
 			"2",
@@ -53,6 +56,55 @@
 			"3",
 			"4",
 			"5"
+		],
+		"eyes": [
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"10",
+			"11",
+			"12",
+			"13",
+			"14"
+		],
+		"accessories": [
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"10",
+			"11",
+			"12"
 		]
-	}
+	},
+	"exclusions": [{
+		"category": "special_body",
+		"excludes": [
+			"body",
+			"hands",
+			"outfit",
+			"accessories"
+		]
+	}, {
+		"category": "special_head",
+		"excludes": [
+			"head",
+			"eyes",
+			"mouth",
+			"facial_details",
+			"hair",
+			"accessories"
+		]
+	}]
 }
