@@ -238,6 +238,21 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		/**
+		 * TODO
+		 *
+		 * @method getSelected
+		 * @param category String TODO
+		 * @return String TODO
+		 */
+		thisObject.getSelected = function (category) {
+			if (typeof descriptor[category] === 'string') {
+				return descriptor[category];
+			} else if (typeof descriptor[category] === 'object') {
+				return descriptor[category].type;
+			}
+		};
+
+		/**
 		 * Selects the specified part for the specified category and updates the
 		 * rendering of the avatar on the canvas.
 		 *
@@ -295,12 +310,13 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		/**
-		 * TODO
+		 * Sets the color of the currently selected part for the specified
+		 * category.
 		 *
 		 * @method setColor
 		 * @chainable
-		 * @param category String TODO
-		 * @param color String TODO
+		 * @param category String A category name.
+		 * @param color String A CSS color value.
 		 */
 		thisObject.setColor = function (category, color) {
 			if (descriptor.hasOwnProperty(category)) {
