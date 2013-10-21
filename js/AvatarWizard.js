@@ -47,11 +47,14 @@
  * category; each category directory must in turn contain one `.js` file for
  * each part/type.
  *
- * Finally, "parts" is the set of registered parts and categories. The "parts"
- * object maps category names to part arrays (each key is a category name and
- * its value is an array of part names).
+ * "parts" is the set of registered parts and categories. The "parts" object
+ * maps category names to part arrays (each key is a category name and its value
+ * is an array of part names).
  *
- * TODO document `layers` and `exclusions`
+ * "layers" specifies the order in which the several parts are drawn to the
+ * canvas; it is an array of category names.
+ *
+ * TODO document `exclusions`
  *
  * The full path of a part is build as follows:
  *
