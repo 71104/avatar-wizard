@@ -88,6 +88,19 @@
 			"12"
 		]
 	},
+	"layers": [
+		"body",
+		"outfit",
+		"head",
+		"eyes",
+		"mouth",
+		"facial_details",
+		"hair",
+		"hands",
+		"accessories",
+		"special_body",
+		"special_head"
+	],
 	"exclusions": [{
 		"category": "special_body",
 		"excludes": [
@@ -105,6 +118,54 @@
 			"facial_details",
 			"hair",
 			"accessories"
+		]
+	}, {
+		"category": "accessories",
+		"type": "1",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories",
+		"type": "2",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories",
+		"type": "3",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories",
+		"type": "4",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories",
+		"type": "5",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories",
+		"type": "6",
+		"excludes": [
+			"hair"
+		]
+	}, {
+		"category": "accessories",
+		"type": "7",
+		"excludes": [
+			"hair"
+		]
+	}, {
+		"category": "accessories",
+		"type": "8",
+		"excludes": [
+			"hair"
 		]
 	}]
 }
