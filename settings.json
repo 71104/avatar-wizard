@@ -3,6 +3,9 @@
 	"canonicalHeight": 960,
 	"path": "parts",
 	"parts": {
+		"shadow": [
+			"1"
+		],
 		"head": [
 			"1"
 		],
@@ -99,7 +102,7 @@
 			"9",
 			"10"
 		],
-		"special_head"; [
+		"special_head": [
 			"1",
 			"2",
 			"3",
@@ -113,6 +116,7 @@
 		]
 	},
 	"layers": [
+		"shadow",
 		"body",
 		"outfit",
 		"head",

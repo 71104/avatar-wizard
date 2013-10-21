@@ -28,7 +28,13 @@
  *				.
  *				.
  *			],
- *		}
+ *		},
+ *		"layers": [
+ *			"category1",
+ *			"category2",
+ *			"category3",
+ *			...
+ *		]
  *	}
  *
  * `canonicalWidth` and `canonicalHeight` are the dimensions of a rectangular
@@ -44,6 +50,8 @@
  * Finally, "parts" is the set of registered parts and categories. The "parts"
  * object maps category names to part arrays (each key is a category name and
  * its value is an array of part names).
+ *
+ * TODO document `layers` and `exclusions`
  *
  * The full path of a part is build as follows:
  *
@@ -117,20 +125,8 @@ function AvatarWizard(canvas, ready) {
 			context.setTransform(1, 0, 0, 1, 0, 0);
 			context.clearRect(0, 0, width, height);
 			context.restore();
-			functions.shadow(context);
-			drawElement('base');
-			var specialBody = drawElement('special_body');
-			if (!specialBody) {
-				drawElement('body');
-			}
-			if (!drawElement('special_head')) {
-				drawElement('mouth');
-				drawElement('eyes');
-				drawElement('facial_details');
-				drawElement('hair');
-			}
-			if (!specialBody) {
-				drawElement('accessories');
+			for (var i = 0; i < settings.layers.length; i++) {
+				drawElement(settings.layers[i]);
 			}
 			drawing = false;
 		}
@@ -147,7 +143,6 @@ function AvatarWizard(canvas, ready) {
 					}
 				}, 'text');
 			}
-			fetchPart('shadow');
 			for (var category in settings.parts) {
 				if (settings.parts.hasOwnProperty(category)) {
 					settings.parts[category].forEach(function (image) {
