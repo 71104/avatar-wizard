@@ -128,7 +128,13 @@ callback is invoked by the <code>AvatarWizard</code> object when it is ready.</p
             .
             .
         ],
-    }
+    },
+    &quot;layers&quot;: [
+        &quot;category1&quot;,
+        &quot;category2&quot;,
+        &quot;category3&quot;,
+        ...
+    ]
 }</code></pre>
 <p><code>canonicalWidth</code> and <code>canonicalHeight</code> are the dimensions of a rectangular
 area the coordinates in the js image files refer to. Modifying these
@@ -138,9 +144,12 @@ canvas.</p>
 directory represented by <code>path</code> must contain one subdirectory for each
 category; each category directory must in turn contain one <code>.js</code> file for
 each part/type.</p>
-<p>Finally, &quot;parts&quot; is the set of registered parts and categories. The &quot;parts&quot;
-object maps category names to part arrays (each key is a category name and
-its value is an array of part names).</p>
+<p>&quot;parts&quot; is the set of registered parts and categories. The &quot;parts&quot; object
+maps category names to part arrays (each key is a category name and its value
+is an array of part names).</p>
+<p>&quot;layers&quot; specifies the order in which the several parts are drawn to the
+canvas; it is an array of category names.</p>
+<p>TODO document <code>exclusions</code></p>
 <p>The full path of a part is build as follows:</p>
 <pre class="code prettyprint"><code>path/category/part.json</code></pre>
 <p>which means that the &quot;path&quot; option is prepended, the category name follows,
@@ -397,7 +406,7 @@ receive method invocations.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l224"><code>js\AvatarWizard.js:224</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l222"><code>js\AvatarWizard.js:222</code></a>
         
         </p>
 
@@ -484,7 +493,7 @@ internally by the AvatarWizard instance.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l275"><code>js\AvatarWizard.js:275</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l273"><code>js\AvatarWizard.js:273</code></a>
         
         </p>
 
@@ -602,7 +611,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l338"><code>js\AvatarWizard.js:338</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l336"><code>js\AvatarWizard.js:336</code></a>
         
         </p>
 
@@ -729,7 +738,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l328"><code>js\AvatarWizard.js:328</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l326"><code>js\AvatarWizard.js:326</code></a>
         
         </p>
 
@@ -848,7 +857,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l179"><code>js\AvatarWizard.js:179</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l177"><code>js\AvatarWizard.js:177</code></a>
         
         </p>
 
@@ -957,7 +966,7 @@ load.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l160"><code>js\AvatarWizard.js:160</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l158"><code>js\AvatarWizard.js:158</code></a>
         
         </p>
 
@@ -1034,7 +1043,7 @@ rate because the redraw rate is throttled down through
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l242"><code>js\AvatarWizard.js:242</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l240"><code>js\AvatarWizard.js:240</code></a>
         
         </p>
 
@@ -1160,7 +1169,7 @@ in the <code>settings.json</code> file, as explained in the
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l299"><code>js\AvatarWizard.js:299</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l297"><code>js\AvatarWizard.js:297</code></a>
         
         </p>
 

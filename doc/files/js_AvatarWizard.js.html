@@ -116,7 +116,13 @@
  *				.
  *				.
  *			],
- *		}
+ *		},
+ *		&quot;layers&quot;: [
+ *			&quot;category1&quot;,
+ *			&quot;category2&quot;,
+ *			&quot;category3&quot;,
+ *			...
+ *		]
  *	}
  *
  * &#x60;canonicalWidth&#x60; and &#x60;canonicalHeight&#x60; are the dimensions of a rectangular
@@ -129,9 +135,14 @@
  * category; each category directory must in turn contain one &#x60;.js&#x60; file for
  * each part/type.
  *
- * Finally, &quot;parts&quot; is the set of registered parts and categories. The &quot;parts&quot;
- * object maps category names to part arrays (each key is a category name and
- * its value is an array of part names).
+ * &quot;parts&quot; is the set of registered parts and categories. The &quot;parts&quot; object
+ * maps category names to part arrays (each key is a category name and its value
+ * is an array of part names).
+ *
+ * &quot;layers&quot; specifies the order in which the several parts are drawn to the
+ * canvas; it is an array of category names.
+ *
+ * TODO document &#x60;exclusions&#x60;
  *
  * The full path of a part is build as follows:
  *
@@ -205,20 +216,8 @@ function AvatarWizard(canvas, ready) {
 			context.setTransform(1, 0, 0, 1, 0, 0);
 			context.clearRect(0, 0, width, height);
 			context.restore();
-			functions.shadow(context);
-			drawElement(&#x27;base&#x27;);
-			var specialBody = drawElement(&#x27;special_body&#x27;);
-			if (!specialBody) {
-				drawElement(&#x27;body&#x27;);
-			}
-			if (!drawElement(&#x27;special_head&#x27;)) {
-				drawElement(&#x27;mouth&#x27;);
-				drawElement(&#x27;eyes&#x27;);
-				drawElement(&#x27;facial_details&#x27;);
-				drawElement(&#x27;hair&#x27;);
-			}
-			if (!specialBody) {
-				drawElement(&#x27;accessories&#x27;);
+			for (var i = 0; i &lt; settings.layers.length; i++) {
+				drawElement(settings.layers[i]);
 			}
 			drawing = false;
 		}
@@ -235,7 +234,6 @@ function AvatarWizard(canvas, ready) {
 					}
 				}, &#x27;text&#x27;);
 			}
-			fetchPart(&#x27;shadow&#x27;);
 			for (var category in settings.parts) {
 				if (settings.parts.hasOwnProperty(category)) {
 					settings.parts[category].forEach(function (image) {
