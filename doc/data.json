@@ -154,42 +154,42 @@
         {
             "file": "js\\AvatarWizard.js",
             "line": 347,
-            "description": "TODO",
+            "description": "Returns an HTMLElement of the specified width and height containing a\nprerendered thumbnail of the avatar.\n\nThe exact type of HTML element is left unspecified: it may be an\nimage element as well as a canvas.",
             "itemtype": "method",
             "name": "getThumbnail",
             "params": [
                 {
                     "name": "width",
-                    "description": "Number TODO"
+                    "description": "Number The width of the thumbnail to generate."
                 },
                 {
                     "name": "height",
-                    "description": "Number TODO"
+                    "description": "Number The height of the thumbnail to generate."
                 }
             ],
             "return": {
-                "description": "HTMLElement TODO"
+                "description": "HTMLElement An HTML element of the specified dimensions\ncontaining a prerendered avatar."
             },
             "class": "AvatarWizard"
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 357,
-            "description": "TODO",
+            "line": 362,
+            "description": "Returns a data URI that encodes a PNG prerendered image of the\navatar of the specified width and height.",
             "itemtype": "method",
             "name": "getEncodedThumbnail",
             "params": [
                 {
                     "name": "width",
-                    "description": "Number TODO"
+                    "description": "Number The width of the image to generate."
                 },
                 {
                     "name": "height",
-                    "description": "Number TODO"
+                    "description": "Number The height of the image to generate."
                 }
             ],
             "return": {
-                "description": "String TODO"
+                "description": "String A data URI that encodes the generated image in PNG\nformat."
             },
             "class": "AvatarWizard"
         }

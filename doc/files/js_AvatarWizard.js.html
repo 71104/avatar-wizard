@@ -433,22 +433,29 @@ function AvatarWizard(canvas, ready) {
 		}
 
 		/**
-		 * TODO
+		 * Returns an HTMLElement of the specified width and height containing a
+		 * prerendered thumbnail of the avatar.
+		 *
+		 * The exact type of HTML element is left unspecified: it may be an
+		 * image element as well as a canvas.
 		 *
 		 * @method getThumbnail
-		 * @param width Number TODO
-		 * @param height Number TODO
-		 * @return HTMLElement TODO
+		 * @param width Number The width of the thumbnail to generate.
+		 * @param height Number The height of the thumbnail to generate.
+		 * @return HTMLElement An HTML element of the specified dimensions
+		 * containing a prerendered avatar.
 		 */
 		thisObject.getThumbnail = getThumbnail;
 
 		/**
-		 * TODO
+		 * Returns a data URI that encodes a PNG prerendered image of the
+		 * avatar of the specified width and height.
 		 *
 		 * @method getEncodedThumbnail
-		 * @param width Number TODO
-		 * @param height Number TODO
-		 * @return String TODO
+		 * @param width Number The width of the image to generate.
+		 * @param height Number The height of the image to generate.
+		 * @return String A data URI that encodes the generated image in PNG
+		 * format.
 		 */
 		thisObject.getEncodedThumbnail = function (width, height) {
 			return getThumbnail(width, height).toDataURL(&#x27;image/png&#x27;);
