@@ -1,5 +1,7 @@
     function draw(ctx, color) {
 
+      var alpha = ctx.globalAlpha;
+
       // outfits/1
       ctx.save();
 
@@ -46,6 +48,7 @@
 
       // outfits/1/stroke/effect
       ctx.save();
+      ctx.globalAlpha = alpha * 0.20;
       ctx.beginPath();
       ctx.moveTo(216.2, 471.8);
       ctx.bezierCurveTo(216.2, 471.8, 212.6, 516.4, 236.9, 519.4);
@@ -54,10 +57,11 @@
       ctx.lineTo(188.2, 471.7);
       ctx.lineTo(216.2, 471.8);
       ctx.closePath();
-      ctx.fillStyle = "rgb(209, 211, 212)";
+      ctx.fillStyle = "rgb(1, 1, 2)";
       ctx.fill();
 
       // outfits/1/stroke/Tracciato composto
+      ctx.globalAlpha = alpha * 1.00;
       ctx.beginPath();
 
       // outfits/1/stroke/Tracciato composto/Tracciato

@@ -99,6 +99,12 @@
  *	{
  *		&quot;canonicalWidth&quot;: 123,
  *		&quot;canonicalHeight&quot;: 456,
+ *		&quot;thumbnailArea&quot;: {
+ *			&quot;x&quot;: 10,
+ *			&quot;y&quot;: 10,
+ *			&quot;width&quot;: 80,
+ *			&quot;height&quot;: 400
+ *		},
  *		&quot;path&quot;: &quot;path/to/parts&quot;,
  *		&quot;parts&quot;: {
  *			&quot;category1&quot;: [
@@ -129,6 +135,12 @@
  * area the coordinates in the js image files refer to. Modifying these
  * parameters influences the size of the avatar relative to the destination
  * canvas.
+ *
+ * &#x60;thumbnailArea&#x60; describes a rectangular area in canonical space used to size
+ * the avatar within a canvas when generating prerendered thumbnails (see the
+ * {{#crossLink &quot;AvatarWizard/getThumbnail&quot;}}getThumbnail{{/crossLink}} and
+ * {{#crossLink &quot;AvatarWizard/getEncodedThumbnail&quot;}}getEncodedThumbnail{{/crossLink}}
+ * methods).
  *
  * &#x60;path&#x60; is the path of the directory tree containing the js image files. The
  * directory represented by &#x60;path&#x60; must contain one subdirectory for each
@@ -429,7 +441,12 @@ function AvatarWizard(canvas, ready) {
 		};
 
 		function getThumbnail(width, height) {
+			var canvas = document.createElement(&#x27;canvas&#x27;);
+			canvas.width = width;
+			canvas.height = height;
+			var context = canvas.getContext(&#x27;2d&#x27;);
 			// TODO
+			return canvas;
 		}
 
 		/**

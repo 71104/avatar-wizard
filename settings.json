@@ -1,6 +1,12 @@
 {
 	"canonicalWidth": 540,
 	"canonicalHeight": 720,
+	"thumbnailArea": {
+		"x": 37,
+		"y": 35,
+		"width": 186,
+		"height": 228
+	},
 	"path": "parts",
 	"parts": {
 		"shadow": [

@@ -109,30 +109,36 @@ methods may not be invoked until this has been done. The user-defined <code>read
 callback is invoked by the <code>AvatarWizard</code> object when it is ready.</p>
 <p>The <code>settings.json</code> file must have the following format:</p>
 <pre class="code prettyprint"><code>{
-    &quot;canonicalWidth&quot;: 123,
-    &quot;canonicalHeight&quot;: 456,
-    &quot;path&quot;: &quot;path/to/parts&quot;,
-    &quot;parts&quot;: {
-        &quot;category1&quot;: [
-            &quot;type1&quot;,
-            &quot;type2&quot;,
+    "canonicalWidth": 123,
+    "canonicalHeight": 456,
+    "thumbnailArea": {
+        "x": 10,
+        "y": 10,
+        "width": 80,
+        "height": 400
+    },
+    "path": "path/to/parts",
+    "parts": {
+        "category1": [
+            "type1",
+            "type2",
             ...
         ],
-        &quot;category2&quot;: [
-            &quot;type1&quot;,
-            &quot;type2&quot;,
+        "category2": [
+            "type1",
+            "type2",
             ...
         ],
-        &quot;category3&quot;: [
+        "category3": [
             .
             .
             .
         ],
     },
-    &quot;layers&quot;: [
-        &quot;category1&quot;,
-        &quot;category2&quot;,
-        &quot;category3&quot;,
+    "layers": [
+        "category1",
+        "category2",
+        "category3",
         ...
     ]
 }</code></pre>
@@ -140,19 +146,24 @@ callback is invoked by the <code>AvatarWizard</code> object when it is ready.</p
 area the coordinates in the js image files refer to. Modifying these
 parameters influences the size of the avatar relative to the destination
 canvas.</p>
+<p><code>thumbnailArea</code> describes a rectangular area in canonical space used to size
+the avatar within a canvas when generating prerendered thumbnails (see the
+<a href="..\classes\AvatarWizard.html#method_getThumbnail" class="crosslink">getThumbnail</a> and
+<a href="..\classes\AvatarWizard.html#method_getEncodedThumbnail" class="crosslink">getEncodedThumbnail</a>
+methods).</p>
 <p><code>path</code> is the path of the directory tree containing the js image files. The
 directory represented by <code>path</code> must contain one subdirectory for each
 category; each category directory must in turn contain one <code>.js</code> file for
 each part/type.</p>
-<p>&quot;parts&quot; is the set of registered parts and categories. The &quot;parts&quot; object
+<p>"parts" is the set of registered parts and categories. The "parts" object
 maps category names to part arrays (each key is a category name and its value
 is an array of part names).</p>
-<p>&quot;layers&quot; specifies the order in which the several parts are drawn to the
+<p>"layers" specifies the order in which the several parts are drawn to the
 canvas; it is an array of category names.</p>
 <p>TODO document <code>exclusions</code></p>
 <p>The full path of a part is build as follows:</p>
 <pre class="code prettyprint"><code>path/category/part.json</code></pre>
-<p>which means that the &quot;path&quot; option is prepended, the category name follows,
+<p>which means that the "path" option is prepended, the category name follows,
 the part name follows and the <code>.json</code> file extension is appended.</p>
 
 </div>
@@ -413,7 +424,7 @@ receive method invocations.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l222"><code>js\AvatarWizard.js:222</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l234"><code>js\AvatarWizard.js:234</code></a>
         
         </p>
 
@@ -500,7 +511,7 @@ internally by the AvatarWizard instance.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l293"><code>js\AvatarWizard.js:293</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l305"><code>js\AvatarWizard.js:305</code></a>
         
         </p>
 
@@ -618,7 +629,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l362"><code>js\AvatarWizard.js:362</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l379"><code>js\AvatarWizard.js:379</code></a>
         
         </p>
 
@@ -741,7 +752,7 @@ format.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l240"><code>js\AvatarWizard.js:240</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l252"><code>js\AvatarWizard.js:252</code></a>
         
         </p>
 
@@ -856,7 +867,7 @@ selected for the specified category.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l347"><code>js\AvatarWizard.js:347</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l364"><code>js\AvatarWizard.js:364</code></a>
         
         </p>
 
@@ -979,7 +990,7 @@ containing a prerendered avatar.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l177"><code>js\AvatarWizard.js:177</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l189"><code>js\AvatarWizard.js:189</code></a>
         
         </p>
 
@@ -1088,7 +1099,7 @@ load.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l158"><code>js\AvatarWizard.js:158</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l170"><code>js\AvatarWizard.js:170</code></a>
         
         </p>
 
@@ -1165,7 +1176,7 @@ rate because the redraw rate is throttled down through
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l260"><code>js\AvatarWizard.js:260</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l272"><code>js\AvatarWizard.js:272</code></a>
         
         </p>
 
@@ -1291,7 +1302,7 @@ in the <code>settings.json</code> file, as explained in the
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l317"><code>js\AvatarWizard.js:317</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l329"><code>js\AvatarWizard.js:329</code></a>
         
         </p>
 

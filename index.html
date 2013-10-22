@@ -169,8 +169,10 @@
 		</div>
 	</div>
 	<script>
+var wizard;
+
 $(function () {
-	var wizard = new AvatarWizard('canvas#canvas', function () {
+	wizard = new AvatarWizard('canvas#canvas', function () {
 		$('.category').click(function () {
 			$('.category').removeClass('selected');
 			$('.image-selector').hide();

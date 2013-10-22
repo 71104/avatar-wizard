@@ -11,6 +11,12 @@
  *	{
  *		"canonicalWidth": 123,
  *		"canonicalHeight": 456,
+ *		"thumbnailArea": {
+ *			"x": 10,
+ *			"y": 10,
+ *			"width": 80,
+ *			"height": 400
+ *		},
  *		"path": "path/to/parts",
  *		"parts": {
  *			"category1": [
@@ -41,6 +47,12 @@
  * area the coordinates in the js image files refer to. Modifying these
  * parameters influences the size of the avatar relative to the destination
  * canvas.
+ *
+ * `thumbnailArea` describes a rectangular area in canonical space used to size
+ * the avatar within a canvas when generating prerendered thumbnails (see the
+ * {{#crossLink "AvatarWizard/getThumbnail"}}getThumbnail{{/crossLink}} and
+ * {{#crossLink "AvatarWizard/getEncodedThumbnail"}}getEncodedThumbnail{{/crossLink}}
+ * methods).
  *
  * `path` is the path of the directory tree containing the js image files. The
  * directory represented by `path` must contain one subdirectory for each
@@ -74,65 +86,90 @@
  */
 function AvatarWizard(canvas, ready) {
 	var thisObject = this;
+
+	var functions = {};
+	var descriptor = {};
+
 	$.getJSON('settings.json', function (settings) {
 		if (!/\/$/.test(settings.path)) {
 			settings.path += '/';
 		}
 
-		var functions = {};
+		var layers = settings.layers;
+
+		function Renderer(canvas, settings) {
+			var context = canvas[0].getContext('2d');
+			var width, height;
+			var drawing = false;
+
+			function setDimensions() {
+				width = canvas.innerWidth();
+				height = canvas.innerHeight();
+				canvas.attr({
+					width: width,
+					height: height
+				});
+				context.setTransform(1, 0, 0, 1, 0, 0);
+				if (settings.stretch) {
+					// TODO
+				} else {
+					var ratio1 = width / settings.width;
+					var ratio2 = height / settings.height;
+					if (ratio2 < ratio1) {
+						context.translate((width - settings.width * ratio2) / 2, 0);
+						context.scale(ratio2, ratio2);
+					} else {
+						context.translate(0, (height - settings.height * ratio1) / 2);
+						context.scale(ratio1, ratio1);
+					}
+				}
+			}
+
+			setDimensions();
+
+			this.setDimensions = setDimensions;
+
+			function drawElement(category) {
+				if (descriptor.hasOwnProperty(category)) {
+					if (typeof descriptor[category] !== 'string') {
+						functions[category + '/' + descriptor[category].type](context, descriptor[category].color);
+					} else {
+						functions[category + '/' + descriptor[category]](context);
+					}
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			function drawAll() {
+				context.save();
+				context.setTransform(1, 0, 0, 1, 0, 0);
+				context.clearRect(0, 0, width, height);
+				context.restore();
+				for (var i = 0; i < layers.length; i++) {
+					drawElement(layers[i]);
+				}
+				drawing = false;
+			}
+
+			this.issue = function () {
+				if (!drawing) {
+					requestAnimationFrame(drawAll);
+				}
+			};
+		}
 
 		canvas = $(canvas);
-		var context = canvas[0].getContext('2d');
 		var width, height;
 
-		function setDimensions() {
-			width = canvas.innerWidth();
-			height = canvas.innerHeight();
-			canvas.attr({
-				width: width,
-				height: height
-			});
-			context.setTransform(1, 0, 0, 1, 0, 0);
-			var ratio1 = width / settings.canonicalWidth;
-			var ratio2 = height / settings.canonicalHeight;
-			if (ratio2 < ratio1) {
-				context.translate((width - settings.canonicalWidth * ratio2) / 2, 0);
-				context.scale(ratio2, ratio2);
-			} else {
-				context.translate(0, (height - settings.canonicalHeight * ratio1) / 2);
-				context.scale(ratio1, ratio1);
-			}
-		}
-
-		setDimensions();
-
-		descriptor = {};
-
-		var drawing = false;
-
-		function drawElement(category) {
-			if (descriptor.hasOwnProperty(category)) {
-				if (typeof descriptor[category] !== 'string') {
-					functions[category + '/' + descriptor[category].type](context, descriptor[category].color);
-				} else {
-					functions[category + '/' + descriptor[category]](context);
-				}
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		function drawAll() {
-			context.save();
-			context.setTransform(1, 0, 0, 1, 0, 0);
-			context.clearRect(0, 0, width, height);
-			context.restore();
-			for (var i = 0; i < settings.layers.length; i++) {
-				drawElement(settings.layers[i]);
-			}
-			drawing = false;
-		}
+		var renderer = new Renderer(canvas, {
+			stretch: false,
+			x: 0,
+			y: 0,
+			width: settings.canonicalWidth,
+			height: settings.canonicalHeight
+		});
 
 		(function (count) {
 			function fetchPart(name) {
@@ -141,7 +178,7 @@ function AvatarWizard(canvas, ready) {
 					eval(code);
 					functions[name] = draw;
 					if (!--count) {
-						drawAll();
+						renderer.issue();
 						ready();
 					}
 				}, 'text');
@@ -167,10 +204,7 @@ function AvatarWizard(canvas, ready) {
 		 * @chainable
 		 */
 		thisObject.resetDimensions = function () {
-			setDimensions();
-			if (!drawing) {
-				requestAnimationFrame(drawAll);
-			}
+			renderer.setDimensions();
 			return thisObject;
 		};
 
@@ -215,7 +249,7 @@ function AvatarWizard(canvas, ready) {
 		 */
 		thisObject.loadAvatar = function (newDescriptor) {
 			descriptor = $.extend({}, newDescriptor);
-			drawAll();
+			renderer.issue();
 			return thisObject;
 		};
 
@@ -283,7 +317,7 @@ function AvatarWizard(canvas, ready) {
 				} else {
 					descriptor[category] = type;
 				}
-				drawAll();
+				renderer.issue();
 			} else {
 				throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
 			}
@@ -334,18 +368,21 @@ function AvatarWizard(canvas, ready) {
 					};
 				}
 			}
-			if (!drawing) {
-				requestAnimationFrame(drawAll);
-			}
+			renderer.issue();
 			return thisObject;
 		};
 
-		function getThumbnail(width, height) {
+		function getThumbnail(width, height, stretch) {
 			var canvas = document.createElement('canvas');
 			canvas.width = width;
 			canvas.height = height;
-			var context = canvas.getContext('2d');
-			// TODO
+			(new Renderer(canvas, {
+				stretch: stretch,
+				x: thumbnailArea.x,
+				y: thumbnailArea.y,
+				width: thumbnailArea.width,
+				height: thumbnailArea.height
+			})).issue();
 			return canvas;
 		}
 
@@ -359,6 +396,9 @@ function AvatarWizard(canvas, ready) {
 		 * @method getThumbnail
 		 * @param width Number The width of the thumbnail to generate.
 		 * @param height Number The height of the thumbnail to generate.
+		 * @param stretch Boolean Indicates whether the avatar must be stretched
+		 * to fit the specified width and height exactly. `false` indicates that
+		 * the avatar's proportions are maintained.
 		 * @return HTMLElement An HTML element of the specified dimensions
 		 * containing a prerendered avatar.
 		 */
@@ -371,11 +411,14 @@ function AvatarWizard(canvas, ready) {
 		 * @method getEncodedThumbnail
 		 * @param width Number The width of the image to generate.
 		 * @param height Number The height of the image to generate.
+		 * @param stretch Boolean Indicates whether the avatar must be stretched
+		 * to fit the specified width and height exactly. `false` indicates that
+		 * the avatar's proportions are maintained.
 		 * @return String A data URI that encodes the generated image in PNG
 		 * format.
 		 */
-		thisObject.getEncodedThumbnail = function (width, height) {
-			return getThumbnail(width, height).toDataURL('image/png');
+		thisObject.getEncodedThumbnail = function (width, height, stretch) {
+			return getThumbnail(width, height, stretch).toDataURL('image/png');
 		};
 	});
 }
