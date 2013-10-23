@@ -127,8 +127,6 @@ function AvatarWizard(canvas, ready) {
 
 			setDimensions();
 
-			this.setDimensions = setDimensions;
-
 			function drawElement(category) {
 				if (descriptor.hasOwnProperty(category)) {
 					if (typeof descriptor[category] !== 'string') {
@@ -153,10 +151,16 @@ function AvatarWizard(canvas, ready) {
 				drawing = false;
 			}
 
-			this.issue = function () {
+			function issue() {
 				if (!drawing) {
 					requestAnimationFrame(drawAll);
 				}
+			}
+
+			this.issue = issue;
+			this.setDimensions = function () {
+				setDimensions();
+				issue();
 			};
 		}
 
@@ -377,7 +381,7 @@ function AvatarWizard(canvas, ready) {
 			canvas.width = width;
 			canvas.height = height;
 			(new Renderer(canvas, {
-				stretch: stretch,
+				stretch: !!stretch,
 				x: thumbnailArea.x,
 				y: thumbnailArea.y,
 				width: thumbnailArea.width,
