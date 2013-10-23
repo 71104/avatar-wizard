@@ -186,15 +186,16 @@ $(function () {
 				$(this).dialog('close');
 			}
 		},
-		title: 'Thumbnail',
-		resizable: false
+		title: 'Thumbnail'
 	});
 	$('#generate-thumbnail-button').click(function () {
-		$('#thumbnail-dialog #thumbnail').empty().append(wizard.getThumbnail(
+		$('#thumbnail-dialog #thumbnail').empty().append($(wizard.getThumbnail(
 			parseInt($('#thumbnail-width-field').val(), 10),
 			parseInt($('#thumbnail-height-field').val(), 10),
 			$('#thumbnail-stretch-field').is(':checked')
-			));
+			)).css({
+				border: '1px solid black'
+			}));
 	});
 });
 		</script>
@@ -203,7 +204,7 @@ $(function () {
 var wizard;
 
 $(function () {
-	$(window).on('dragstart', false);
+	$('#left-pane').on('dragstart', false);
 
 	$('button').button();
 
