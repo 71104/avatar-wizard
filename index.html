@@ -172,6 +172,8 @@
 var wizard;
 
 $(function () {
+	$(window).on('dragstart', false);
+
 	wizard = new AvatarWizard('canvas#canvas', function () {
 		$('.category').click(function () {
 			$('.category').removeClass('selected');

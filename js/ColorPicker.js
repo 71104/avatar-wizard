@@ -29,17 +29,24 @@ function ColorPicker(huePicker, brightnessPicker) {
 		element = $(element);
 		var width = element.innerWidth();
 		var height = element.innerHeight();
+		var dragging = false;
 		element.mousedown(function (event) {
 			if (event.which === 1) {
+				dragging = true;
 				handler(event.clientX / width, event.clientY / height);
 				return false;
 			}
 		}).mousemove(function (event) {
-			if (event.which === 1) {
+			if (dragging) {
 				handler(event.clientX / width, event.clientY / height);
 				return false;
 			}
-		}).mouseup(false);
+		}).mouseup(function (event) {
+			if (event.which === 1) {
+				dragging = false;
+			}
+			return false;
+		});
 	}
 
 	handle(huePicker, setHue);
