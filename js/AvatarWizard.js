@@ -111,7 +111,7 @@ function AvatarWizard(canvas, ready) {
 				});
 				context.setTransform(1, 0, 0, 1, 0, 0);
 				if (settings.stretch) {
-					// TODO
+					context.scale(width / settings.width, height / settings.height);
 				} else {
 					var ratio1 = width / settings.width;
 					var ratio2 = height / settings.height;
@@ -123,6 +123,7 @@ function AvatarWizard(canvas, ready) {
 						context.scale(ratio1, ratio1);
 					}
 				}
+				context.translate(-settings.x, -settings.y);
 			}
 
 			setDimensions();
