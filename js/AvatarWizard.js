@@ -104,8 +104,8 @@ function AvatarWizard(canvas, ready) {
 			var drawing = false;
 
 			function setDimensions() {
-				width = canvas.innerWidth();
-				height = canvas.innerHeight();
+				width = canvas.innerWidth() || canvas.attr('width');
+				height = canvas.innerHeight() || canvas.attr('height');
 				canvas.attr({
 					width: width,
 					height: height
