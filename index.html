@@ -3,7 +3,8 @@
 <head>
 	<title>GamePix</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<script src="jquery-2.0.3.min.js"></script>
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="js/EventEmitter.js"></script>
 	<script src="js/AvatarWizard.js"></script>
 	<script src="js/ColorPicker.js"></script>
@@ -57,6 +58,7 @@
 					<li class="category" data-category="accessories"><img src="thumbnails/accessories.png" alt=""/></li>
 					<li class="category" data-category="special_body"><img src="thumbnails/special_body.png" alt=""/></li>
 					<li class="category" data-category="special_head"><img src="thumbnails/special_head.png" alt=""/></li>
+					<li class="button" id="thumbnail-dialog-button"><img src="thumbnail.png" alt=""/></li>
 				</ul>
 			</div><div id="outfit-selector" class="selector image-selector">
 				<ul>
@@ -168,11 +170,41 @@
 			</div>
 		</div>
 	</div>
+	<div id="thumbnail-dialog">
+		<label>Width: <input id="thumbnail-width-field" value="128"/></label>
+		<label>Height: <input id="thumbnail-height-field" value="128"/></label>
+		<label><input id="thumbnail-stretch-field" type="checkbox"/> Strecth</label>
+		<button id="generate-thumbnail-button">Generate</button>
+		<p id="thumbnail"></p>
+		<script>
+$(function () {
+	$('#thumbnail-dialog').dialog({
+		autoOpen: false,
+		buttons: {
+			'Close': function () {
+				$(this).dialog('close');
+			}
+		},
+		title: 'Thumbnail',
+		resizable: false
+	});
+	$('#generate-thumbnail-button').click(function () {
+		$('#thumbnail-dialog #thumbnail').empty().append(wizard.getThumbnail(
+			$('#thumbnail-width-field').val(),
+			$('#thumbnail-height-field').val(),
+			$('#thumbnail-stretch-field').is(':checked')
+			));
+	});
+});
+		</script>
+	</div>
 	<script>
 var wizard;
 
 $(function () {
 	$(window).on('dragstart', false);
+
+	$('button').button();
 
 	wizard = new AvatarWizard('canvas#canvas', function () {
 		$('.category').click(function () {
@@ -204,6 +236,10 @@ $(function () {
 
 	$(window).resize(function () {
 		wizard.resetDimensions();
+	});
+
+	$('#thumbnail-dialog-button').click(function () {
+		$('#thumbnail-dialog').dialog('open');
 	});
 });
 	</script>

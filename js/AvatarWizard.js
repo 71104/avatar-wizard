@@ -98,6 +98,7 @@ function AvatarWizard(canvas, ready) {
 		var layers = settings.layers;
 
 		function Renderer(canvas, settings) {
+			canvas = $(canvas);
 			var context = canvas[0].getContext('2d');
 			var width, height;
 			var drawing = false;
@@ -164,9 +165,6 @@ function AvatarWizard(canvas, ready) {
 				issue();
 			};
 		}
-
-		canvas = $(canvas);
-		var width, height;
 
 		var renderer = new Renderer(canvas, {
 			stretch: false,
@@ -383,10 +381,10 @@ function AvatarWizard(canvas, ready) {
 			canvas.height = height;
 			(new Renderer(canvas, {
 				stretch: !!stretch,
-				x: thumbnailArea.x,
-				y: thumbnailArea.y,
-				width: thumbnailArea.width,
-				height: thumbnailArea.height
+				x: settings.thumbnailArea.x,
+				y: settings.thumbnailArea.y,
+				width: settings.thumbnailArea.width,
+				height: settings.thumbnailArea.height
 			})).issue();
 			return canvas;
 		}

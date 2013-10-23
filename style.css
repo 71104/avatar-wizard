@@ -82,6 +82,6 @@ canvas#canvas {
 	background-color: lightblue;
 }
 
-.selector li.selected {
+.selector li.selected,.selector li.button:active {
 	background-color: blue;
 }
