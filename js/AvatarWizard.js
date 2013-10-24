@@ -109,12 +109,17 @@ function AvatarWizard(canvas, ready) {
 			var drawing = false;
 
 			function setDimensions() {
-				width = canvas.innerWidth() || canvas.attr('width');
-				height = canvas.innerHeight() || canvas.attr('height');
-				canvas.attr({
-					width: width,
-					height: height
-				});
+				if (canvas.parent().length) {
+					width = canvas.innerWidth();
+					height = canvas.innerHeight();
+					canvas.attr({
+						width: width,
+						height: height
+					});
+				} else {
+					width = parseInt(canvas.attr('width'), 10);
+					height = parseInt(canvas.attr('height'), 10);
+				}
 				context.setTransform(1, 0, 0, 1, 0, 0);
 				if (settings.stretch) {
 					context.scale(width / settings.width, height / settings.height);
