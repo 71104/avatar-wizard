@@ -90,12 +90,17 @@ function AvatarWizard(canvas, ready) {
 	var functions = {};
 	var descriptor = {};
 
+	var layerMask = [];
+
 	$.getJSON('settings.json', function (settings) {
 		if (!/\/$/.test(settings.path)) {
 			settings.path += '/';
 		}
 
 		var layers = settings.layers;
+		layerMask = layers.map(function () {
+			return true;
+		});
 
 		function Renderer(canvas, settings) {
 			canvas = $(canvas);
@@ -148,7 +153,9 @@ function AvatarWizard(canvas, ready) {
 				context.clearRect(0, 0, width, height);
 				context.restore();
 				for (var i = 0; i < layers.length; i++) {
-					drawElement(layers[i]);
+					if (layerMask[i]) {
+						drawElement(layers[i]);
+					}
 				}
 				drawing = false;
 			}
@@ -173,6 +180,24 @@ function AvatarWizard(canvas, ready) {
 			width: settings.canonicalWidth,
 			height: settings.canonicalHeight
 		});
+
+		function updateLayerMask() {
+			layerMask = layers.map(function () {
+				return true;
+			});
+			settings.exclusions.forEach(function (exclusion) {
+				if (descriptor.hasOwnProperty(exclusion.category) &&
+					(!exclusion.hasOwnProperty('type') ||
+					(descriptor[exclusion.category] == exclusion.type)))
+				{
+					layers.forEach(function (category, index) {
+						if (exclusion.excludes.indexOf(category) >= 0) {
+							layerMask[index] = false;
+						}
+					});
+				}
+			});
+		}
 
 		(function (count) {
 			function fetchPart(name) {
@@ -252,6 +277,7 @@ function AvatarWizard(canvas, ready) {
 		 */
 		thisObject.loadAvatar = function (newDescriptor) {
 			descriptor = $.extend({}, newDescriptor);
+			updateLayerMask();
 			renderer.issue();
 			return thisObject;
 		};
@@ -320,6 +346,7 @@ function AvatarWizard(canvas, ready) {
 				} else {
 					descriptor[category] = type;
 				}
+				updateLayerMask();
 				renderer.issue();
 			} else {
 				throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
