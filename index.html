@@ -63,6 +63,7 @@
 				</ul>
 			</div><div id="outfit-selector" class="selector image-selector">
 				<ul>
+					<li class="image selected" data-category="outfit"><img src="thumbnails/empty.png" alt=""/></li>
 					<li class="image" data-category="outfit" data-image="1"><img src="thumbnails/outfit/1.png" alt=""/></li>
 					<li class="image" data-category="outfit" data-image="2"><img src="thumbnails/outfit/2.png" alt=""/></li>
 					<li class="image" data-category="outfit" data-image="3"><img src="thumbnails/outfit/3.png" alt=""/></li>
@@ -108,6 +109,7 @@
 				</ul>
 			</div><div id="facial_details-selector" class="selector image-selector" style="display: none">
 				<ul>
+					<li class="image selected" data-category="facial_details"><img src="thumbnails/empty.png" alt=""/></li>
 					<li class="image" data-category="facial_details" data-image="1"><img src="thumbnails/facial_details/1.png" alt=""/></li>
 					<li class="image" data-category="facial_details" data-image="2"><img src="thumbnails/facial_details/2.png" alt=""/></li>
 					<li class="image" data-category="facial_details" data-image="3"><img src="thumbnails/facial_details/3.png" alt=""/></li>
@@ -116,6 +118,7 @@
 				</ul>
 			</div><div id="hair-selector" class="selector image-selector" style="display: none">
 				<ul>
+					<li class="image selected" data-category="hair"><img src="thumbnails/empty.png" alt=""/></li>
 					<li class="image" data-category="hair" data-image="1"><img src="thumbnails/hair/1.png" alt=""/></li>
 					<li class="image" data-category="hair" data-image="2"><img src="thumbnails/hair/2.png" alt=""/></li>
 					<li class="image" data-category="hair" data-image="3"><img src="thumbnails/hair/3.png" alt=""/></li>
@@ -129,6 +132,7 @@
 				</ul>
 			</div><div id="accessories-selector" class="selector image-selector" style="display: none">
 				<ul>
+					<li class="image selected" data-category="hands" data-image="1"><img src="thumbnails/empty.png" alt=""/></li>
 					<li class="image" data-category="accessories" data-image="1"><img src="thumbnails/accessories/1.png" alt=""/></li>
 					<li class="image" data-category="accessories" data-image="2"><img src="thumbnails/accessories/2.png" alt=""/></li>
 					<li class="image" data-category="accessories" data-image="3"><img src="thumbnails/accessories/3.png" alt=""/></li>
@@ -144,6 +148,7 @@
 				</ul>
 			</div><div id="special_body-selector" class="selector image-selector" style="display: none">
 				<ul>
+					<li class="image selected" data-category="special_body"><img src="thumbnails/empty.png" alt=""/></li>
 					<li class="image" data-category="special_body" data-image="1"><img src="thumbnails/special_body/1.png" alt=""/></li>
 					<li class="image" data-category="special_body" data-image="2"><img src="thumbnails/special_body/2.png" alt=""/></li>
 					<li class="image" data-category="special_body" data-image="3"><img src="thumbnails/special_body/3.png" alt=""/></li>
@@ -157,6 +162,7 @@
 				</ul>
 			</div><div id="special_head-selector" class="selector image-selector" style="display: none">
 				<ul>
+					<li class="image selected" data-category="special_head"><img src="thumbnails/empty.png" alt=""/></li>
 					<li class="image" data-category="special_head" data-image="1"><img src="thumbnails/special_head/1.png" alt=""/></li>
 					<li class="image" data-category="special_head" data-image="2"><img src="thumbnails/special_head/2.png" alt=""/></li>
 					<li class="image" data-category="special_head" data-image="3"><img src="thumbnails/special_head/3.png" alt=""/></li>
@@ -217,7 +223,7 @@ $(function () {
 		$('.image').click(function () {
 			var category = $(this).data('category');
 			$('#' + category + '-selector .image').removeClass('selected');
-			wizard.select(category, $(this).addClass('selected').data('image') + '');
+			wizard.select(category, $(this).addClass('selected').data('image'));
 		});
 		wizard.loadAvatar({
 			shadow: '1',

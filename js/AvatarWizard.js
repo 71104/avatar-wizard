@@ -328,28 +328,39 @@ function AvatarWizard(canvas, ready) {
 		 * in the `settings.json` file, as explained in the
 		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}}.
 		 *
+		 * To remove a currently selected part, invoke `select` for its category
+		 * without specifying the `type` argument.
+		 *
 		 * @method select
 		 * @chainable
 		 * @param category String The category the part is being selected for.
-		 * @param type String The part name.
+		 * @param [type] String The part name. If not specified, the part is
+		 * removed.
 		 * @example
 		 *	wizard.select('hair', 'blonde1');
 		 */
 		thisObject.select = function (category, type) {
-			if (functions.hasOwnProperty(category + '/' + type)) {
-				if (descriptor.hasOwnProperty(category)) {
-					if (typeof descriptor[category] !== 'string') {
-						descriptor[category].type = type;
+			if (typeof type !== 'undefined') {
+				type += '';
+				if (functions.hasOwnProperty(category + '/' + type)) {
+					if (descriptor.hasOwnProperty(category)) {
+						if (typeof descriptor[category] !== 'string') {
+							descriptor[category].type = type;
+						} else {
+							descriptor[category] = type;
+						}
 					} else {
 						descriptor[category] = type;
 					}
+					updateLayerMask();
+					renderer.issue();
 				} else {
-					descriptor[category] = type;
+					throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
 				}
+			} else {
+				delete descriptor[category];
 				updateLayerMask();
 				renderer.issue();
-			} else {
-				throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
 			}
 			return thisObject;
 		};

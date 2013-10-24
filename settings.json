@@ -125,6 +125,7 @@
 		"shadow",
 		"body",
 		"outfit",
+		"special_body",
 		"head",
 		"eyes",
 		"mouth",
@@ -132,7 +133,6 @@
 		"hair",
 		"hands",
 		"accessories",
-		"special_body",
 		"special_head"
 	],
 	"exclusions": [{
