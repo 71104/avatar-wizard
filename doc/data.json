@@ -36,6 +36,17 @@
                 {
                     "name": "ready",
                     "description": "Function A user-defined callback function invoked after the\n`AvatarWizard` object has read its configuration file and its ready to\nreceive method invocations."
+                },
+                {
+                    "name": "progress",
+                    "description": "Function An optional user-defined callback function invoked\nseveral times as the `AvatarWizard` object loads configuration settings and\npart files.",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "progress",
+                            "description": "Number A percentage value indicating the progress in\na `[0, 100)` range."
+                        }
+                    ]
                 }
             ]
         }
@@ -43,7 +54,7 @@
     "classitems": [
         {
             "file": "js\\AvatarWizard.js",
-            "line": 272,
+            "line": 281,
             "description": "Recalculates the coordinate reference. This method must be invoked\nevery time the dimensions of the canvas change.\n\nThis method may be called in response to `resize` events at a high\nrate because the redraw rate is throttled down through\n`requestAnimationFrame`.",
             "itemtype": "method",
             "name": "resetDimensions",
@@ -52,7 +63,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 288,
+            "line": 297,
             "description": "Loads the avatar described by the specified JSON object and updates\nthe rendering on the canvas.\n\nThe specified object must have the following format:\n\n\t{\n\t\t\"category1\": \"type3\",\n\t\t\"category2\": {\n\t\t\t\"type\": \"type2\",\n\t\t\t\"color\": \"#abcdef\"\n\t\t},\n\t\t\"category3\": {\n\t\t\t\"type\": \"type1\",\n\t\t\t\"color\": \"rgb(12, 34, 56)\"\n\t\t},\n\t\t.\n\t\t.\n\t\t.\n\t}\n\nEach key must be a valid category name (one registered in the\n`settings.json` file, as documented in the\n{{#crossLink \"AvatarWizard\"}}AvatarWizard constructor{{/crossLink}})\nand its value can be either a string (a valid part/type name\nregistered for that category) or an object; in the latter case it\ncontains a mandatory `type` field specifying the part/type name and\nan optional `color` field specifying a CSS color for the part.\n\nNote that the specified JSON object is deep-copied, so subsequent\nmodifications to it do not have any effect on the avatar managed by\nthis object. To modify the managed avatar use the\n{{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} method.",
             "itemtype": "method",
             "name": "loadAvatar",
@@ -67,7 +78,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 333,
+            "line": 342,
             "description": "Returns a JSON object that describes the current avatar as modified\nby {{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nand {{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} calls.\n\nSee {{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nfor information about the JSON format of avatar descriptors.\n\nThe returned object is a deep copy of the object mainatined\ninternally by the AvatarWizard instance.",
             "itemtype": "method",
             "name": "getAvatar",
@@ -78,7 +89,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 351,
+            "line": 360,
             "description": "Returns the currently selected part type for the specified category,\nor `undefined` if no part is selected.\n\nParts can be selected per-category using the\n{{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} method.",
             "itemtype": "method",
             "name": "getSelected",
@@ -95,7 +106,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 371,
+            "line": 380,
             "description": "Selects the specified part for the specified category and updates the\nrendering of the avatar on the canvas.\n\nBoth the category and part/type names must be valid names registered\nin the `settings.json` file, as explained in the\n{{#crossLink \"AvatarWizard\"}}AvatarWizard constructor{{/crossLink}}.\n\nTo remove a currently selected part, invoke `select` for its category\nwithout specifying the `type` argument.",
             "itemtype": "method",
             "name": "select",
@@ -118,7 +129,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 414,
+            "line": 423,
             "description": "Returns the current color for the specified category.\n\nThis value can be set per-category with the\n{{#crossLink \"AvatarWizard/setColor\"}}setColor{{/crossLink}} method\nor in the avatar descriptor specified to the\n{{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nmethod.\n\nThe return value is undefined if no color has been set.",
             "itemtype": "method",
             "name": "getColor",
@@ -135,7 +146,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 438,
+            "line": 447,
             "description": "Sets the color of the currently selected part for the specified\ncategory.",
             "itemtype": "method",
             "name": "setColor",
@@ -154,7 +165,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 481,
+            "line": 490,
             "description": "Returns an HTMLElement of the specified width and height containing a\nprerendered thumbnail of the avatar.\n\nThe exact type of HTML element is left unspecified: it may be an\nimage element as well as a canvas.",
             "itemtype": "method",
             "name": "getThumbnail",
@@ -192,7 +203,7 @@
         },
         {
             "file": "js\\AvatarWizard.js",
-            "line": 507,
+            "line": 516,
             "description": "Returns a data URI that encodes a PNG prerendered image of the\navatar of the specified width and height.",
             "itemtype": "method",
             "name": "getEncodedThumbnail",
