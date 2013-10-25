@@ -474,7 +474,7 @@ function AvatarWizard(canvas, ready) {
 				width: config.area.width,
 				height: config.area.height
 			});
-			renderer.maskIn(settings.thumbnails[thumbnailSettings.configName].layers).drawAll();
+			renderer.maskIn(config.layers).drawAll();
 			return canvas;
 		}
 
