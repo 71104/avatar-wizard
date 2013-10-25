@@ -138,6 +138,7 @@ function AvatarWizard(canvas, ready) {
 			});
 			for (var category in descriptor) {
 				if (descriptor.hasOwnProperty(category)) {
+					count++;
 					if (typeof descriptor[category] !== 'string') {
 						fetchPart(category, descriptor[category].type);
 					} else {
@@ -548,5 +549,7 @@ function AvatarWizard(canvas, ready) {
 		thisObject.getEncodedThumbnail = function (width, height, settings) {
 			return getThumbnail(width, height, settings).toDataURL('image/png');
 		};
+
+		ready();
 	});
 }
