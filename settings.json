@@ -1,11 +1,47 @@
 {
 	"canonicalWidth": 540,
 	"canonicalHeight": 720,
-	"thumbnailArea": {
-		"x": 111,
-		"y": 105,
-		"width": 447,
-		"height": 579
+	"thumbnails": {
+		"head": {
+			"layers": [
+				"head",
+				"eyes",
+				"mouth",
+				"facial_details",
+				"hair",
+				"hands",
+				"accessories",
+				"special_head"
+			],
+			"area": {
+				"x": 111,
+				"y": 105,
+				"width": 447,
+				"height": 579
+			}
+		},
+		"full": {
+			"layers": [
+				"shadow",
+				"body",
+				"outfit",
+				"special_body",
+				"head",
+				"eyes",
+				"mouth",
+				"facial_details",
+				"hair",
+				"hands",
+				"accessories",
+				"special_head"
+			],
+			"area": {
+				"x": 111,
+				"y": 105,
+				"width": 447,
+				"height": 579
+			}
+		}
 	},
 	"path": "parts",
 	"parts": {

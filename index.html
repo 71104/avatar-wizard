@@ -180,6 +180,10 @@
 	<div id="thumbnail-dialog">
 		<p><label>Width: <input id="thumbnail-width-field" type="number" value="128"/></label></p>
 		<p><label>Height: <input id="thumbnail-height-field" type="number" value="128"/></label></p>
+		<p><label>Configuration: <select id="thumbnail-config-field">
+			<option value="head">Head</option>
+			<option value="full">Full</option>
+		</select></label></p>
 		<p><label><input id="thumbnail-stretch-field" type="checkbox"/> Strecth</label></p>
 		<p><button id="generate-thumbnail-button">Generate</button></p>
 		<p id="thumbnail"></p>
@@ -198,7 +202,10 @@ $(function () {
 		$('#thumbnail-dialog #thumbnail').empty().append($(wizard.getThumbnail(
 			parseInt($('#thumbnail-width-field').val(), 10),
 			parseInt($('#thumbnail-height-field').val(), 10),
-			$('#thumbnail-stretch-field').is(':checked')
+			{
+				configName: $('#thumbnail-config-field').val(),
+				stretch: $('#thumbnail-stretch-field').is(':checked')
+			}
 			)).css({
 				border: '1px solid black'
 			}));

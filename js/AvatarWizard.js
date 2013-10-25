@@ -11,11 +11,36 @@
  *	{
  *		"canonicalWidth": 123,
  *		"canonicalHeight": 456,
- *		"thumbnailArea": {
- *			"x": 10,
- *			"y": 10,
- *			"width": 80,
- *			"height": 400
+ *		"thumbnails": {
+ *			"config1": {
+ *				"layers": [
+ *					"category1",
+ *					"category2",
+ *					"category3",
+ *					...
+ *				],
+ *				"area": {
+ *					"x": 10,
+ *					"y": 10,
+ *					"width": 80,
+ *					"height": 400
+ *				}
+ *			},
+ *			"config2": {
+ *				"layers": [
+ *					"category3",
+ *					"category4",
+ *					"category5",
+ *					...
+ *				],
+ *				"area": {
+ *					"x": 10,
+ *					"y": 10,
+ *					"width": 80,
+ *					"height": 400
+ *				}
+ *			},
+ *			...
  *		},
  *		"path": "path/to/parts",
  *		"parts": {
@@ -48,11 +73,7 @@
  * parameters influences the size of the avatar relative to the destination
  * canvas.
  *
- * `thumbnailArea` describes a rectangular area in canonical space used to size
- * the avatar within a canvas when generating prerendered thumbnails (see the
- * {{#crossLink "AvatarWizard/getThumbnail"}}getThumbnail{{/crossLink}} and
- * {{#crossLink "AvatarWizard/getEncodedThumbnail"}}getEncodedThumbnail{{/crossLink}}
- * methods).
+ * TODO document `thumbnails`
  *
  * `path` is the path of the directory tree containing the js image files. The
  * directory represented by `path` must contain one subdirectory for each
@@ -89,7 +110,6 @@ function AvatarWizard(canvas, ready) {
 
 	var functions = {};
 	var descriptor = {};
-
 	var layerMask = [];
 
 	$.getJSON('settings.json', function (settings) {
@@ -98,9 +118,6 @@ function AvatarWizard(canvas, ready) {
 		}
 
 		var layers = settings.layers;
-		layerMask = layers.map(function () {
-			return true;
-		});
 
 		function Renderer(canvas, settings) {
 			canvas = $(canvas);
@@ -211,6 +228,7 @@ function AvatarWizard(canvas, ready) {
 					eval(code);
 					functions[name] = draw;
 					if (!--count) {
+						updateLayerMask();
 						renderer.issue();
 						ready();
 					}
@@ -418,16 +436,20 @@ function AvatarWizard(canvas, ready) {
 			return thisObject;
 		};
 
-		function getThumbnail(width, height, stretch) {
+		function getThumbnail(width, height, thumbnailSettings) {
+			if (!settings.thumbnails.hasOwnProperty(thumbnailSettings.configName)) {
+				throw 'Invalid thumbnail configuration name';
+			}
+			var config = settings.thumbnails[thumbnailSettings.configName];
 			var canvas = document.createElement('canvas');
 			canvas.width = width;
 			canvas.height = height;
 			(new Renderer(canvas, {
-				stretch: !!stretch,
-				x: settings.thumbnailArea.x,
-				y: settings.thumbnailArea.y,
-				width: settings.thumbnailArea.width,
-				height: settings.thumbnailArea.height
+				stretch: !!thumbnailSettings.stretch,
+				x: config.area.x,
+				y: config.area.y,
+				width: config.area.width,
+				height: config.area.height
 			})).issue();
 			return canvas;
 		}
@@ -442,9 +464,11 @@ function AvatarWizard(canvas, ready) {
 		 * @method getThumbnail
 		 * @param width Number The width of the thumbnail to generate.
 		 * @param height Number The height of the thumbnail to generate.
-		 * @param stretch Boolean Indicates whether the avatar must be stretched
-		 * to fit the specified width and height exactly. `false` indicates that
-		 * the avatar's proportions are maintained.
+		 * @param settings Object TODO
+		 * @param [settings.stretch=false] Boolean Indicates whether the avatar
+		 * must be stretched to fit the specified width and height exactly.
+		 * `false` indicates that the avatar's proportions are maintained.
+		 * @param settings.configName String TODO
 		 * @return HTMLElement An HTML element of the specified dimensions
 		 * containing a prerendered avatar.
 		 */
@@ -457,14 +481,16 @@ function AvatarWizard(canvas, ready) {
 		 * @method getEncodedThumbnail
 		 * @param width Number The width of the image to generate.
 		 * @param height Number The height of the image to generate.
-		 * @param stretch Boolean Indicates whether the avatar must be stretched
-		 * to fit the specified width and height exactly. `false` indicates that
-		 * the avatar's proportions are maintained.
+		 * @param settings Object TODO
+		 * @param [settings.stretch=false] Boolean Indicates whether the avatar
+		 * must be stretched to fit the specified width and height exactly.
+		 * `false` indicates that the avatar's proportions are maintained.
+		 * @param settings.configName String TODO
 		 * @return String A data URI that encodes the generated image in PNG
 		 * format.
 		 */
-		thisObject.getEncodedThumbnail = function (width, height, stretch) {
-			return getThumbnail(width, height, stretch).toDataURL('image/png');
+		thisObject.getEncodedThumbnail = function (width, height, settings) {
+			return getThumbnail(width, height, settings).toDataURL('image/png');
 		};
 	});
 }
