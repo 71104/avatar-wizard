@@ -110,7 +110,6 @@ function AvatarWizard(canvas, ready) {
 
 	var functions = {};
 	var descriptor = {};
-	var layerMask = [];
 
 	$.getJSON('settings.json', function (settings) {
 		if (!/\/$/.test(settings.path)) {
@@ -118,8 +117,34 @@ function AvatarWizard(canvas, ready) {
 		}
 
 		var layers = settings.layers;
+		var exclusions = settings.exclusions;
 
 		function Renderer(canvas, settings) {
+			var thisObject = this;
+
+			var layerMask = [];
+
+			function updateLayerMask() {
+				layerMask = layers.map(function () {
+					return true;
+				});
+				exclusions.forEach(function (exclusion) {
+					if (descriptor.hasOwnProperty(exclusion.category) &&
+						(!exclusion.hasOwnProperty('type') ||
+						(descriptor[exclusion.category] == exclusion.type)))
+					{
+						layers.forEach(function (category, index) {
+							if (exclusion.excludes.indexOf(category) >= 0) {
+								layerMask[index] = false;
+							}
+						});
+					}
+				});
+				return thisObject;
+			}
+
+			updateLayerMask();
+
 			canvas = $(canvas);
 			var context = canvas[0].getContext('2d');
 			var width, height;
@@ -152,6 +177,7 @@ function AvatarWizard(canvas, ready) {
 					}
 				}
 				context.translate(-settings.x, -settings.y);
+				return thisObject;
 			}
 
 			setDimensions();
@@ -186,13 +212,18 @@ function AvatarWizard(canvas, ready) {
 				if (!drawing) {
 					requestAnimationFrame(drawAll);
 				}
+				return thisObject;
 			}
 
 			this.issue = issue;
+
 			this.setDimensions = function () {
 				setDimensions();
 				issue();
+				return thisObject;
 			};
+
+			this.updateLayerMask = updateLayerMask;
 		}
 
 		var renderer = new Renderer(canvas, {
@@ -203,24 +234,6 @@ function AvatarWizard(canvas, ready) {
 			height: settings.canonicalHeight
 		});
 
-		function updateLayerMask() {
-			layerMask = layers.map(function () {
-				return true;
-			});
-			settings.exclusions.forEach(function (exclusion) {
-				if (descriptor.hasOwnProperty(exclusion.category) &&
-					(!exclusion.hasOwnProperty('type') ||
-					(descriptor[exclusion.category] == exclusion.type)))
-				{
-					layers.forEach(function (category, index) {
-						if (exclusion.excludes.indexOf(category) >= 0) {
-							layerMask[index] = false;
-						}
-					});
-				}
-			});
-		}
-
 		(function (count) {
 			function fetchPart(name) {
 				count++;
@@ -228,8 +241,7 @@ function AvatarWizard(canvas, ready) {
 					eval(code);
 					functions[name] = draw;
 					if (!--count) {
-						updateLayerMask();
-						renderer.issue();
+						renderer.updateLayerMask().issue();
 						ready();
 					}
 				}, 'text');
@@ -300,8 +312,7 @@ function AvatarWizard(canvas, ready) {
 		 */
 		thisObject.loadAvatar = function (newDescriptor) {
 			descriptor = $.extend({}, newDescriptor);
-			updateLayerMask();
-			renderer.issue();
+			renderer.updateLayerMask().issue();
 			return thisObject;
 		};
 
@@ -375,15 +386,13 @@ function AvatarWizard(canvas, ready) {
 					} else {
 						descriptor[category] = type;
 					}
-					updateLayerMask();
-					renderer.issue();
+					renderer.updateLayerMask().issue();
 				} else {
 					throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
 				}
 			} else {
 				delete descriptor[category];
-				updateLayerMask();
-				renderer.issue();
+				renderer.updateLayerMask().issue();
 			}
 			return thisObject;
 		};
