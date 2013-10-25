@@ -192,13 +192,8 @@
  * @param ready Function A user-defined callback function invoked after the
  * &#x60;AvatarWizard&#x60; object has read its configuration file and its ready to
  * receive method invocations.
- * @param [progress] Function An optional user-defined callback function invoked
- * several times as the &#x60;AvatarWizard&#x60; object loads configuration settings and
- * part files.
- * @param progress.progress Number A percentage value indicating the progress in
- * a &#x60;[0, 100)&#x60; range.
  */
-function AvatarWizard(canvas, ready, progress) {
+function AvatarWizard(canvas, ready) {
 	var thisObject = this;
 
 	var functions = {};
@@ -209,6 +204,39 @@ function AvatarWizard(canvas, ready, progress) {
 			settings.path += &#x27;/&#x27;;
 		}
 
+		function fetchAll(callback) {
+			var count = 0;
+			var fetchPart = (function (callback) {
+				return function (category, type) {
+					var name = category + &#x27;/&#x27; + type;
+					if (functions.hasOwnProperty(name)) {
+						callback();
+					} else {
+						$.get(settings.path + name + &#x27;.js&#x27;, function (code) {
+							eval(code);
+							functions[name] = draw;
+							callback();
+						}, &#x27;text&#x27;);
+					}
+				};
+			})(function () {
+				if (!--count) {
+					callback();
+				}
+			});
+			for (var category in descriptor) {
+				if (descriptor.hasOwnProperty(category)) {
+					count++;
+					if (typeof descriptor[category] !== &#x27;string&#x27;) {
+						fetchPart(category, descriptor[category].type);
+					} else {
+						fetchPart(category, descriptor[category]);
+					}
+				}
+			}
+		}
+
+		var parts = settings.parts;
 		var layers = settings.layers;
 		var exclusions = settings.exclusions;
 
@@ -341,31 +369,6 @@ function AvatarWizard(canvas, ready, progress) {
 			height: settings.canonicalHeight
 		});
 
-		(function (total) {
-			var count = 0;
-			function fetchPart(name) {
-				$.get(settings.path + name + &#x27;.js&#x27;, function (code) {
-					eval(code);
-					functions[name] = draw;
-					if (++count &lt; total) {
-						if (progress) {
-							progress(Math.round(count * 100 / total));
-						}
-					} else {
-						renderer.resetLayerMask().issue();
-						ready();
-					}
-				}, &#x27;text&#x27;);
-			}
-			for (var category in settings.parts) {
-				if (settings.parts.hasOwnProperty(category)) {
-					settings.parts[category].forEach(function (image) {
-						fetchPart(category + &#x27;/&#x27; + image);
-					});
-				}
-			}
-		})(0);
-
 		/**
 		 * Recalculates the coordinate reference. This method must be invoked
 		 * every time the dimensions of the canvas change.
@@ -420,10 +423,17 @@ function AvatarWizard(canvas, ready, progress) {
 		 * @chainable
 		 * @param newDescriptor Object A JSON object describing the avatar to
 		 * load.
+		 * @param [callback] Function An optional user-defined callback function
+		 * invoked after the new avatar has been loaded. The process is
+		 * asynchronous because it may require loading parts that have not been
+		 * cached yet.
 		 */
-		thisObject.loadAvatar = function (newDescriptor) {
+		thisObject.loadAvatar = function (newDescriptor, callback) {
 			descriptor = $.extend({}, newDescriptor);
-			renderer.resetLayerMask().issue();
+			fetchAll(function () {
+				renderer.resetLayerMask().issue();
+				callback &amp;&amp; callback();
+			});
 			return thisObject;
 		};
 
@@ -481,13 +491,17 @@ function AvatarWizard(canvas, ready, progress) {
 		 * @param category String The category the part is being selected for.
 		 * @param [type] String The part name. If not specified, the part is
 		 * removed.
+		 * @param [callback] Function An optional user-defined callback function
+		 * invoked after the new part has been selected. The process is
+		 * asynchronous because it may require loading parts that have not been
+		 * cached yet.
 		 * @example
 		 *	wizard.select(&#x27;hair&#x27;, &#x27;blonde1&#x27;);
 		 */
-		thisObject.select = function (category, type) {
+		thisObject.select = function (category, type, callback) {
 			if (typeof type !== &#x27;undefined&#x27;) {
 				type += &#x27;&#x27;;
-				if (functions.hasOwnProperty(category + &#x27;/&#x27; + type)) {
+				if (parts.hasOwnProperty(category) &amp;&amp; (parts[category].indexOf(type) &gt;= 0)) {
 					if (descriptor.hasOwnProperty(category)) {
 						if (typeof descriptor[category] !== &#x27;string&#x27;) {
 							descriptor[category].type = type;
@@ -497,13 +511,17 @@ function AvatarWizard(canvas, ready, progress) {
 					} else {
 						descriptor[category] = type;
 					}
-					renderer.resetLayerMask().issue();
+					fetchAll(function () {
+						renderer.resetLayerMask().issue();
+						callback &amp;&amp; callback();
+					});
 				} else {
 					throw &#x27;Unregistered category or image ID: &quot;&#x27; + category + &#x27;&quot;, &quot;&#x27; + type + &#x27;&quot;&#x27;;
 				}
 			} else {
 				delete descriptor[category];
 				renderer.resetLayerMask().issue();
+				callback &amp;&amp; callback();
 			}
 			return thisObject;
 		};
@@ -625,6 +643,8 @@ function AvatarWizard(canvas, ready, progress) {
 		thisObject.getEncodedThumbnail = function (width, height, settings) {
 			return getThumbnail(width, height, settings).toDataURL(&#x27;image/png&#x27;);
 		};
+
+		ready();
 	});
 }
 

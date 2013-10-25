@@ -335,7 +335,10 @@ function AvatarWizard(canvas, ready) {
 		 * @chainable
 		 * @param newDescriptor Object A JSON object describing the avatar to
 		 * load.
-		 * @param callback Function TODO
+		 * @param [callback] Function An optional user-defined callback function
+		 * invoked after the new avatar has been loaded. The process is
+		 * asynchronous because it may require loading parts that have not been
+		 * cached yet.
 		 */
 		thisObject.loadAvatar = function (newDescriptor, callback) {
 			descriptor = $.extend({}, newDescriptor);
@@ -400,7 +403,10 @@ function AvatarWizard(canvas, ready) {
 		 * @param category String The category the part is being selected for.
 		 * @param [type] String The part name. If not specified, the part is
 		 * removed.
-		 * @param [callback] Function TODO
+		 * @param [callback] Function An optional user-defined callback function
+		 * invoked after the new part has been selected. The process is
+		 * asynchronous because it may require loading parts that have not been
+		 * cached yet.
 		 * @example
 		 *	wizard.select('hair', 'blonde1');
 		 */

@@ -211,12 +211,6 @@ the part name follows and the <code>.json</code> file extension is appended.</p>
                     
                 </li>
             
-                <li class="arg">
-                    
-                        <code class="optional">[progress]</code>
-                    
-                </li>
-            
             </ul><span class="paren">)</span>
         </div>
     
@@ -299,44 +293,6 @@ receive method invocations.</p>
 
                     </div>
 
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[progress]</code>
-                        <span class="type">Object</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Function An optional user-defined callback function invoked
-several times as the <code>AvatarWizard</code> object loads configuration settings and
-part files.</p>
-
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">progress</code>
-                                    <span class="type"></span>
-                                
-
-                                <div class="param-description">
-                                    <p>Number A percentage value indicating the progress in
-a <code>[0, 100)</code> range.</p>
-
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
                     
                 </li>
             
@@ -489,7 +445,7 @@ a <code>[0, 100)</code> range.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l342"><code>js\AvatarWizard.js:342</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l352"><code>js\AvatarWizard.js:352</code></a>
         
         </p>
 
@@ -576,7 +532,7 @@ internally by the AvatarWizard instance.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l423"><code>js\AvatarWizard.js:423</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l441"><code>js\AvatarWizard.js:441</code></a>
         
         </p>
 
@@ -700,7 +656,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l516"><code>js\AvatarWizard.js:516</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l534"><code>js\AvatarWizard.js:534</code></a>
         
         </p>
 
@@ -879,7 +835,7 @@ format.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l360"><code>js\AvatarWizard.js:360</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l370"><code>js\AvatarWizard.js:370</code></a>
         
         </p>
 
@@ -1000,7 +956,7 @@ selected for the specified category.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l490"><code>js\AvatarWizard.js:490</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l508"><code>js\AvatarWizard.js:508</code></a>
         
         </p>
 
@@ -1148,6 +1104,12 @@ containing a prerendered avatar.</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[callback]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -1179,7 +1141,7 @@ containing a prerendered avatar.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l297"><code>js\AvatarWizard.js:297</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l300"><code>js\AvatarWizard.js:300</code></a>
         
         </p>
 
@@ -1244,6 +1206,26 @@ load.</p>
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Function An optional user-defined callback function
+invoked after the new avatar has been loaded. The process is
+asynchronous because it may require loading parts that have not been
+cached yet.</p>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -1288,7 +1270,7 @@ load.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l281"><code>js\AvatarWizard.js:281</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l284"><code>js\AvatarWizard.js:284</code></a>
         
         </p>
 
@@ -1334,6 +1316,12 @@ rate because the redraw rate is throttled down through
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[callback]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -1365,7 +1353,7 @@ rate because the redraw rate is throttled down through
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l380"><code>js\AvatarWizard.js:380</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l390"><code>js\AvatarWizard.js:390</code></a>
         
         </p>
 
@@ -1420,6 +1408,26 @@ without specifying the <code>type</code> argument.</p>
                     <div class="param-description">
                         <p>String The part name. If not specified, the part is
 removed.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Function An optional user-defined callback function
+invoked after the new part has been selected. The process is
+asynchronous because it may require loading parts that have not been
+cached yet.</p>
 
                     </div>
 
@@ -1495,7 +1503,7 @@ removed.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l447"><code>js\AvatarWizard.js:447</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l465"><code>js\AvatarWizard.js:465</code></a>
         
         </p>
 
