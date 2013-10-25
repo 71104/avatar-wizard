@@ -104,8 +104,13 @@
  * @param ready Function A user-defined callback function invoked after the
  * `AvatarWizard` object has read its configuration file and its ready to
  * receive method invocations.
+ * @param [progress] Function An optional user-defined callback function invoked
+ * several times as the `AvatarWizard` object loads configuration settings and
+ * part files.
+ * @param progress.progress Number A percentage value indicating the progress in
+ * a `[0, 100)` range.
  */
-function AvatarWizard(canvas, ready) {
+function AvatarWizard(canvas, ready, progress) {
 	var thisObject = this;
 
 	var functions = {};
@@ -248,13 +253,17 @@ function AvatarWizard(canvas, ready) {
 			height: settings.canonicalHeight
 		});
 
-		(function (count) {
+		(function (total) {
+			var count = 0;
 			function fetchPart(name) {
-				count++;
 				$.get(settings.path + name + '.js', function (code) {
 					eval(code);
 					functions[name] = draw;
-					if (!--count) {
+					if (++count < total) {
+						if (progress) {
+							progress(Math.round(count * 100 / total));
+						}
+					} else {
 						renderer.resetLayerMask().issue();
 						ready();
 					}
