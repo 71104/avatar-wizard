@@ -104,13 +104,8 @@
  * @param ready Function A user-defined callback function invoked after the
  * `AvatarWizard` object has read its configuration file and its ready to
  * receive method invocations.
- * @param [progress] Function An optional user-defined callback function invoked
- * several times as the `AvatarWizard` object loads configuration settings and
- * part files.
- * @param progress.progress Number A percentage value indicating the progress in
- * a `[0, 100)` range.
  */
-function AvatarWizard(canvas, ready, progress) {
+function AvatarWizard(canvas, ready) {
 	var thisObject = this;
 
 	var functions = {};
@@ -121,6 +116,38 @@ function AvatarWizard(canvas, ready, progress) {
 			settings.path += '/';
 		}
 
+		function fetchAll(callback) {
+			var count = 0;
+			var fetchPart = (function (callback) {
+				return function (category, type) {
+					var name = category + '/' + type;
+					if (functions.hasOwnProperty(name)) {
+						callback();
+					} else {
+						$.get(settings.path + name + '.js', function (code) {
+							eval(code);
+							functions[name] = draw;
+							callback();
+						}, 'text');
+					}
+				};
+			})(function () {
+				if (!--count) {
+					callback();
+				}
+			});
+			for (var category in descriptor) {
+				if (descriptor.hasOwnProperty(category)) {
+					if (typeof descriptor[category] !== 'string') {
+						fetchPart(category, descriptor[category].type);
+					} else {
+						fetchPart(category, descriptor[category]);
+					}
+				}
+			}
+		}
+
+		var parts = settings.parts;
 		var layers = settings.layers;
 		var exclusions = settings.exclusions;
 
@@ -253,31 +280,6 @@ function AvatarWizard(canvas, ready, progress) {
 			height: settings.canonicalHeight
 		});
 
-		(function (total) {
-			var count = 0;
-			function fetchPart(name) {
-				$.get(settings.path + name + '.js', function (code) {
-					eval(code);
-					functions[name] = draw;
-					if (++count < total) {
-						if (progress) {
-							progress(Math.round(count * 100 / total));
-						}
-					} else {
-						renderer.resetLayerMask().issue();
-						ready();
-					}
-				}, 'text');
-			}
-			for (var category in settings.parts) {
-				if (settings.parts.hasOwnProperty(category)) {
-					settings.parts[category].forEach(function (image) {
-						fetchPart(category + '/' + image);
-					});
-				}
-			}
-		})(0);
-
 		/**
 		 * Recalculates the coordinate reference. This method must be invoked
 		 * every time the dimensions of the canvas change.
@@ -332,10 +334,14 @@ function AvatarWizard(canvas, ready, progress) {
 		 * @chainable
 		 * @param newDescriptor Object A JSON object describing the avatar to
 		 * load.
+		 * @param callback Function TODO
 		 */
-		thisObject.loadAvatar = function (newDescriptor) {
+		thisObject.loadAvatar = function (newDescriptor, callback) {
 			descriptor = $.extend({}, newDescriptor);
-			renderer.resetLayerMask().issue();
+			fetchAll(function () {
+				renderer.resetLayerMask().issue();
+				callback && callback();
+			});
 			return thisObject;
 		};
 
@@ -393,13 +399,14 @@ function AvatarWizard(canvas, ready, progress) {
 		 * @param category String The category the part is being selected for.
 		 * @param [type] String The part name. If not specified, the part is
 		 * removed.
+		 * @param [callback] Function TODO
 		 * @example
 		 *	wizard.select('hair', 'blonde1');
 		 */
-		thisObject.select = function (category, type) {
+		thisObject.select = function (category, type, callback) {
 			if (typeof type !== 'undefined') {
 				type += '';
-				if (functions.hasOwnProperty(category + '/' + type)) {
+				if (parts.hasOwnProperty(category) && (parts[category].indexOf(type) >= 0)) {
 					if (descriptor.hasOwnProperty(category)) {
 						if (typeof descriptor[category] !== 'string') {
 							descriptor[category].type = type;
@@ -409,13 +416,17 @@ function AvatarWizard(canvas, ready, progress) {
 					} else {
 						descriptor[category] = type;
 					}
-					renderer.resetLayerMask().issue();
+					fetchAll(function () {
+						renderer.resetLayerMask().issue();
+						callback && callback();
+					});
 				} else {
 					throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
 				}
 			} else {
 				delete descriptor[category];
 				renderer.resetLayerMask().issue();
+				callback && callback();
 			}
 			return thisObject;
 		};
