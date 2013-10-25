@@ -118,33 +118,30 @@ function AvatarWizard(canvas, ready) {
 
 		function fetchAll(callback) {
 			var count = 0;
-			var fetchPart = (function (callback) {
-				return function (category, type) {
-					var name = category + '/' + type;
-					if (functions.hasOwnProperty(name)) {
-						callback();
-					} else {
-						$.get(settings.path + name + '.js', function (code) {
-							eval(code);
-							functions[name] = draw;
+			function fetchPart(category, type) {
+				var name = category + '/' + type;
+				if (!functions.hasOwnProperty(name)) {
+					count++;
+					$.get(settings.path + name + '.js', function (code) {
+						eval(code);
+						functions[name] = draw;
+						if (!--count) {
 							callback();
-						}, 'text');
-					}
-				};
-			})(function () {
-				if (!--count) {
-					callback();
+						}
+					}, 'text');
 				}
-			});
+			}
 			for (var category in descriptor) {
 				if (descriptor.hasOwnProperty(category)) {
-					count++;
 					if (typeof descriptor[category] !== 'string') {
 						fetchPart(category, descriptor[category].type);
 					} else {
 						fetchPart(category, descriptor[category]);
 					}
 				}
+			}
+			if (!count) {
+				callback();
 			}
 		}
 

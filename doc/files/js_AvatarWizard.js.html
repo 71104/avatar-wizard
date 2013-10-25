@@ -206,33 +206,30 @@ function AvatarWizard(canvas, ready) {
 
 		function fetchAll(callback) {
 			var count = 0;
-			var fetchPart = (function (callback) {
-				return function (category, type) {
-					var name = category + &#x27;/&#x27; + type;
-					if (functions.hasOwnProperty(name)) {
-						callback();
-					} else {
-						$.get(settings.path + name + &#x27;.js&#x27;, function (code) {
-							eval(code);
-							functions[name] = draw;
+			function fetchPart(category, type) {
+				var name = category + &#x27;/&#x27; + type;
+				if (!functions.hasOwnProperty(name)) {
+					count++;
+					$.get(settings.path + name + &#x27;.js&#x27;, function (code) {
+						eval(code);
+						functions[name] = draw;
+						if (!--count) {
 							callback();
-						}, &#x27;text&#x27;);
-					}
-				};
-			})(function () {
-				if (!--count) {
-					callback();
+						}
+					}, &#x27;text&#x27;);
 				}
-			});
+			}
 			for (var category in descriptor) {
 				if (descriptor.hasOwnProperty(category)) {
-					count++;
 					if (typeof descriptor[category] !== &#x27;string&#x27;) {
 						fetchPart(category, descriptor[category].type);
 					} else {
 						fetchPart(category, descriptor[category]);
 					}
 				}
+			}
+			if (!count) {
+				callback();
 			}
 		}
 
