@@ -124,7 +124,7 @@ function AvatarWizard(canvas, ready) {
 
 			var layerMask = [];
 
-			function updateLayerMask() {
+			function resetLayerMask() {
 				layerMask = layers.map(function () {
 					return true;
 				});
@@ -143,7 +143,7 @@ function AvatarWizard(canvas, ready) {
 				return thisObject;
 			}
 
-			updateLayerMask();
+			resetLayerMask();
 
 			canvas = $(canvas);
 			var context = canvas[0].getContext('2d');
@@ -206,6 +206,7 @@ function AvatarWizard(canvas, ready) {
 					}
 				}
 				drawing = false;
+				return thisObject;
 			}
 
 			function issue() {
@@ -215,6 +216,7 @@ function AvatarWizard(canvas, ready) {
 				return thisObject;
 			}
 
+			this.drawAll = drawAll;
 			this.issue = issue;
 
 			this.setDimensions = function () {
@@ -223,7 +225,19 @@ function AvatarWizard(canvas, ready) {
 				return thisObject;
 			};
 
-			this.updateLayerMask = updateLayerMask;
+			this.resetLayerMask = resetLayerMask;
+
+			this.maskIn = function (names) {
+				if (!Array.isArray(names)) {
+					names = [names];
+				}
+				layers.forEach(function (name, index) {
+					if (names.indexOf(name) < 0) {
+						layerMask[index] = false;
+					}
+				});
+				return thisObject;
+			};
 		}
 
 		var renderer = new Renderer(canvas, {
@@ -241,7 +255,7 @@ function AvatarWizard(canvas, ready) {
 					eval(code);
 					functions[name] = draw;
 					if (!--count) {
-						renderer.updateLayerMask().issue();
+						renderer.resetLayerMask().issue();
 						ready();
 					}
 				}, 'text');
@@ -312,7 +326,7 @@ function AvatarWizard(canvas, ready) {
 		 */
 		thisObject.loadAvatar = function (newDescriptor) {
 			descriptor = $.extend({}, newDescriptor);
-			renderer.updateLayerMask().issue();
+			renderer.resetLayerMask().issue();
 			return thisObject;
 		};
 
@@ -386,13 +400,13 @@ function AvatarWizard(canvas, ready) {
 					} else {
 						descriptor[category] = type;
 					}
-					renderer.updateLayerMask().issue();
+					renderer.resetLayerMask().issue();
 				} else {
 					throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
 				}
 			} else {
 				delete descriptor[category];
-				renderer.updateLayerMask().issue();
+				renderer.resetLayerMask().issue();
 			}
 			return thisObject;
 		};
@@ -453,13 +467,14 @@ function AvatarWizard(canvas, ready) {
 			var canvas = document.createElement('canvas');
 			canvas.width = width;
 			canvas.height = height;
-			(new Renderer(canvas, {
+			var renderer = new Renderer(canvas, {
 				stretch: !!thumbnailSettings.stretch,
 				x: config.area.x,
 				y: config.area.y,
 				width: config.area.width,
 				height: config.area.height
-			})).issue();
+			});
+			renderer.maskIn(settings.thumbnails[thumbnailSettings.configName].layers).drawAll();
 			return canvas;
 		}
 
