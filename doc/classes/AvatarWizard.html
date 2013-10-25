@@ -109,36 +109,61 @@ methods may not be invoked until this has been done. The user-defined <code>read
 callback is invoked by the <code>AvatarWizard</code> object when it is ready.</p>
 <p>The <code>settings.json</code> file must have the following format:</p>
 <pre class="code prettyprint"><code>{
-    "canonicalWidth": 123,
-    "canonicalHeight": 456,
-    "thumbnailArea": {
-        "x": 10,
-        "y": 10,
-        "width": 80,
-        "height": 400
+    &quot;canonicalWidth&quot;: 123,
+    &quot;canonicalHeight&quot;: 456,
+    &quot;thumbnails&quot;: {
+        &quot;config1&quot;: {
+            &quot;layers&quot;: [
+                &quot;category1&quot;,
+                &quot;category2&quot;,
+                &quot;category3&quot;,
+                ...
+            ],
+            &quot;area&quot;: {
+                &quot;x&quot;: 10,
+                &quot;y&quot;: 10,
+                &quot;width&quot;: 80,
+                &quot;height&quot;: 400
+            }
+        },
+        &quot;config2&quot;: {
+            &quot;layers&quot;: [
+                &quot;category3&quot;,
+                &quot;category4&quot;,
+                &quot;category5&quot;,
+                ...
+            ],
+            &quot;area&quot;: {
+                &quot;x&quot;: 10,
+                &quot;y&quot;: 10,
+                &quot;width&quot;: 80,
+                &quot;height&quot;: 400
+            }
+        },
+        ...
     },
-    "path": "path/to/parts",
-    "parts": {
-        "category1": [
-            "type1",
-            "type2",
+    &quot;path&quot;: &quot;path/to/parts&quot;,
+    &quot;parts&quot;: {
+        &quot;category1&quot;: [
+            &quot;type1&quot;,
+            &quot;type2&quot;,
             ...
         ],
-        "category2": [
-            "type1",
-            "type2",
+        &quot;category2&quot;: [
+            &quot;type1&quot;,
+            &quot;type2&quot;,
             ...
         ],
-        "category3": [
+        &quot;category3&quot;: [
             .
             .
             .
         ],
     },
-    "layers": [
-        "category1",
-        "category2",
-        "category3",
+    &quot;layers&quot;: [
+        &quot;category1&quot;,
+        &quot;category2&quot;,
+        &quot;category3&quot;,
         ...
     ]
 }</code></pre>
@@ -146,24 +171,20 @@ callback is invoked by the <code>AvatarWizard</code> object when it is ready.</p
 area the coordinates in the js image files refer to. Modifying these
 parameters influences the size of the avatar relative to the destination
 canvas.</p>
-<p><code>thumbnailArea</code> describes a rectangular area in canonical space used to size
-the avatar within a canvas when generating prerendered thumbnails (see the
-<a href="..\classes\AvatarWizard.html#method_getThumbnail" class="crosslink">getThumbnail</a> and
-<a href="..\classes\AvatarWizard.html#method_getEncodedThumbnail" class="crosslink">getEncodedThumbnail</a>
-methods).</p>
+<p>TODO document <code>thumbnails</code></p>
 <p><code>path</code> is the path of the directory tree containing the js image files. The
 directory represented by <code>path</code> must contain one subdirectory for each
 category; each category directory must in turn contain one <code>.js</code> file for
 each part/type.</p>
-<p>"parts" is the set of registered parts and categories. The "parts" object
+<p>&quot;parts&quot; is the set of registered parts and categories. The &quot;parts&quot; object
 maps category names to part arrays (each key is a category name and its value
 is an array of part names).</p>
-<p>"layers" specifies the order in which the several parts are drawn to the
+<p>&quot;layers&quot; specifies the order in which the several parts are drawn to the
 canvas; it is an array of category names.</p>
 <p>TODO document <code>exclusions</code></p>
 <p>The full path of a part is build as follows:</p>
 <pre class="code prettyprint"><code>path/category/part.json</code></pre>
-<p>which means that the "path" option is prepended, the category name follows,
+<p>which means that the &quot;path&quot; option is prepended, the category name follows,
 the part name follows and the <code>.json</code> file extension is appended.</p>
 
 </div>
@@ -424,7 +445,7 @@ receive method invocations.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l234"><code>js\AvatarWizard.js:234</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l333"><code>js\AvatarWizard.js:333</code></a>
         
         </p>
 
@@ -511,7 +532,7 @@ internally by the AvatarWizard instance.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l305"><code>js\AvatarWizard.js:305</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l414"><code>js\AvatarWizard.js:414</code></a>
         
         </p>
 
@@ -596,6 +617,12 @@ method.</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>settings</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -629,7 +656,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l379"><code>js\AvatarWizard.js:379</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l507"><code>js\AvatarWizard.js:507</code></a>
         
         </p>
 
@@ -680,6 +707,62 @@ avatar of the specified width and height.</p>
 
                     </div>
 
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">settings</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Object Thumbnail generation settings.</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[stretch=false]</code>
+                                    <span class="type"></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Boolean Indicates whether the avatar
+must be stretched to fit the specified width and height exactly.
+<code>false</code> indicates that the avatar&#39;s proportions are maintained.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">configName</code>
+                                    <span class="type">#crossLink "AvatarWizard"</span>
+                                
+
+                                <div class="param-description">
+                                    <p>String The thumbnail configuration to use.
+It must be the name of a valid thumbnail configuration registered in
+the <code>thumbnails</code> field of the <code>settings.json</code> file.</p>
+<p>See the
+}AvatarWizard constructor{{/crossLink}}
+for more information.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -752,7 +835,7 @@ format.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l252"><code>js\AvatarWizard.js:252</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l351"><code>js\AvatarWizard.js:351</code></a>
         
         </p>
 
@@ -834,6 +917,12 @@ selected for the specified category.</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>settings</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -867,7 +956,7 @@ selected for the specified category.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l364"><code>js\AvatarWizard.js:364</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l481"><code>js\AvatarWizard.js:481</code></a>
         
         </p>
 
@@ -920,6 +1009,62 @@ image element as well as a canvas.</p>
 
                     </div>
 
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">settings</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Object Thumbnail generation settings.</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[stretch=false]</code>
+                                    <span class="type"></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Boolean Indicates whether the avatar
+must be stretched to fit the specified width and height exactly.
+<code>false</code> indicates that the avatar&#39;s proportions are maintained.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">configName</code>
+                                    <span class="type">#crossLink "AvatarWizard"</span>
+                                
+
+                                <div class="param-description">
+                                    <p>String The thumbnail configuration to use.
+It must be the name of a valid thumbnail configuration registered in
+the <code>thumbnails</code> field of the <code>settings.json</code> file.</p>
+<p>See the
+}AvatarWizard constructor{{/crossLink}}
+for more information.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -990,7 +1135,7 @@ containing a prerendered avatar.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l189"><code>js\AvatarWizard.js:189</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l288"><code>js\AvatarWizard.js:288</code></a>
         
         </p>
 
@@ -1099,7 +1244,7 @@ load.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l170"><code>js\AvatarWizard.js:170</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l272"><code>js\AvatarWizard.js:272</code></a>
         
         </p>
 
@@ -1141,7 +1286,7 @@ rate because the redraw rate is throttled down through
             
                 <li class="arg">
                     
-                        <code>type</code>
+                        <code class="optional">[type]</code>
                     
                 </li>
             
@@ -1176,7 +1321,7 @@ rate because the redraw rate is throttled down through
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l272"><code>js\AvatarWizard.js:272</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l371"><code>js\AvatarWizard.js:371</code></a>
         
         </p>
 
@@ -1192,6 +1337,8 @@ rendering of the avatar on the canvas.</p>
 <p>Both the category and part/type names must be valid names registered
 in the <code>settings.json</code> file, as explained in the
 <a href="..\classes\AvatarWizard.html" class="crosslink">AvatarWizard constructor</a>.</p>
+<p>To remove a currently selected part, invoke <code>select</code> for its category
+without specifying the <code>type</code> argument.</p>
 
     </div>
 
@@ -1219,14 +1366,16 @@ in the <code>settings.json</code> file, as explained in the
             
                 <li class="param">
                     
-                        <code class="param-name">type</code>
+                        <code class="param-name optional">[type]</code>
                         <span class="type">Object</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>String The part name.</p>
+                        <p>String The part name. If not specified, the part is
+removed.</p>
 
                     </div>
 
@@ -1302,7 +1451,7 @@ in the <code>settings.json</code> file, as explained in the
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l329"><code>js\AvatarWizard.js:329</code></a>
+        <a href="../files/js_AvatarWizard.js.html#l438"><code>js\AvatarWizard.js:438</code></a>
         
         </p>
 
