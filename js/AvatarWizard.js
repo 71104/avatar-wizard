@@ -488,11 +488,17 @@ function AvatarWizard(canvas, ready) {
 		 * @method getThumbnail
 		 * @param width Number The width of the thumbnail to generate.
 		 * @param height Number The height of the thumbnail to generate.
-		 * @param settings Object TODO
+		 * @param settings Object Thumbnail generation settings.
 		 * @param [settings.stretch=false] Boolean Indicates whether the avatar
 		 * must be stretched to fit the specified width and height exactly.
 		 * `false` indicates that the avatar's proportions are maintained.
-		 * @param settings.configName String TODO
+		 * @param settings.configName String The thumbnail configuration to use.
+		 * It must be the name of a valid thumbnail configuration registered in
+		 * the `thumbnails` field of the `settings.json` file.
+		 *
+		 * See the
+		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}}
+		 * for more information.
 		 * @return HTMLElement An HTML element of the specified dimensions
 		 * containing a prerendered avatar.
 		 */
@@ -505,11 +511,17 @@ function AvatarWizard(canvas, ready) {
 		 * @method getEncodedThumbnail
 		 * @param width Number The width of the image to generate.
 		 * @param height Number The height of the image to generate.
-		 * @param settings Object TODO
+		 * @param settings Object Thumbnail generation settings.
 		 * @param [settings.stretch=false] Boolean Indicates whether the avatar
 		 * must be stretched to fit the specified width and height exactly.
 		 * `false` indicates that the avatar's proportions are maintained.
-		 * @param settings.configName String TODO
+		 * @param settings.configName String The thumbnail configuration to use.
+		 * It must be the name of a valid thumbnail configuration registered in
+		 * the `thumbnails` field of the `settings.json` file.
+		 *
+		 * See the
+		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}}
+		 * for more information.
 		 * @return String A data URI that encodes the generated image in PNG
 		 * format.
 		 */
