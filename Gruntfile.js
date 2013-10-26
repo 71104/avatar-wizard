@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 				name: 'Avatar Wizard',
 				version: '<%= pkg.version %>',
 				options: {
-					paths: 'js',
+					paths: 'static/js',
 					outdir: 'doc'
 				}
 			}
