@@ -2,13 +2,13 @@
 
       var alpha = ctx.globalAlpha;
 
-      // accessories/12
+      // accessories1/7
       ctx.save();
 
-      // accessories/12/base
+      // accessories1/7/base
       ctx.save();
 
-      // accessories/12/base/Tracciato
+      // accessories1/7/base/Tracciato
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(255.1, 456.6);
@@ -24,7 +24,7 @@
       ctx.fillStyle = "rgb(35, 30, 32)";
       ctx.fill();
 
-      // accessories/12/base/base
+      // accessories1/7/base/base
       ctx.beginPath();
       ctx.moveTo(272.5, 456.4);
       ctx.bezierCurveTo(272.5, 466.3, 264.4, 474.3, 254.5, 474.3);
@@ -34,10 +34,10 @@
       ctx.closePath();
       ctx.fill();
 
-      // accessories/12/fill
+      // accessories1/7/fill
       ctx.restore();
 
-      // accessories/12/fill/fill
+      // accessories1/7/fill/fill
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(266.0, 456.4);
@@ -49,7 +49,7 @@
       ctx.fillStyle = color || "rgb(208, 56, 22)";
       ctx.fill();
 
-      // accessories/12/fill/Tracciato
+      // accessories1/7/fill/Tracciato
       ctx.beginPath();
       ctx.moveTo(271.2, 447.7);
       ctx.bezierCurveTo(270.9, 447.7, 270.6, 447.6, 270.4, 447.3);
@@ -62,7 +62,7 @@
       ctx.closePath();
       ctx.fill();
 
-      // accessories/12/fill/Tracciato
+      // accessories1/7/fill/Tracciato
       ctx.beginPath();
       ctx.moveTo(238.1, 447.7);
       ctx.bezierCurveTo(237.9, 447.7, 237.7, 447.6, 237.5, 447.5);
@@ -75,10 +75,10 @@
       ctx.closePath();
       ctx.fill();
 
-      // accessories/12/stroke
+      // accessories1/7/stroke
       ctx.restore();
 
-      // accessories/12/stroke/Tracciato
+      // accessories1/7/stroke/Tracciato
       ctx.save();
       ctx.globalAlpha = alpha * 0.40;
       ctx.beginPath();
@@ -91,7 +91,7 @@
       ctx.fillStyle = "rgb(255, 255, 255)";
       ctx.fill();
 
-      // accessories/12/stroke/Tracciato
+      // accessories1/7/stroke/Tracciato
       ctx.globalAlpha = alpha * 0.30;
       ctx.beginPath();
       ctx.moveTo(248.6, 446.4);
@@ -103,7 +103,7 @@
       ctx.fillStyle = "rgb(1, 1, 2)";
       ctx.fill();
 
-      // accessories/12/stroke/Tracciato
+      // accessories1/7/stroke/Tracciato
       ctx.globalAlpha = alpha * 0.40;
       ctx.beginPath();
       ctx.moveTo(256.6, 457.7);

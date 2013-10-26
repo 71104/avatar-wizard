@@ -1,12 +1,12 @@
     function draw(ctx, color) {
 
-      // accessories/3
+      // accessories1/3
       ctx.save();
 
-      // accessories/3/stroke
+      // accessories1/3/stroke
       ctx.save();
 
-      // accessories/3/stroke/Tracciato
+      // accessories1/3/stroke/Tracciato
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(391.1, 454.2);
@@ -18,7 +18,7 @@
       ctx.fillStyle = "rgb(239, 182, 134)";
       ctx.fill();
 
-      // accessories/3/stroke/Tracciato
+      // accessories1/3/stroke/Tracciato
       ctx.beginPath();
       ctx.moveTo(350.6, 424.3);
       ctx.bezierCurveTo(350.6, 424.3, 335.0, 439.7, 343.1, 459.7);
@@ -30,10 +30,10 @@
       ctx.fillStyle = "rgb(198, 150, 113)";
       ctx.fill();
 
-      // accessories/3/stroke/Tracciato composto
+      // accessories1/3/stroke/Tracciato composto
       ctx.beginPath();
 
-      // accessories/3/stroke/Tracciato composto/Tracciato
+      // accessories1/3/stroke/Tracciato composto/Tracciato
       ctx.moveTo(352.3, 502.0);
       ctx.bezierCurveTo(326.0, 502.0, 304.6, 480.6, 304.6, 454.2);
       ctx.bezierCurveTo(304.6, 427.9, 326.0, 406.5, 352.3, 406.5);
@@ -41,7 +41,7 @@
       ctx.bezierCurveTo(400.0, 480.6, 378.6, 502.0, 352.3, 502.0);
       ctx.closePath();
 
-      // accessories/3/stroke/Tracciato composto/Tracciato
+      // accessories1/3/stroke/Tracciato composto/Tracciato
       ctx.moveTo(352.3, 424.3);
       ctx.bezierCurveTo(335.8, 424.3, 322.3, 437.7, 322.3, 454.2);
       ctx.bezierCurveTo(322.3, 470.8, 335.8, 484.2, 352.3, 484.2);
@@ -51,7 +51,7 @@
       ctx.fillStyle = "rgb(35, 30, 32)";
       ctx.fill();
 
-      // accessories/3/stroke/Tracciato
+      // accessories1/3/stroke/Tracciato
       ctx.beginPath();
       ctx.moveTo(195.1, 422.1);
       ctx.bezierCurveTo(195.1, 443.5, 177.7, 460.9, 156.2, 460.9);
@@ -62,7 +62,7 @@
       ctx.fillStyle = "rgb(239, 182, 134)";
       ctx.fill();
 
-      // accessories/3/stroke/Tracciato
+      // accessories1/3/stroke/Tracciato
       ctx.beginPath();
       ctx.moveTo(154.5, 392.1);
       ctx.bezierCurveTo(154.5, 392.1, 138.9, 407.5, 147.0, 427.5);
@@ -74,15 +74,15 @@
       ctx.fillStyle = "rgb(198, 150, 113)";
       ctx.fill();
 
-      // accessories/3/stroke/Pittura dinamica
+      // accessories1/3/stroke/Pittura dinamica
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo
+      // accessories1/3/stroke/Pittura dinamica/Gruppo
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo/Tracciato composto
+      // accessories1/3/stroke/Pittura dinamica/Gruppo/Tracciato composto
       ctx.save();
       ctx.beginPath();
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo/Tracciato composto/Tracciato
+      // accessories1/3/stroke/Pittura dinamica/Gruppo/Tracciato composto/Tracciato
       ctx.moveTo(167.1, 375.6);
       ctx.bezierCurveTo(188.2, 380.6, 203.9, 399.5, 203.9, 422.1);
       ctx.bezierCurveTo(203.9, 448.4, 182.5, 469.8, 156.2, 469.8);
@@ -95,7 +95,7 @@
       ctx.lineTo(167.1, 375.6);
       ctx.closePath();
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo/Tracciato composto/Tracciato
+      // accessories1/3/stroke/Pittura dinamica/Gruppo/Tracciato composto/Tracciato
       ctx.moveTo(186.2, 422.1);
       ctx.bezierCurveTo(186.2, 405.5, 172.7, 392.1, 156.2, 392.1);
       ctx.bezierCurveTo(139.7, 392.1, 126.2, 405.5, 126.2, 422.1);
@@ -103,7 +103,7 @@
       ctx.bezierCurveTo(172.7, 452.0, 186.2, 438.6, 186.2, 422.1);
       ctx.closePath();
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo/Tracciato composto/Tracciato
+      // accessories1/3/stroke/Pittura dinamica/Gruppo/Tracciato composto/Tracciato
       ctx.moveTo(151.1, 374.6);
       ctx.lineTo(151.1, 372.6);
       ctx.bezierCurveTo(151.1, 365.2, 145.2, 359.2, 137.8, 359.2);
@@ -114,7 +114,7 @@
       ctx.fillStyle = "rgb(35, 30, 32)";
       ctx.fill();
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo/Tracciato
+      // accessories1/3/stroke/Pittura dinamica/Gruppo/Tracciato
       ctx.beginPath();
       ctx.moveTo(151.1, 372.6);
       ctx.lineTo(151.1, 374.6);
@@ -126,10 +126,10 @@
       ctx.fillStyle = "rgb(239, 182, 134)";
       ctx.fill();
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo
+      // accessories1/3/stroke/Pittura dinamica/Gruppo
       ctx.restore();
 
-      // accessories/3/stroke/Pittura dinamica/Gruppo/
+      // accessories1/3/stroke/Pittura dinamica/Gruppo/
       ctx.save();
       ctx.restore();
       ctx.restore();

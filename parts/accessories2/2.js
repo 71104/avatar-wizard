@@ -2,10 +2,10 @@
 
       var alpha = ctx.globalAlpha;
 
-      // accessories/7
+      // accessories2/2
       ctx.save();
 
-      // accessories/7/fill
+      // accessories2/2/fill
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(386.2, 272.8);
@@ -19,9 +19,9 @@
       ctx.fillStyle = color || "rgb(60, 60, 59)";
       ctx.fill();
 
-      // accessories/7/stroke
+      // accessories2/2/stroke
 
-      // accessories/7/stroke/Tracciato
+      // accessories2/2/stroke/Tracciato
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(293.6, 158.1);
@@ -37,10 +37,10 @@
       ctx.fillStyle = "rgb(65, 64, 66)";
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato composto
+      // accessories2/2/stroke/Tracciato composto
       ctx.beginPath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(279.3, 176.5);
       ctx.lineTo(227.8, 176.5);
       ctx.bezierCurveTo(217.7, 176.5, 209.5, 168.3, 209.5, 158.1);
@@ -50,7 +50,7 @@
       ctx.bezierCurveTo(297.6, 168.3, 289.4, 176.5, 279.3, 176.5);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(227.8, 147.8);
       ctx.bezierCurveTo(222.1, 147.8, 217.5, 152.5, 217.5, 158.1);
       ctx.bezierCurveTo(217.5, 163.8, 222.1, 168.5, 227.8, 168.5);
@@ -62,7 +62,7 @@
       ctx.fillStyle = "rgb(35, 30, 32)";
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato
+      // accessories2/2/stroke/Tracciato
       ctx.globalAlpha = alpha * 0.20;
       ctx.beginPath();
       ctx.moveTo(247.9, 170.5);
@@ -75,11 +75,11 @@
       ctx.fillStyle = "rgb(1, 1, 2)";
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato composto
+      // accessories2/2/stroke/Tracciato composto
       ctx.globalAlpha = alpha * 1.00;
       ctx.beginPath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(386.2, 281.8);
       ctx.lineTo(124.1, 281.8);
       ctx.bezierCurveTo(119.1, 281.8, 115.1, 277.8, 115.1, 272.8);
@@ -91,7 +91,7 @@
       ctx.bezierCurveTo(395.2, 277.8, 391.1, 281.8, 386.2, 281.8);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(133.1, 263.8);
       ctx.lineTo(377.2, 263.8);
       ctx.lineTo(377.2, 207.1);
@@ -103,10 +103,10 @@
       ctx.fillStyle = "rgb(35, 30, 32)";
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato composto
+      // accessories2/2/stroke/Tracciato composto
       ctx.beginPath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(363.7, 269.8);
       ctx.bezierCurveTo(362.6, 269.8, 361.7, 268.9, 361.7, 267.8);
       ctx.lineTo(361.7, 259.8);
@@ -116,7 +116,7 @@
       ctx.bezierCurveTo(365.7, 268.9, 364.8, 269.8, 363.7, 269.8);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(143.3, 269.8);
       ctx.bezierCurveTo(142.2, 269.8, 141.3, 268.9, 141.3, 267.8);
       ctx.lineTo(141.3, 259.8);
@@ -126,7 +126,7 @@
       ctx.bezierCurveTo(145.3, 268.9, 144.4, 269.8, 143.3, 269.8);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(363.7, 251.8);
       ctx.bezierCurveTo(362.6, 251.8, 361.7, 250.9, 361.7, 249.8);
       ctx.lineTo(361.7, 241.8);
@@ -136,7 +136,7 @@
       ctx.bezierCurveTo(365.7, 250.9, 364.8, 251.8, 363.7, 251.8);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(143.3, 251.7);
       ctx.bezierCurveTo(142.2, 251.7, 141.3, 250.8, 141.3, 249.7);
       ctx.lineTo(141.3, 241.7);
@@ -146,7 +146,7 @@
       ctx.bezierCurveTo(145.3, 250.8, 144.4, 251.7, 143.3, 251.7);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(363.7, 233.8);
       ctx.bezierCurveTo(362.6, 233.8, 361.7, 232.9, 361.7, 231.8);
       ctx.lineTo(361.7, 223.8);
@@ -156,7 +156,7 @@
       ctx.bezierCurveTo(365.7, 232.9, 364.8, 233.8, 363.7, 233.8);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(143.3, 233.7);
       ctx.bezierCurveTo(142.2, 233.7, 141.3, 232.8, 141.3, 231.7);
       ctx.lineTo(141.3, 223.7);
@@ -166,7 +166,7 @@
       ctx.bezierCurveTo(145.3, 232.8, 144.4, 233.7, 143.3, 233.7);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(363.7, 215.8);
       ctx.bezierCurveTo(362.6, 215.8, 361.7, 214.9, 361.7, 213.8);
       ctx.lineTo(361.7, 206.0);
@@ -179,7 +179,7 @@
       ctx.bezierCurveTo(365.7, 214.9, 364.8, 215.8, 363.7, 215.8);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(143.3, 215.7);
       ctx.bezierCurveTo(142.2, 215.7, 141.3, 214.8, 141.3, 213.7);
       ctx.lineTo(141.3, 208.1);
@@ -191,7 +191,7 @@
       ctx.bezierCurveTo(145.3, 214.8, 144.4, 215.7, 143.3, 215.7);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(146.1, 198.2);
       ctx.bezierCurveTo(145.8, 198.2, 145.5, 198.1, 145.2, 197.9);
       ctx.bezierCurveTo(144.2, 197.4, 143.8, 196.2, 144.4, 195.2);
@@ -202,7 +202,7 @@
       ctx.bezierCurveTo(147.5, 197.8, 146.8, 198.2, 146.1, 198.2);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(362.0, 198.0);
       ctx.bezierCurveTo(361.2, 198.0, 360.5, 197.6, 360.1, 196.8);
       ctx.bezierCurveTo(359.1, 194.6, 357.8, 192.7, 356.0, 191.1);
@@ -213,7 +213,7 @@
       ctx.bezierCurveTo(362.5, 198.0, 362.2, 198.0, 362.0, 198.0);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(160.2, 187.7);
       ctx.bezierCurveTo(159.3, 187.7, 158.5, 187.1, 158.2, 186.2);
       ctx.bezierCurveTo(157.9, 185.2, 158.5, 184.1, 159.6, 183.8);
@@ -224,7 +224,7 @@
       ctx.bezierCurveTo(160.5, 187.6, 160.3, 187.7, 160.2, 187.7);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(348.5, 187.2);
       ctx.bezierCurveTo(348.3, 187.2, 348.1, 187.2, 348.0, 187.1);
       ctx.bezierCurveTo(345.7, 186.6, 343.2, 186.2, 340.5, 186.2);
@@ -235,7 +235,7 @@
       ctx.bezierCurveTo(350.2, 186.6, 349.3, 187.2, 348.5, 187.2);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(330.5, 186.1);
       ctx.lineTo(322.5, 186.1);
       ctx.bezierCurveTo(321.4, 186.1, 320.5, 185.3, 320.5, 184.1);
@@ -245,7 +245,7 @@
       ctx.bezierCurveTo(332.5, 185.3, 331.6, 186.1, 330.5, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(312.4, 186.1);
       ctx.lineTo(304.4, 186.1);
       ctx.bezierCurveTo(303.3, 186.1, 302.4, 185.3, 302.4, 184.1);
@@ -255,7 +255,7 @@
       ctx.bezierCurveTo(314.4, 185.3, 313.5, 186.1, 312.4, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(294.4, 186.1);
       ctx.lineTo(286.4, 186.1);
       ctx.bezierCurveTo(285.3, 186.1, 284.4, 185.3, 284.4, 184.1);
@@ -265,7 +265,7 @@
       ctx.bezierCurveTo(296.4, 185.3, 295.5, 186.1, 294.4, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(276.3, 186.1);
       ctx.lineTo(268.3, 186.1);
       ctx.bezierCurveTo(267.2, 186.1, 266.3, 185.3, 266.3, 184.1);
@@ -275,7 +275,7 @@
       ctx.bezierCurveTo(278.3, 185.3, 277.5, 186.1, 276.3, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(258.3, 186.1);
       ctx.lineTo(250.3, 186.1);
       ctx.bezierCurveTo(249.2, 186.1, 248.3, 185.3, 248.3, 184.1);
@@ -285,7 +285,7 @@
       ctx.bezierCurveTo(260.3, 185.3, 259.4, 186.1, 258.3, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(240.3, 186.1);
       ctx.lineTo(232.3, 186.1);
       ctx.bezierCurveTo(231.2, 186.1, 230.3, 185.3, 230.3, 184.1);
@@ -295,7 +295,7 @@
       ctx.bezierCurveTo(242.3, 185.3, 241.4, 186.1, 240.3, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(222.2, 186.1);
       ctx.lineTo(214.2, 186.1);
       ctx.bezierCurveTo(213.1, 186.1, 212.2, 185.3, 212.2, 184.1);
@@ -305,7 +305,7 @@
       ctx.bezierCurveTo(224.2, 185.3, 223.3, 186.1, 222.2, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(204.2, 186.1);
       ctx.lineTo(196.2, 186.1);
       ctx.bezierCurveTo(195.1, 186.1, 194.2, 185.3, 194.2, 184.1);
@@ -315,7 +315,7 @@
       ctx.bezierCurveTo(206.2, 185.3, 205.3, 186.1, 204.2, 186.1);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(186.1, 186.1);
       ctx.lineTo(178.1, 186.1);
       ctx.bezierCurveTo(177.0, 186.1, 176.1, 185.3, 176.1, 184.1);
@@ -326,11 +326,11 @@
       ctx.closePath();
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato composto
+      // accessories2/2/stroke/Tracciato composto
       ctx.globalAlpha = alpha * 0.50;
       ctx.beginPath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(282.7, 227.5);
       ctx.lineTo(274.6, 227.5);
       ctx.lineTo(266.5, 227.5);
@@ -358,11 +358,11 @@
       ctx.fillStyle = "rgb(255, 255, 255)";
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato composto
+      // accessories2/2/stroke/Tracciato composto
       ctx.globalAlpha = alpha * 1.00;
       ctx.beginPath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(294.3, 267.3);
       ctx.lineTo(254.6, 267.3);
       ctx.bezierCurveTo(244.0, 267.3, 234.1, 263.2, 226.6, 255.7);
@@ -376,7 +376,7 @@
       ctx.lineTo(294.3, 267.3);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(254.6, 195.0);
       ctx.bezierCurveTo(245.9, 195.0, 237.7, 198.4, 231.5, 204.5);
       ctx.bezierCurveTo(225.4, 210.7, 222.0, 218.9, 222.0, 227.6);
@@ -398,7 +398,7 @@
       ctx.bezierCurveTo(269.3, 197.5, 262.2, 195.0, 254.6, 195.0);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(248.2, 233.1);
       ctx.lineTo(248.7, 233.6);
       ctx.bezierCurveTo(250.3, 235.2, 252.4, 236.0, 254.6, 236.0);
@@ -413,7 +413,7 @@
       ctx.fillStyle = "rgb(35, 30, 32)";
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato
+      // accessories2/2/stroke/Tracciato
       ctx.beginPath();
       ctx.moveTo(435.5, 263.1);
       ctx.bezierCurveTo(435.7, 270.3, 430.7, 276.2, 424.3, 276.4);
@@ -428,10 +428,10 @@
       ctx.fillStyle = "rgb(128, 130, 133)";
       ctx.fill();
 
-      // accessories/7/stroke/Tracciato composto
+      // accessories2/2/stroke/Tracciato composto
       ctx.beginPath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(132.4, 294.2);
       ctx.bezierCurveTo(126.8, 294.2, 121.6, 291.9, 117.7, 287.6);
       ctx.bezierCurveTo(114.0, 283.7, 111.9, 278.4, 111.7, 272.8);
@@ -444,7 +444,7 @@
       ctx.bezierCurveTo(132.8, 294.2, 132.6, 294.2, 132.4, 294.2);
       ctx.closePath();
 
-      // accessories/7/stroke/Tracciato composto/Tracciato
+      // accessories2/2/stroke/Tracciato composto/Tracciato
       ctx.moveTo(423.8, 259.4);
       ctx.lineTo(132.2, 268.2);
       ctx.bezierCurveTo(131.0, 268.2, 129.6, 270.0, 129.7, 272.3);

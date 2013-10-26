@@ -1,13 +1,13 @@
     function draw(ctx, color) {
 
-      // accessories/10
+      // accessories2/5
       ctx.save();
 
-      // accessories/10/stroke
+      // accessories2/5/stroke
       ctx.save();
       ctx.beginPath();
 
-      // accessories/10/stroke/Tracciato
+      // accessories2/5/stroke/Tracciato
       ctx.moveTo(394.5, 282.1);
       ctx.lineTo(392.3, 282.1);
       ctx.lineTo(359.2, 282.1);
@@ -42,7 +42,7 @@
       ctx.bezierCurveTo(403.0, 285.9, 399.2, 282.1, 394.5, 282.1);
       ctx.closePath();
 
-      // accessories/10/stroke/Tracciato
+      // accessories2/5/stroke/Tracciato
       ctx.moveTo(230.2, 331.0);
       ctx.bezierCurveTo(230.2, 334.5, 227.3, 337.4, 223.8, 337.4);
       ctx.lineTo(157.1, 337.4);
@@ -54,7 +54,7 @@
       ctx.lineTo(230.2, 331.0);
       ctx.closePath();
 
-      // accessories/10/stroke/Tracciato
+      // accessories2/5/stroke/Tracciato
       ctx.moveTo(365.7, 331.0);
       ctx.bezierCurveTo(365.7, 334.5, 362.8, 337.4, 359.2, 337.4);
       ctx.lineTo(292.6, 337.4);

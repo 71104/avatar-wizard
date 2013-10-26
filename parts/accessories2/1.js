@@ -1,12 +1,12 @@
     function draw(ctx, color) {
 
-      // accessories/6
+      // accessories2/1
       ctx.save();
 
-      // accessories/6/stroke
+      // accessories2/1/stroke
       ctx.save();
 
-      // accessories/6/stroke/Tracciato
+      // accessories2/1/stroke/Tracciato
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(270.1, 253.6);
@@ -18,10 +18,10 @@
       ctx.bezierCurveTo(131.7, 162.8, 132.9, 220.4, 138.4, 247.4);
       ctx.lineTo(270.1, 253.6);
       ctx.closePath();
-      ctx.fillStyle = color || "rgb(110, 97, 91)";
+      ctx.fillStyle = "rgb(110, 97, 91)";
       ctx.fill();
 
-      // accessories/6/stroke/Tracciato
+      // accessories2/1/stroke/Tracciato
       ctx.beginPath();
       ctx.moveTo(258.6, 191.2);
       ctx.lineTo(281.0, 180.6);
@@ -38,10 +38,10 @@
       ctx.fillStyle = "rgb(236, 229, 69)";
       ctx.fill();
 
-      // accessories/6/stroke/Tracciato composto
+      // accessories2/1/stroke/Tracciato composto
       ctx.beginPath();
 
-      // accessories/6/stroke/Tracciato composto/Tracciato
+      // accessories2/1/stroke/Tracciato composto/Tracciato
       ctx.moveTo(451.1, 190.1);
       ctx.bezierCurveTo(449.0, 187.7, 446.0, 186.4, 442.8, 186.4);
       ctx.lineTo(442.6, 186.4);
@@ -67,7 +67,7 @@
       ctx.bezierCurveTo(454.2, 195.6, 453.2, 192.5, 451.1, 190.1);
       ctx.closePath();
 
-      // accessories/6/stroke/Tracciato composto/Tracciato
+      // accessories2/1/stroke/Tracciato composto/Tracciato
       ctx.moveTo(243.4, 202.4);
       ctx.lineTo(240.2, 185.8);
       ctx.lineTo(257.3, 193.9);
@@ -86,7 +86,7 @@
       ctx.bezierCurveTo(243.2, 204.6, 243.6, 203.5, 243.4, 202.4);
       ctx.closePath();
 
-      // accessories/6/stroke/Tracciato composto/Tracciato
+      // accessories2/1/stroke/Tracciato composto/Tracciato
       ctx.moveTo(247.5, 228.7);
       ctx.lineTo(255.2, 242.6);
       ctx.lineTo(146.3, 242.6);
@@ -94,7 +94,7 @@
       ctx.lineTo(247.5, 228.7);
       ctx.closePath();
 
-      // accessories/6/stroke/Tracciato composto/Tracciato
+      // accessories2/1/stroke/Tracciato composto/Tracciato
       ctx.moveTo(269.6, 228.7);
       ctx.lineTo(372.2, 228.7);
       ctx.lineTo(372.2, 242.6);
@@ -102,7 +102,7 @@
       ctx.lineTo(269.6, 228.7);
       ctx.closePath();
 
-      // accessories/6/stroke/Tracciato composto/Tracciato
+      // accessories2/1/stroke/Tracciato composto/Tracciato
       ctx.moveTo(199.7, 145.6);
       ctx.lineTo(224.2, 145.6);
       ctx.bezierCurveTo(229.7, 166.4, 243.3, 180.2, 259.3, 180.2);
@@ -130,7 +130,7 @@
       ctx.fillStyle = "rgb(35, 30, 32)";
       ctx.fill();
 
-      // accessories/6/stroke/Tracciato
+      // accessories2/1/stroke/Tracciato
       ctx.beginPath();
       ctx.moveTo(327.9, 157.0);
       ctx.bezierCurveTo(327.9, 157.0, 361.0, 165.0, 358.0, 206.0);
