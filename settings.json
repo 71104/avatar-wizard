@@ -192,5 +192,53 @@
 			"hair",
 			"accessories2"
 		]
+	}, {
+		"category": "accessories1",
+		"type": "1",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories1",
+		"type": "2",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories1",
+		"type": "3",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories1",
+		"type": "4",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories1",
+		"type": "5",
+		"excludes": [
+			"hands"
+		]
+	}, {
+		"category": "accessories2",
+		"type": "1",
+		"excludes": [
+			"hair"
+		]
+	}, {
+		"category": "accessories2",
+		"type": "2",
+		"excludes": [
+			"hair"
+		]
+	}, {
+		"category": "accessories2",
+		"type": "3",
+		"excludes": [
+			"hair"
+		]
 	}]
 }
