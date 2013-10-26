@@ -161,7 +161,9 @@ function AvatarWizard(canvas, ready) {
 				exclusions.forEach(function (exclusion) {
 					if (descriptor.hasOwnProperty(exclusion.category) &&
 						(!exclusion.hasOwnProperty('type') ||
-						(descriptor[exclusion.category] == exclusion.type)))
+						((typeof descriptor[exclusion.category] !== 'string') &&
+							(descriptor[exclusion.category].type == exclusion.type) ||
+							(descriptor[exclusion.category] == exclusion.type))))
 					{
 						layers.forEach(function (category, index) {
 							if (exclusion.excludes.indexOf(category) >= 0) {
