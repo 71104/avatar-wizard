@@ -13,6 +13,7 @@ module.exports = function (grunt) {
 		},
 		clean: ['doc']
 	});
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 	grunt.registerTask('default', ['yuidoc']);
 };
