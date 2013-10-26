@@ -9,8 +9,7 @@
 				"mouth",
 				"facial_details",
 				"hair",
-				"hands",
-				"accessories",
+				"accessories2",
 				"special_head"
 			],
 			"area": {
@@ -31,9 +30,10 @@
 				"mouth",
 				"facial_details",
 				"hair",
+				"accessories2",
+				"special_head",
 				"hands",
-				"accessories",
-				"special_head"
+				"accessories1"
 			],
 			"area": {
 				"x": 111,
