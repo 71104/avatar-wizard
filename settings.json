@@ -118,19 +118,21 @@
 			"13",
 			"14"
 		],
-		"accessories": [
+		"accessories1": [
 			"1",
 			"2",
 			"3",
 			"4",
 			"5",
 			"6",
-			"7",
-			"8",
-			"9",
-			"10",
-			"11",
-			"12"
+			"7"
+		],
+		"accessories2": [
+			"1",
+			"2",
+			"3",
+			"4",
+			"5"
 		],
 		"special_body": [
 			"1",
@@ -167,9 +169,10 @@
 		"mouth",
 		"facial_details",
 		"hair",
+		"accessories2",
+		"special_head",
 		"hands",
-		"accessories",
-		"special_head"
+		"accessories1"
 	],
 	"exclusions": [{
 		"category": "special_body",
@@ -177,7 +180,7 @@
 			"body",
 			"hands",
 			"outfit",
-			"accessories"
+			"accessories1"
 		]
 	}, {
 		"category": "special_head",
@@ -187,55 +190,7 @@
 			"mouth",
 			"facial_details",
 			"hair",
-			"accessories"
-		]
-	}, {
-		"category": "accessories",
-		"type": "1",
-		"excludes": [
-			"hands"
-		]
-	}, {
-		"category": "accessories",
-		"type": "2",
-		"excludes": [
-			"hands"
-		]
-	}, {
-		"category": "accessories",
-		"type": "3",
-		"excludes": [
-			"hands"
-		]
-	}, {
-		"category": "accessories",
-		"type": "4",
-		"excludes": [
-			"hands"
-		]
-	}, {
-		"category": "accessories",
-		"type": "5",
-		"excludes": [
-			"hands"
-		]
-	}, {
-		"category": "accessories",
-		"type": "6",
-		"excludes": [
-			"hair"
-		]
-	}, {
-		"category": "accessories",
-		"type": "7",
-		"excludes": [
-			"hair"
-		]
-	}, {
-		"category": "accessories",
-		"type": "8",
-		"excludes": [
-			"hair"
+			"accessories2"
 		]
 	}]
 }
