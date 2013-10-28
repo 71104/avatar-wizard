@@ -89,7 +89,7 @@
  *
  * TODO document `exclusions`
  *
- * The full path of a part is build as follows:
+ * The full path of a part is built as follows:
  *
  *	path/category/part.json
  *
