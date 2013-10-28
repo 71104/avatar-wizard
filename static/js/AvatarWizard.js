@@ -32,33 +32,30 @@ function AvatarWizard(canvas, settings) {
 
 	function loadCategories(ready, progress) {
 		$.getJSON(basePath + 'avaparts', function (avaparts) {
-			progress(Math.round(100 / (avaparts.parts.length + 1)));
+			progress(Math.round(100 / (avaparts.categories.length + 1)));
 			var count = 0;
-			avaparts.parts.forEach(function (category) {
+			avaparts.categories.forEach(function (categoryName) {
 				count++;
-				$.getJSON(basePath + 'avaparts/' + category, function (category) {
+				$.getJSON(basePath + 'avaparts/' + categoryName, function (category) {
+					avaparts.categories[categoryName].parts = category;
 					if (--count) {
-						progress(Math.round((avaparts.parts.length - count + 1) * 100 / (avaparts.parts.length + 1)));
+						progress(Math.round((avaparts.categories.length - count + 1) * 100 / (avaparts.categories.length + 1)));
 					} else {
-						ready(); // TODO pass JSON data
+						ready(avaparts);
 					}
 				});
 			});
 		});
 	}
 
-	$.getJSON('settings.json', function (settings) {
-		if (!/\/$/.test(settings.path)) {
-			settings.path += '/';
-		}
-
+	loadCategories(function (avaparts) {
 		function fetchAll(callback) {
 			var count = 0;
 			function fetchPart(category, type) {
 				var name = category + '/' + type;
 				if (!functions.hasOwnProperty(name)) {
 					count++;
-					$.get(settings.path + name + '.js', function (code) {
+					$.get(basePath + 'avaparts/' + name, function (code) {
 						eval(code);
 						functions[name] = draw;
 						if (!--count) {
@@ -81,9 +78,7 @@ function AvatarWizard(canvas, settings) {
 			}
 		}
 
-		var parts = settings.parts;
-		var layers = settings.layers;
-		var exclusions = settings.exclusions;
+		var categories = avaparts;
 
 		function Renderer(canvas, settings) {
 			var thisObject = this;
@@ -91,7 +86,7 @@ function AvatarWizard(canvas, settings) {
 			var layerMask = [];
 
 			function resetLayerMask() {
-				layerMask = layers.map(function () {
+				layerMask = categories.map(function () {
 					return true;
 				});
 				exclusions.forEach(function (exclusion) {
@@ -101,8 +96,8 @@ function AvatarWizard(canvas, settings) {
 							(descriptor[exclusion.category].type == exclusion.type) ||
 							(descriptor[exclusion.category] == exclusion.type))))
 					{
-						layers.forEach(function (category, index) {
-							if (exclusion.excludes.indexOf(category) >= 0) {
+						categories.forEach(function (category, index) {
+							if (exclusion.excludes.indexOf(category.id) >= 0) {
 								layerMask[index] = false;
 							}
 						});
@@ -168,9 +163,9 @@ function AvatarWizard(canvas, settings) {
 				context.setTransform(1, 0, 0, 1, 0, 0);
 				context.clearRect(0, 0, width, height);
 				context.restore();
-				for (var i = 0; i < layers.length; i++) {
+				for (var i = 0; i < categories.length; i++) {
 					if (layerMask[i]) {
-						drawElement(layers[i]);
+						drawElement(categories[i].id);
 					}
 				}
 				drawing = false;
@@ -199,8 +194,8 @@ function AvatarWizard(canvas, settings) {
 				if (!Array.isArray(names)) {
 					names = [names];
 				}
-				layers.forEach(function (name, index) {
-					if (names.indexOf(name) < 0) {
+				categories.forEach(function (category, index) {
+					if (names.indexOf(category.id) < 0) {
 						layerMask[index] = false;
 					}
 				});
@@ -212,8 +207,8 @@ function AvatarWizard(canvas, settings) {
 			stretch: false,
 			x: 0,
 			y: 0,
-			width: settings.canonicalWidth,
-			height: settings.canonicalHeight
+			width: avaparts.settings.area.width,
+			height: avaparts.settings.area.height
 		});
 
 		/**
@@ -335,7 +330,8 @@ function AvatarWizard(canvas, settings) {
 		 *
 		 * @method select
 		 * @chainable
-		 * @param category String The category the part is being selected for.
+		 * @param categoryName String The category the part is being selected
+		 * for.
 		 * @param [type] String The part name. If not specified, the part is
 		 * removed.
 		 * @param [callback] Function An optional user-defined callback function
@@ -345,28 +341,35 @@ function AvatarWizard(canvas, settings) {
 		 * @example
 		 *	wizard.select('hair', 'blonde1');
 		 */
-		thisObject.select = function (category, type, callback) {
+		thisObject.select = function (categoryName, type, callback) {
 			if (typeof type !== 'undefined') {
 				type += '';
-				if (parts.hasOwnProperty(category) && (parts[category].indexOf(type) >= 0)) {
-					if (descriptor.hasOwnProperty(category)) {
-						if (typeof descriptor[category] !== 'string') {
-							descriptor[category].type = type;
+				if ((function () {
+					for (var i = 0; i < categories.length; i++) {
+						if ((categories[i].id == categoryName) && categories[i].hasOwnProperty(type)) {
+							return true;
+						}
+					}
+					throw 'Invalid category ID: "' + categoryName + '"';
+				})()) {
+					if (descriptor.hasOwnProperty(categoryName)) {
+						if (typeof descriptor[categoryName] !== 'string') {
+							descriptor[categoryName].type = type;
 						} else {
-							descriptor[category] = type;
+							descriptor[categoryName] = type;
 						}
 					} else {
-						descriptor[category] = type;
+						descriptor[categoryName] = type;
 					}
 					fetchAll(function () {
 						renderer.resetLayerMask().issue();
 						callback && callback();
 					});
 				} else {
-					throw 'Unregistered category or image ID: "' + category + '", "' + type + '"';
+					throw 'Invalid part type: "' + type + '"';
 				}
 			} else {
-				delete descriptor[category];
+				delete descriptor[categoryName];
 				renderer.resetLayerMask().issue();
 				callback && callback();
 			}
@@ -422,10 +425,10 @@ function AvatarWizard(canvas, settings) {
 		};
 
 		function getThumbnail(width, height, thumbnailSettings) {
-			if (!settings.thumbnails.hasOwnProperty(thumbnailSettings.configName)) {
+			if (!avaparts.settings.thumbnails.hasOwnProperty(thumbnailSettings.configName)) {
 				throw 'Invalid thumbnail configuration name';
 			}
-			var config = settings.thumbnails[thumbnailSettings.configName];
+			var config = avaparts.settings.thumbnails[thumbnailSettings.configName];
 			var canvas = document.createElement('canvas');
 			canvas.width = width;
 			canvas.height = height;
@@ -492,5 +495,7 @@ function AvatarWizard(canvas, settings) {
 		};
 
 		settings.ready();
+	}, function (progress) {
+		settings.progress && settings.progress(progress);
 	});
 }

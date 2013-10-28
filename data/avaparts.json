@@ -49,7 +49,7 @@
 			}
 		}
 	},
-	"parts": [{
+	"categories": [{
 		"name": "shadow"
 	}, {
 		"name": "body",
