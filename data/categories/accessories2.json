@@ -1,0 +1,35 @@
+{
+	"1": {
+		"text": "Sheriff Hat",
+		"thumbnail": "thumbnails/accessories2/1.png",
+		"colored": false,
+		"unlocked": true,
+		"excludes": ["hair"]
+	},
+	"2": {
+		"text": "Front Cap",
+		"thumbnail": "thumbnails/accessories2/2.png",
+		"colored": true,
+		"unlocked": true,
+		"excludes": ["hair"]
+	},
+	"3": {
+		"text": "Back Cap",
+		"thumbnail": "thumbnails/accessories2/3.png",
+		"colored": true,
+		"unlocked": true,
+		"excludes": ["hair"]
+	},
+	"4": {
+		"text": "Sunglasses",
+		"thumbnail": "thumbnails/accessories2/4.png",
+		"colored": true,
+		"unlocked": true
+	},
+	"5": {
+		"text": "Glasses",
+		"thumbnail": "thumbnails/accessories2/5.png",
+		"colored": false,
+		"unlocked": true
+	}
+}

@@ -1,0 +1,53 @@
+{
+	"settings": {
+		"area": {
+			"x": 0,
+			"y": 0,
+			"width": 540,
+			"height": 720,
+		},
+		"thumbnails": {
+			"head": {
+				"layers": [
+					"head",
+					"eyes",
+					"mouth",
+					"facial_details",
+					"hair",
+					"accessories2",
+					"special_head"
+				],
+				"area": {
+					"x": 111,
+					"y": 105,
+					"width": 447,
+					"height": 465
+				}
+			},
+			"full": {
+				"layers": [
+					"shadow",
+					"body",
+					"outfit",
+					"special_body",
+					"head",
+					"eyes",
+					"mouth",
+					"facial_details",
+					"hair",
+					"accessories2",
+					"special_head",
+					"hands",
+					"accessories1"
+				],
+				"area": {
+					"x": 111,
+					"y": 105,
+					"width": 447,
+					"height": 579
+				}
+			}
+		}
+	},
+	"parts": []
+}
