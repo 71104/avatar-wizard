@@ -1,0 +1,49 @@
+{
+	"1": {
+		"text": "iPhone",
+		"thumbnail": "thumbnails/accessories1/1.png",
+		"colored": true,
+		"unlocked": true,
+		"excludes": ["hands"]
+	},
+	"2": {
+		"text": "Gun",
+		"thumbnail": "thumbnails/accessories1/2.png",
+		"colored": false,
+		"unlocked": true,
+		"excludes": ["hands"]
+	},
+	"3": {
+		"text": "Cheer",
+		"thumbnail": "thumbnails/accessories1/3.png",
+		"colored": false,
+		"unlocked": true,
+		"excludes": ["hands"]
+	},
+	"4": {
+		"text": "Bat",
+		"thumbnail": "thumbnails/accessories1/4.png",
+		"colored": false,
+		"unlocked": true,
+		"excludes": ["hands"]
+	},
+	"5": {
+		"text": "Ball",
+		"thumbnail": "thumbnails/accessories1/5.png",
+		"colored": false,
+		"unlocked": true,
+		"excludes": ["hands"]
+	},
+	"6": {
+		"text": "Heart",
+		"thumbnail": "thumbnails/accessories1/6.png",
+		"colored": true,
+		"unlocked": true
+	},
+	"7": {
+		"text": "Pendant",
+		"thumbnail": "thumbnails/accessories1/7.png",
+		"colored": true,
+		"unlocked": true
+	}
+}
