@@ -2,114 +2,49 @@
  * Manages the composition of a user avatar using predefined graphic parts. This
  * class requires jQuery.
  *
- * The constructor needs to fetch a `settings.json` file through AJAX and its
- * methods may not be invoked until this has been done. The user-defined `ready`
- * callback is invoked by the `AvatarWizard` object when it is ready.
- *
- * The `settings.json` file must have the following format:
- *
- *	{
- *		"canonicalWidth": 123,
- *		"canonicalHeight": 456,
- *		"thumbnails": {
- *			"config1": {
- *				"layers": [
- *					"category1",
- *					"category2",
- *					"category3",
- *					...
- *				],
- *				"area": {
- *					"x": 10,
- *					"y": 10,
- *					"width": 80,
- *					"height": 400
- *				}
- *			},
- *			"config2": {
- *				"layers": [
- *					"category3",
- *					"category4",
- *					"category5",
- *					...
- *				],
- *				"area": {
- *					"x": 10,
- *					"y": 10,
- *					"width": 80,
- *					"height": 400
- *				}
- *			},
- *			...
- *		},
- *		"path": "path/to/parts",
- *		"parts": {
- *			"category1": [
- *				"type1",
- *				"type2",
- *				...
- *			],
- *			"category2": [
- *				"type1",
- *				"type2",
- *				...
- *			],
- *			"category3": [
- *				.
- *				.
- *				.
- *			],
- *		},
- *		"layers": [
- *			"category1",
- *			"category2",
- *			"category3",
- *			...
- *		]
- *	}
- *
- * `canonicalWidth` and `canonicalHeight` are the dimensions of a rectangular
- * area the coordinates in the js image files refer to. Modifying these
- * parameters influences the size of the avatar relative to the destination
- * canvas.
- *
- * TODO document `thumbnails`
- *
- * `path` is the path of the directory tree containing the js image files. The
- * directory represented by `path` must contain one subdirectory for each
- * category; each category directory must in turn contain one `.js` file for
- * each part/type.
- *
- * "parts" is the set of registered parts and categories. The "parts" object
- * maps category names to part arrays (each key is a category name and its value
- * is an array of part names).
- *
- * "layers" specifies the order in which the several parts are drawn to the
- * canvas; it is an array of category names.
- *
- * TODO document `exclusions`
- *
- * The full path of a part is built as follows:
- *
- *	path/category/part.json
- *
- * which means that the "path" option is prepended, the category name follows,
- * the part name follows and the `.json` file extension is appended.
+ * TODO refer to REST API documentation
  *
  * @class AvatarWizard
  * @constructor
  * @param canvas Mixed Specifies the HTML5 canvas where the avatar has to be
  * drawn. It can be specified as a HTMLCanvasElement object, string CSS selector
  * or jQuery object.
- * @param ready Function A user-defined callback function invoked after the
- * `AvatarWizard` object has read its configuration file and its ready to
+ * @param settings Object TODO
+ * @param [settings.basePath=""] String TODO
+ * @param settings.ready Function A user-defined callback function invoked after
+ * the `AvatarWizard` object has read its configuration file and its ready to
  * receive method invocations.
+ * @param [settings.progress] Function TODO
  */
-function AvatarWizard(canvas, ready) {
+function AvatarWizard(canvas, settings) {
 	var thisObject = this;
 
 	var functions = {};
 	var descriptor = {};
+
+	function loadCategories(ready, progress) {
+		var basePath = '';
+		if (settings.hasOwnProperty('basePath')) {
+			basePath = settings.basePath;
+		}
+		if (!/\/$/.test(basePath)) {
+			basePath += '/';
+		}
+		$.getJSON(basePath + 'avaparts', function (avaparts) {
+			progress(Math.round(100 / (avaparts.parts.length + 1)));
+			var count = 0;
+			avaparts.parts.forEach(function (category) {
+				count++;
+				$.getJSON(basePath + 'avaparts/' + category, function (category) {
+					if (--count) {
+						progress(Math.round((avaparts.parts.length - count + 1) * 100 / (avaparts.parts.length + 1)));
+					} else {
+						ready(); // TODO pass JSON data
+					}
+				});
+			});
+		});
+	}
 
 	$.getJSON('settings.json', function (settings) {
 		if (!/\/$/.test(settings.path)) {
@@ -555,6 +490,6 @@ function AvatarWizard(canvas, ready) {
 			return getThumbnail(width, height, settings).toDataURL('image/png');
 		};
 
-		ready();
+		settings.ready();
 	});
 }
