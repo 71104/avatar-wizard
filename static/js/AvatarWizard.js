@@ -19,17 +19,18 @@
 function AvatarWizard(canvas, settings) {
 	var thisObject = this;
 
+	var basePath = '';
+	if (settings.hasOwnProperty('basePath')) {
+		basePath = settings.basePath;
+	}
+	if (!/\/$/.test(basePath)) {
+		basePath += '/';
+	}
+
 	var functions = {};
 	var descriptor = {};
 
 	function loadCategories(ready, progress) {
-		var basePath = '';
-		if (settings.hasOwnProperty('basePath')) {
-			basePath = settings.basePath;
-		}
-		if (!/\/$/.test(basePath)) {
-			basePath += '/';
-		}
 		$.getJSON(basePath + 'avaparts', function (avaparts) {
 			progress(Math.round(100 / (avaparts.parts.length + 1)));
 			var count = 0;
