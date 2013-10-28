@@ -49,5 +49,54 @@
 			}
 		}
 	},
-	"parts": []
+	"parts": [{
+		"name": "shadow"
+	}, {
+		"name": "body",
+		"thumbnail": "thumbnails/body.png"
+	}, {
+		"name": "outfit",
+		"text": "Outfit",
+		"thumbnail": "thumbnails/outfit.png"
+	}, {
+		"name": "special_body",
+		"text": "Special Body",
+		"thumbnail": "thumbnails/special_body.png"
+	}, {
+		"name": "head",
+		"text": "Head",
+		"thumbnail": "thumbnails/head.png"
+	}, {
+		"name": "eyes",
+		"text": "Eyes",
+		"thumbnail": "thumbnails/eyes.png"
+	}, {
+		"name": "mouth",
+		"text": "Mouth",
+		"thumbnail": "thumbnails/mouth.png"
+	}, {
+		"name": "facial_details",
+		"text": "Facial Details",
+		"thumbnail": "thumbnails/facial_details.png"
+	}, {
+		"name": "hair",
+		"text": "Hair",
+		"thumbnail": "thumbnails/hair.png"
+	}, {
+		"name": "accessories2",
+		"text": "Accessories",
+		"thumbnail": "thumbnails/accessories2.png"
+	}, {
+		"name": "special_head",
+		"text": "Special Head",
+		"thumbnail": "thumbnails/special_head.png"
+	}, {
+		"name": "hands",
+		"text": "Hands",
+		"thumbnail": "thumbnails/hands.png"
+	}, {
+		"name": "accessories1",
+		"text": "Accessories",
+		"thumbnail": "thumbnails/accessories1.png"
+	}]
 }
