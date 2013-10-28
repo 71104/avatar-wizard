@@ -1,0 +1,62 @@
+{
+	"1": {
+		"text": "Ironman",
+		"thumbnail": "thumbnails/special_body/1.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"2": {
+		"text": "Ninja",
+		"thumbnail": "thumbnails/special_body/2.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"3": {
+		"text": "Male Indian",
+		"thumbnail": "thumbnails/special_body/3.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"4": {
+		"text": "Cosmonaut",
+		"thumbnail": "thumbnails/special_body/4.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"5": {
+		"text": "Batman",
+		"thumbnail": "thumbnails/special_body/5.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"6": {
+		"text": "Cat Woman",
+		"thumbnail": "thumbnails/special_body/6.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"7": {
+		"text": "Female Indian",
+		"thumbnail": "thumbnails/special_body/7.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"8": {
+		"text": "Worker",
+		"thumbnail": "thumbnails/special_body/8.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"9": {
+		"text": "Rambo",
+		"thumbnail": "thumbnails/special_body/9.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"10": {
+		"text": "Alien",
+		"thumbnail": "thumbnails/special_body/10.png",
+		"colored": false,
+		"unlocked": true
+	}
+}
