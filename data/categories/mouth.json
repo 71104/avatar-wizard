@@ -1,0 +1,62 @@
+{
+	"1": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/1.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"2": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/2.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"3": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/3.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"4": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/4.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"5": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/5.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"6": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/6.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"7": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/7.png",
+		"colored": true,
+		"unlocked": true
+	},
+	"8": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/8.png",
+		"colored": true,
+		"unlocked": true
+	},
+	"9": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/9.png",
+		"colored": true,
+		"unlocked": true
+	},
+	"10": {
+		"text": "",
+		"thumbnail": "thumbnails/mouth/10.png",
+		"colored": false,
+		"unlocked": true
+	}
+}

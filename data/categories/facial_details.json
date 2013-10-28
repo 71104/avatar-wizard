@@ -1,0 +1,32 @@
+{
+	"1": {
+		"text": "Beard 1",
+		"thumbnail": "thumbnails/facial_details/1.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"2": {
+		"text": "Sundrops",
+		"thumbnail": "thumbnails/facial_details/2.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"3": {
+		"text": "Cheeks",
+		"thumbnail": "thumbnails/facial_details/3.png",
+		"colored": false,
+		"unlocked": true
+	},
+	"4": {
+		"text": "Beard 2",
+		"thumbnail": "thumbnails/facial_details/4.png",
+		"colored": true,
+		"unlocked": true
+	},
+	"5": {
+		"text": "Beard 3",
+		"thumbnail": "thumbnails/facial_details/5.png",
+		"colored": true,
+		"unlocked": true
+	}
+}
