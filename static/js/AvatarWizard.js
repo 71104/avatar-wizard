@@ -96,17 +96,17 @@ function AvatarWizard(canvas, settings) {
 								if (category.parts[descriptor[categoryName]].hasOwnProperty('excludes')) {
 									category.parts[descriptor[categoryName]].excludes.forEach(function (exclusion) {
 										if (typeof exclusion !== 'string') {
-											categories.forEach(function (categoryName, index) {
-												if ((categoryName == exclusion.category) &&
-													descriptor.hasOwnProperty(categoryName) &&
-													(descriptor[categoryName] == exclusion.id))
+											categories.forEach(function (category, index) {
+												if ((category.name == exclusion.category) &&
+													descriptor.hasOwnProperty(category.name) &&
+													(descriptor[category.name] == exclusion.id))
 												{
 													layerMask[index] = false;
 												}
 											});
 										} else {
-											categories.forEach(function (categoryName, index) {
-												if (categoryName == exclusion) {
+											categories.forEach(function (category, index) {
+												if (category.name == exclusion) {
 													layerMask[index] = false;
 												}
 											});
