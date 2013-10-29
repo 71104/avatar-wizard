@@ -89,20 +89,34 @@ function AvatarWizard(canvas, settings) {
 				layerMask = categories.map(function () {
 					return true;
 				});
-				exclusions.forEach(function (exclusion) {
-					if (descriptor.hasOwnProperty(exclusion.category) &&
-						(!exclusion.hasOwnProperty('type') ||
-						((typeof descriptor[exclusion.category] !== 'string') &&
-							(descriptor[exclusion.category].type == exclusion.type) ||
-							(descriptor[exclusion.category] == exclusion.type))))
-					{
+				for (var categoryName in descriptor) {
+					if (descriptor.hasOwnProperty(categoryName)) {
 						categories.forEach(function (category, index) {
-							if (exclusion.excludes.indexOf(category.id) >= 0) {
-								layerMask[index] = false;
+							if (category.name == categoryName) {
+								if (category.parts[descriptor[categoryName]].hasOwnProperty('excludes')) {
+									category.parts[descriptor[categoryName]].excludes.forEach(function (exclusion) {
+										if (typeof exclusion !== 'string') {
+											categories.forEach(function (categoryName, index) {
+												if ((categoryName == exclusion.category) &&
+													descriptor.hasOwnProperty(categoryName) &&
+													(descriptor[categoryName] == exclusion.id))
+												{
+													layerMask[index] = false;
+												}
+											});
+										} else {
+											categories.forEach(function (categoryName, index) {
+												if (categoryName == exclusion) {
+													layerMask[index] = false;
+												}
+											});
+										}
+									});
+								}
 							}
 						});
 					}
-				});
+				}
 				return thisObject;
 			}
 
@@ -165,7 +179,7 @@ function AvatarWizard(canvas, settings) {
 				context.restore();
 				for (var i = 0; i < categories.length; i++) {
 					if (layerMask[i]) {
-						drawElement(categories[i].id);
+						drawElement(categories[i].name);
 					}
 				}
 				drawing = false;
@@ -195,7 +209,7 @@ function AvatarWizard(canvas, settings) {
 					names = [names];
 				}
 				categories.forEach(function (category, index) {
-					if (names.indexOf(category.id) < 0) {
+					if (names.indexOf(category.name) < 0) {
 						layerMask[index] = false;
 					}
 				});
@@ -346,7 +360,7 @@ function AvatarWizard(canvas, settings) {
 				type += '';
 				if ((function () {
 					for (var i = 0; i < categories.length; i++) {
-						if ((categories[i].id == categoryName) && categories[i].hasOwnProperty(type)) {
+						if ((categories[i].name == categoryName) && categories[i].parts.hasOwnProperty(type)) {
 							return true;
 						}
 					}

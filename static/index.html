@@ -226,23 +226,25 @@ $(function () {
 
 	$('button').button();
 
-	wizard = new AvatarWizard('canvas#canvas', function () {
-		$('.category').click(function () {
-			$('.category').removeClass('selected');
-			$('.image-selector').hide();
-			$('#' + $(this).addClass('selected').data('category') + '-selector').show();
-		});
-		$('.image').click(function () {
-			var category = $(this).data('category');
-			$('#' + category + '-selector .image').removeClass('selected');
-			wizard.select(category, $(this).addClass('selected').data('image'));
-		});
-		wizard.loadAvatar({
-			shadow: '1',
-			body: '1',
-			head: '1',
-			hands: '1'
-		});
+	wizard = new AvatarWizard('canvas#canvas', {
+		ready: function () {
+			$('.category').click(function () {
+				$('.category').removeClass('selected');
+				$('.image-selector').hide();
+				$('#' + $(this).addClass('selected').data('category') + '-selector').show();
+			});
+			$('.image').click(function () {
+				var category = $(this).data('category');
+				$('#' + category + '-selector .image').removeClass('selected');
+				wizard.select(category, $(this).addClass('selected').data('image'));
+			});
+			wizard.loadAvatar({
+				shadow: '1',
+				body: '1',
+				head: '1',
+				hands: '1'
+			});
+		}
 	});
 
 	(function (colorOverview) {
