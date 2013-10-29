@@ -2,19 +2,25 @@
  * Manages the composition of a user avatar using predefined graphic parts. This
  * class requires jQuery.
  *
- * TODO refer to REST API documentation
+ * The avatar parts and settings are read from a specified base path that
+ * implements the Avaparts REST APIs:
+ * http://gamepix-server-cs.cloudapp.net/v1/doc
  *
  * @class AvatarWizard
  * @constructor
  * @param canvas Mixed Specifies the HTML5 canvas where the avatar has to be
  * drawn. It can be specified as a HTMLCanvasElement object, string CSS selector
  * or jQuery object.
- * @param settings Object TODO
- * @param [settings.basePath=""] String TODO
+ * @param settings Object A dictionary object containing several settings.
+ * @param [settings.basePath=""] String The base URL that implements the
+ * Avaparts API where avatar parts and configurations are read from.
  * @param settings.ready Function A user-defined callback function invoked after
  * the `AvatarWizard` object has read its configuration file and its ready to
  * receive method invocations.
- * @param [settings.progress] Function TODO
+ * @param [settings.progress] Function A user-defined callback function invoked
+ * several times during the initial loading process.
+ * @param settings.progress.progress Number A percentage value indicating the
+ * current loading progress in a `[0, 100)` range.
  */
 function AvatarWizard(canvas, settings) {
 	var thisObject = this;
