@@ -34,10 +34,10 @@ function AvatarWizard(canvas, settings) {
 		$.getJSON(basePath + 'avaparts', function (avaparts) {
 			progress(Math.round(100 / (avaparts.categories.length + 1)));
 			var count = 0;
-			avaparts.categories.forEach(function (categoryName) {
+			avaparts.categories.forEach(function (category) {
 				count++;
-				$.getJSON(basePath + 'avaparts/' + categoryName, function (category) {
-					avaparts.categories[categoryName].parts = category;
+				$.getJSON(basePath + 'avaparts/' + category.name, function (parts) {
+					category.parts = parts;
 					if (--count) {
 						progress(Math.round((avaparts.categories.length - count + 1) * 100 / (avaparts.categories.length + 1)));
 					} else {
@@ -78,7 +78,7 @@ function AvatarWizard(canvas, settings) {
 			}
 		}
 
-		var categories = avaparts;
+		var categories = avaparts.categories;
 
 		function Renderer(canvas, settings) {
 			var thisObject = this;
