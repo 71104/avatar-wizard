@@ -242,32 +242,35 @@ function AvatarWizard(canvas, settings) {
 		 * The specified object must have the following format:
 		 *
 		 *	{
-		 *		"category1": "type3",
+		 *		"category1": "type4",
 		 *		"category2": {
-		 *			"type": "type2",
+		 *			"type": "type3",
 		 *			"color": "#abcdef"
 		 *		},
 		 *		"category3": {
-		 *			"type": "type1",
+		 *			"type": "type2",
 		 *			"color": "rgb(12, 34, 56)"
+		 *		},
+		 *		"category4": {
+		 *			"type": "type1"
 		 *		},
 		 *		.
 		 *		.
 		 *		.
 		 *	}
 		 *
-		 * Each key must be a valid category name (one registered in the
-		 * `settings.json` file, as documented in the
-		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}})
-		 * and its value can be either a string (a valid part/type name
-		 * registered for that category) or an object; in the latter case it
-		 * contains a mandatory `type` field specifying the part/type name and
-		 * an optional `color` field specifying a CSS color for the part.
+		 * Each key must be a valid category name returned by the
+		 * [Avaparts API](http://gamepix-server-cs.cloudapp.net/v1/doc) and its
+		 * value can be either a string (a valid part/type name for that
+		 * category) or an object; in the latter case it contains a mandatory
+		 * `type` field specifying the part/type name and an optional `color`
+		 * field specifying a CSS color for the part.
 		 *
 		 * Note that the specified JSON object is deep-copied, so subsequent
 		 * modifications to it do not have any effect on the avatar managed by
 		 * this object. To modify the managed avatar use the
-		 * {{#crossLink "AvatarWizard/select"}}select{{/crossLink}} method.
+		 * {{#crossLink "AvatarWizard/select"}}select{{/crossLink}} and
+		 * {{#crossLink "AvatarWizard/setColor"}}setColor{{/crossLink}} methods.
 		 *
 		 * @method loadAvatar
 		 * @chainable
@@ -284,8 +287,8 @@ function AvatarWizard(canvas, settings) {
 				if (newDescriptor.hasOwnProperty(category)) {
 					if (typeof newDescriptor[category] !== 'string') {
 						descriptor[category] = {
-							type: newDescriptor[category].type + '',
-							color: newDescriptor[category].color + ''
+							type: '' + newDescriptor[category].type,
+							color: '' + newDescriptor[category].color
 						};
 					} else {
 						descriptor[category] = {
@@ -340,10 +343,6 @@ function AvatarWizard(canvas, settings) {
 		/**
 		 * Selects the specified part for the specified category and updates the
 		 * rendering of the avatar on the canvas.
-		 *
-		 * Both the category and part/type names must be valid names registered
-		 * in the `settings.json` file, as explained in the
-		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}}.
 		 *
 		 * To remove a currently selected part, invoke `select` for its category
 		 * without specifying the `type` argument.
@@ -464,12 +463,11 @@ function AvatarWizard(canvas, settings) {
 		 * must be stretched to fit the specified width and height exactly.
 		 * `false` indicates that the avatar's proportions are maintained.
 		 * @param settings.configName String The thumbnail configuration to use.
-		 * It must be the name of a valid thumbnail configuration registered in
-		 * the `thumbnails` field of the `settings.json` file.
-		 *
-		 * See the
-		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}}
-		 * for more information.
+		 * It must be the name of a valid thumbnail configuration as per the
+		 * referred [Avaparts](http://gamepix-server-cs.cloudapp.net/v1/doc)
+		 * server (see the
+		 * {{#crossLink "AvatarWizard"}}constructor{{/crossLink}}
+		 * documentation).
 		 * @return HTMLElement An HTML element of the specified dimensions
 		 * containing a prerendered avatar.
 		 */
@@ -487,12 +485,11 @@ function AvatarWizard(canvas, settings) {
 		 * must be stretched to fit the specified width and height exactly.
 		 * `false` indicates that the avatar's proportions are maintained.
 		 * @param settings.configName String The thumbnail configuration to use.
-		 * It must be the name of a valid thumbnail configuration registered in
-		 * the `thumbnails` field of the `settings.json` file.
-		 *
-		 * See the
-		 * {{#crossLink "AvatarWizard"}}AvatarWizard constructor{{/crossLink}}
-		 * for more information.
+		 * It must be the name of a valid thumbnail configuration as per the
+		 * referred [Avaparts](http://gamepix-server-cs.cloudapp.net/v1/doc)
+		 * server (see the
+		 * {{#crossLink "AvatarWizard"}}constructor{{/crossLink}}
+		 * documentation).
 		 * @return String A data URI that encodes the generated image in PNG
 		 * format.
 		 */
