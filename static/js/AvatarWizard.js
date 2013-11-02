@@ -95,34 +95,30 @@ function AvatarWizard(canvas, settings) {
 				layerMask = categories.map(function () {
 					return true;
 				});
-				for (var categoryName in descriptor) {
-					if (descriptor.hasOwnProperty(categoryName)) {
-						categories.forEach(function (category, index) {
-							if (category.name == categoryName) {
-								if (category.parts[descriptor[categoryName]].hasOwnProperty('excludes')) {
-									category.parts[descriptor[categoryName]].excludes.forEach(function (exclusion) {
-										if (typeof exclusion !== 'string') {
-											categories.forEach(function (category, index) {
-												if ((category.name == exclusion.category) &&
-													descriptor.hasOwnProperty(category.name) &&
-													(descriptor[category.name] == exclusion.id))
-												{
-													layerMask[index] = false;
-												}
-											});
-										} else {
-											categories.forEach(function (category, index) {
-												if (category.name == exclusion) {
-													layerMask[index] = false;
-												}
-											});
+				categories.forEach(function (category, index) {
+					if (descriptor.hasOwnProperty(category.name)) {
+						if (category.parts[descriptor[category.name]].hasOwnProperty('excludes')) {
+							category.parts[descriptor[category.name]].excludes.forEach(function (exclusion) {
+								if (typeof exclusion !== 'string') {
+									categories.forEach(function (category, index) {
+										if ((category.name == exclusion.category) &&
+											descriptor.hasOwnProperty(category.name) &&
+											(descriptor[category.name] == exclusion.id))
+										{
+											layerMask[index] = false;
+										}
+									});
+								} else {
+									categories.forEach(function (category, index) {
+										if (category.name == exclusion) {
+											layerMask[index] = false;
 										}
 									});
 								}
-							}
-						});
+							});
+						}
 					}
-				}
+				});
 				return thisObject;
 			}
 
