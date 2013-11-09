@@ -90,7 +90,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_AvatarWizard.js.html#l1"><code>js\AvatarWizard.js:1</code></a>
+            Defined in: <a href="../files/static_js_AvatarWizard.js.html#l1"><code>static\js\AvatarWizard.js:1</code></a>
         </div>
     
 
@@ -104,88 +104,9 @@
 <div class="box intro">
     <p>Manages the composition of a user avatar using predefined graphic parts. This
 class requires jQuery.</p>
-<p>The constructor needs to fetch a <code>settings.json</code> file through AJAX and its
-methods may not be invoked until this has been done. The user-defined <code>ready</code>
-callback is invoked by the <code>AvatarWizard</code> object when it is ready.</p>
-<p>The <code>settings.json</code> file must have the following format:</p>
-<pre class="code prettyprint"><code>{
-    &quot;canonicalWidth&quot;: 123,
-    &quot;canonicalHeight&quot;: 456,
-    &quot;thumbnails&quot;: {
-        &quot;config1&quot;: {
-            &quot;layers&quot;: [
-                &quot;category1&quot;,
-                &quot;category2&quot;,
-                &quot;category3&quot;,
-                ...
-            ],
-            &quot;area&quot;: {
-                &quot;x&quot;: 10,
-                &quot;y&quot;: 10,
-                &quot;width&quot;: 80,
-                &quot;height&quot;: 400
-            }
-        },
-        &quot;config2&quot;: {
-            &quot;layers&quot;: [
-                &quot;category3&quot;,
-                &quot;category4&quot;,
-                &quot;category5&quot;,
-                ...
-            ],
-            &quot;area&quot;: {
-                &quot;x&quot;: 10,
-                &quot;y&quot;: 10,
-                &quot;width&quot;: 80,
-                &quot;height&quot;: 400
-            }
-        },
-        ...
-    },
-    &quot;path&quot;: &quot;path/to/parts&quot;,
-    &quot;parts&quot;: {
-        &quot;category1&quot;: [
-            &quot;type1&quot;,
-            &quot;type2&quot;,
-            ...
-        ],
-        &quot;category2&quot;: [
-            &quot;type1&quot;,
-            &quot;type2&quot;,
-            ...
-        ],
-        &quot;category3&quot;: [
-            .
-            .
-            .
-        ],
-    },
-    &quot;layers&quot;: [
-        &quot;category1&quot;,
-        &quot;category2&quot;,
-        &quot;category3&quot;,
-        ...
-    ]
-}</code></pre>
-<p><code>canonicalWidth</code> and <code>canonicalHeight</code> are the dimensions of a rectangular
-area the coordinates in the js image files refer to. Modifying these
-parameters influences the size of the avatar relative to the destination
-canvas.</p>
-<p>TODO document <code>thumbnails</code></p>
-<p><code>path</code> is the path of the directory tree containing the js image files. The
-directory represented by <code>path</code> must contain one subdirectory for each
-category; each category directory must in turn contain one <code>.js</code> file for
-each part/type.</p>
-<p>&quot;parts&quot; is the set of registered parts and categories. The &quot;parts&quot; object
-maps category names to part arrays (each key is a category name and its value
-is an array of part names).</p>
-<p>&quot;layers&quot; specifies the order in which the several parts are drawn to the
-canvas; it is an array of category names.</p>
-<p>TODO document <code>exclusions</code></p>
-<p>The full path of a part is built as follows:</p>
-<pre class="code prettyprint"><code>path/category/part.json</code></pre>
-<p>which means that the &quot;path&quot; option is prepended, the category name follows,
-the part name follows and the <code>.json</code> file extension is appended.</p>
+<p>The avatar parts and settings are read from a specified base path that
+implements the Avaparts REST APIs:
+<a href="http://gamepix-server-cs.cloudapp.net/v1/doc">http://gamepix-server-cs.cloudapp.net/v1/doc</a></p>
 
 </div>
 
@@ -207,7 +128,7 @@ the part name follows and the <code>.json</code> file extension is appended.</p>
             
                 <li class="arg">
                     
-                        <code>ready</code>
+                        <code>settings</code>
                     
                 </li>
             
@@ -240,7 +161,7 @@ the part name follows and the <code>.json</code> file extension is appended.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l1"><code>js\AvatarWizard.js:1</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l1"><code>static\js\AvatarWizard.js:1</code></a>
         
         </p>
 
@@ -280,19 +201,85 @@ or jQuery object.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">ready</code>
+                        <code class="param-name">settings</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Function A user-defined callback function invoked after the
-<code>AvatarWizard</code> object has read its configuration file and its ready to
-receive method invocations.</p>
+                        <p>Object A dictionary object containing several settings.</p>
 
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[basePath=&quot;&quot;]</code>
+                                    <span class="type"></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>String The base URL that implements the
+Avaparts API where avatar parts and configurations are read from.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">ready</code>
+                                    <span class="type"></span>
+                                
+
+                                <div class="param-description">
+                                    <p>Function A user-defined callback function invoked after
+the <code>AvatarWizard</code> object has read its configuration file and its ready to
+receive method invocations.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[progress]</code>
+                                    <span class="type"></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Function A user-defined callback function invoked
+several times during the initial loading process.</p>
+
+                                </div>
+
+                                
+                                    <ul class="params-list">
+                                        
+                                        <li class="param">
+                                            
+                                                <code class="param-name">progress</code>
+                                                <span class="type"></span>
+                                            
+
+                                            <div class="param-description">
+                                                Number A percentage value indicating the
+current loading progress in a <code>[0, 100)</code> range.
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -445,7 +432,7 @@ receive method invocations.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l351"><code>js\AvatarWizard.js:351</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l307"><code>static\js\AvatarWizard.js:307</code></a>
         
         </p>
 
@@ -532,7 +519,7 @@ internally by the AvatarWizard instance.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l440"><code>js\AvatarWizard.js:440</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l393"><code>static\js\AvatarWizard.js:393</code></a>
         
         </p>
 
@@ -656,7 +643,7 @@ method.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l533"><code>js\AvatarWizard.js:533</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l476"><code>static\js\AvatarWizard.js:476</code></a>
         
         </p>
 
@@ -751,11 +738,11 @@ must be stretched to fit the specified width and height exactly.
 
                                 <div class="param-description">
                                     <p>String The thumbnail configuration to use.
-It must be the name of a valid thumbnail configuration registered in
-the <code>thumbnails</code> field of the <code>settings.json</code> file.</p>
-<p>See the
-}AvatarWizard constructor{{/crossLink}}
-for more information.</p>
+It must be the name of a valid thumbnail configuration as per the
+referred <a href="http://gamepix-server-cs.cloudapp.net/v1/doc">Avaparts</a>
+server (see the
+}constructor{{/crossLink}}
+documentation).</p>
 
                                 </div>
 
@@ -835,7 +822,7 @@ format.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l369"><code>js\AvatarWizard.js:369</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l325"><code>static\js\AvatarWizard.js:325</code></a>
         
         </p>
 
@@ -956,7 +943,7 @@ selected for the specified category.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l507"><code>js\AvatarWizard.js:507</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l451"><code>static\js\AvatarWizard.js:451</code></a>
         
         </p>
 
@@ -1053,11 +1040,11 @@ must be stretched to fit the specified width and height exactly.
 
                                 <div class="param-description">
                                     <p>String The thumbnail configuration to use.
-It must be the name of a valid thumbnail configuration registered in
-the <code>thumbnails</code> field of the <code>settings.json</code> file.</p>
-<p>See the
-}AvatarWizard constructor{{/crossLink}}
-for more information.</p>
+It must be the name of a valid thumbnail configuration as per the
+referred <a href="http://gamepix-server-cs.cloudapp.net/v1/doc">Avaparts</a>
+server (see the
+}constructor{{/crossLink}}
+documentation).</p>
 
                                 </div>
 
@@ -1141,7 +1128,7 @@ containing a prerendered avatar.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l299"><code>js\AvatarWizard.js:299</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l238"><code>static\js\AvatarWizard.js:238</code></a>
         
         </p>
 
@@ -1156,30 +1143,33 @@ containing a prerendered avatar.</p>
 the rendering on the canvas.</p>
 <p>The specified object must have the following format:</p>
 <pre class="code prettyprint"><code>{
-    "category1": "type3",
+    "category1": "type4",
     "category2": {
-        "type": "type2",
+        "type": "type3",
         "color": "#abcdef"
     },
     "category3": {
-        "type": "type1",
+        "type": "type2",
         "color": "rgb(12, 34, 56)"
+    },
+    "category4": {
+        "type": "type1"
     },
     .
     .
     .
 }</code></pre>
-<p>Each key must be a valid category name (one registered in the
-<code>settings.json</code> file, as documented in the
-<a href="..\classes\AvatarWizard.html" class="crosslink">AvatarWizard constructor</a>)
-and its value can be either a string (a valid part/type name
-registered for that category) or an object; in the latter case it
-contains a mandatory <code>type</code> field specifying the part/type name and
-an optional <code>color</code> field specifying a CSS color for the part.</p>
+<p>Each key must be a valid category name returned by the
+<a href="http://gamepix-server-cs.cloudapp.net/v1/doc">Avaparts API</a> and its
+value can be either a string (a valid part/type name for that
+category) or an object; in the latter case it contains a mandatory
+<code>type</code> field specifying the part/type name and an optional <code>color</code>
+field specifying a CSS color for the part.</p>
 <p>Note that the specified JSON object is deep-copied, so subsequent
 modifications to it do not have any effect on the avatar managed by
 this object. To modify the managed avatar use the
-<a href="..\classes\AvatarWizard.html#method_select" class="crosslink">select</a> method.</p>
+<a href="..\classes\AvatarWizard.html#method_select" class="crosslink">select</a> and
+<a href="..\classes\AvatarWizard.html#method_setColor" class="crosslink">setColor</a> methods.</p>
 
     </div>
 
@@ -1270,7 +1260,7 @@ cached yet.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l283"><code>js\AvatarWizard.js:283</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l222"><code>static\js\AvatarWizard.js:222</code></a>
         
         </p>
 
@@ -1306,7 +1296,7 @@ rate because the redraw rate is throttled down through
             
                 <li class="arg">
                     
-                        <code>category</code>
+                        <code>categoryName</code>
                     
                 </li>
             
@@ -1353,7 +1343,7 @@ rate because the redraw rate is throttled down through
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l389"><code>js\AvatarWizard.js:389</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l343"><code>static\js\AvatarWizard.js:343</code></a>
         
         </p>
 
@@ -1366,9 +1356,6 @@ rate because the redraw rate is throttled down through
     <div class="description">
         <p>Selects the specified part for the specified category and updates the
 rendering of the avatar on the canvas.</p>
-<p>Both the category and part/type names must be valid names registered
-in the <code>settings.json</code> file, as explained in the
-<a href="..\classes\AvatarWizard.html" class="crosslink">AvatarWizard constructor</a>.</p>
 <p>To remove a currently selected part, invoke <code>select</code> for its category
 without specifying the <code>type</code> argument.</p>
 
@@ -1382,14 +1369,15 @@ without specifying the <code>type</code> argument.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">category</code>
+                        <code class="param-name">categoryName</code>
                         <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>String The category the part is being selected for.</p>
+                        <p>String The category the part is being selected
+for.</p>
 
                     </div>
 
@@ -1503,7 +1491,7 @@ cached yet.</p>
             
         
         
-        <a href="../files/js_AvatarWizard.js.html#l464"><code>js\AvatarWizard.js:464</code></a>
+        <a href="../files/static_js_AvatarWizard.js.html#l415"><code>static\js\AvatarWizard.js:415</code></a>
         
         </p>
 

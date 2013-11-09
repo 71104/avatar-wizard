@@ -4,8 +4,8 @@
         "version": "0.1.0"
     },
     "files": {
-        "js\\AvatarWizard.js": {
-            "name": "js\\AvatarWizard.js",
+        "static\\js\\AvatarWizard.js": {
+            "name": "static\\js\\AvatarWizard.js",
             "modules": {},
             "classes": {
                 "AvatarWizard": 1
@@ -24,9 +24,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "js\\AvatarWizard.js",
+            "file": "static\\js\\AvatarWizard.js",
             "line": 1,
-            "description": "Manages the composition of a user avatar using predefined graphic parts. This\nclass requires jQuery.\n\nThe constructor needs to fetch a `settings.json` file through AJAX and its\nmethods may not be invoked until this has been done. The user-defined `ready`\ncallback is invoked by the `AvatarWizard` object when it is ready.\n\nThe `settings.json` file must have the following format:\n\n\t{\n\t\t\"canonicalWidth\": 123,\n\t\t\"canonicalHeight\": 456,\n\t\t\"thumbnails\": {\n\t\t\t\"config1\": {\n\t\t\t\t\"layers\": [\n\t\t\t\t\t\"category1\",\n\t\t\t\t\t\"category2\",\n\t\t\t\t\t\"category3\",\n\t\t\t\t\t...\n\t\t\t\t],\n\t\t\t\t\"area\": {\n\t\t\t\t\t\"x\": 10,\n\t\t\t\t\t\"y\": 10,\n\t\t\t\t\t\"width\": 80,\n\t\t\t\t\t\"height\": 400\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"config2\": {\n\t\t\t\t\"layers\": [\n\t\t\t\t\t\"category3\",\n\t\t\t\t\t\"category4\",\n\t\t\t\t\t\"category5\",\n\t\t\t\t\t...\n\t\t\t\t],\n\t\t\t\t\"area\": {\n\t\t\t\t\t\"x\": 10,\n\t\t\t\t\t\"y\": 10,\n\t\t\t\t\t\"width\": 80,\n\t\t\t\t\t\"height\": 400\n\t\t\t\t}\n\t\t\t},\n\t\t\t...\n\t\t},\n\t\t\"path\": \"path/to/parts\",\n\t\t\"parts\": {\n\t\t\t\"category1\": [\n\t\t\t\t\"type1\",\n\t\t\t\t\"type2\",\n\t\t\t\t...\n\t\t\t],\n\t\t\t\"category2\": [\n\t\t\t\t\"type1\",\n\t\t\t\t\"type2\",\n\t\t\t\t...\n\t\t\t],\n\t\t\t\"category3\": [\n\t\t\t\t.\n\t\t\t\t.\n\t\t\t\t.\n\t\t\t],\n\t\t},\n\t\t\"layers\": [\n\t\t\t\"category1\",\n\t\t\t\"category2\",\n\t\t\t\"category3\",\n\t\t\t...\n\t\t]\n\t}\n\n`canonicalWidth` and `canonicalHeight` are the dimensions of a rectangular\narea the coordinates in the js image files refer to. Modifying these\nparameters influences the size of the avatar relative to the destination\ncanvas.\n\nTODO document `thumbnails`\n\n`path` is the path of the directory tree containing the js image files. The\ndirectory represented by `path` must contain one subdirectory for each\ncategory; each category directory must in turn contain one `.js` file for\neach part/type.\n\n\"parts\" is the set of registered parts and categories. The \"parts\" object\nmaps category names to part arrays (each key is a category name and its value\nis an array of part names).\n\n\"layers\" specifies the order in which the several parts are drawn to the\ncanvas; it is an array of category names.\n\nTODO document `exclusions`\n\nThe full path of a part is built as follows:\n\n\tpath/category/part.json\n\nwhich means that the \"path\" option is prepended, the category name follows,\nthe part name follows and the `.json` file extension is appended.",
+            "description": "Manages the composition of a user avatar using predefined graphic parts. This\nclass requires jQuery.\n\nThe avatar parts and settings are read from a specified base path that\nimplements the Avaparts REST APIs:\nhttp://gamepix-server-cs.cloudapp.net/v1/doc",
             "is_constructor": 1,
             "params": [
                 {
@@ -34,16 +34,39 @@
                     "description": "Mixed Specifies the HTML5 canvas where the avatar has to be\ndrawn. It can be specified as a HTMLCanvasElement object, string CSS selector\nor jQuery object."
                 },
                 {
-                    "name": "ready",
-                    "description": "Function A user-defined callback function invoked after the\n`AvatarWizard` object has read its configuration file and its ready to\nreceive method invocations."
+                    "name": "settings",
+                    "description": "Object A dictionary object containing several settings.",
+                    "props": [
+                        {
+                            "name": "basePath",
+                            "description": "String The base URL that implements the\nAvaparts API where avatar parts and configurations are read from.",
+                            "optional": true,
+                            "optdefault": "\"\""
+                        },
+                        {
+                            "name": "ready",
+                            "description": "Function A user-defined callback function invoked after\nthe `AvatarWizard` object has read its configuration file and its ready to\nreceive method invocations."
+                        },
+                        {
+                            "name": "progress",
+                            "description": "Function A user-defined callback function invoked\nseveral times during the initial loading process.",
+                            "optional": true,
+                            "props": [
+                                {
+                                    "name": "progress",
+                                    "description": "Number A percentage value indicating the\ncurrent loading progress in a `[0, 100)` range."
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
     },
     "classitems": [
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 283,
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 222,
             "description": "Recalculates the coordinate reference. This method must be invoked\nevery time the dimensions of the canvas change.\n\nThis method may be called in response to `resize` events at a high\nrate because the redraw rate is throttled down through\n`requestAnimationFrame`.",
             "itemtype": "method",
             "name": "resetDimensions",
@@ -51,9 +74,9 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 299,
-            "description": "Loads the avatar described by the specified JSON object and updates\nthe rendering on the canvas.\n\nThe specified object must have the following format:\n\n\t{\n\t\t\"category1\": \"type3\",\n\t\t\"category2\": {\n\t\t\t\"type\": \"type2\",\n\t\t\t\"color\": \"#abcdef\"\n\t\t},\n\t\t\"category3\": {\n\t\t\t\"type\": \"type1\",\n\t\t\t\"color\": \"rgb(12, 34, 56)\"\n\t\t},\n\t\t.\n\t\t.\n\t\t.\n\t}\n\nEach key must be a valid category name (one registered in the\n`settings.json` file, as documented in the\n{{#crossLink \"AvatarWizard\"}}AvatarWizard constructor{{/crossLink}})\nand its value can be either a string (a valid part/type name\nregistered for that category) or an object; in the latter case it\ncontains a mandatory `type` field specifying the part/type name and\nan optional `color` field specifying a CSS color for the part.\n\nNote that the specified JSON object is deep-copied, so subsequent\nmodifications to it do not have any effect on the avatar managed by\nthis object. To modify the managed avatar use the\n{{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} method.",
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 238,
+            "description": "Loads the avatar described by the specified JSON object and updates\nthe rendering on the canvas.\n\nThe specified object must have the following format:\n\n\t{\n\t\t\"category1\": \"type4\",\n\t\t\"category2\": {\n\t\t\t\"type\": \"type3\",\n\t\t\t\"color\": \"#abcdef\"\n\t\t},\n\t\t\"category3\": {\n\t\t\t\"type\": \"type2\",\n\t\t\t\"color\": \"rgb(12, 34, 56)\"\n\t\t},\n\t\t\"category4\": {\n\t\t\t\"type\": \"type1\"\n\t\t},\n\t\t.\n\t\t.\n\t\t.\n\t}\n\nEach key must be a valid category name returned by the\n[Avaparts API](http://gamepix-server-cs.cloudapp.net/v1/doc) and its\nvalue can be either a string (a valid part/type name for that\ncategory) or an object; in the latter case it contains a mandatory\n`type` field specifying the part/type name and an optional `color`\nfield specifying a CSS color for the part.\n\nNote that the specified JSON object is deep-copied, so subsequent\nmodifications to it do not have any effect on the avatar managed by\nthis object. To modify the managed avatar use the\n{{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} and\n{{#crossLink \"AvatarWizard/setColor\"}}setColor{{/crossLink}} methods.",
             "itemtype": "method",
             "name": "loadAvatar",
             "chainable": 1,
@@ -71,8 +94,8 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 351,
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 307,
             "description": "Returns a JSON object that describes the current avatar as modified\nby {{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nand {{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} calls.\n\nSee {{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nfor information about the JSON format of avatar descriptors.\n\nThe returned object is a deep copy of the object mainatined\ninternally by the AvatarWizard instance.",
             "itemtype": "method",
             "name": "getAvatar",
@@ -82,8 +105,8 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 369,
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 325,
             "description": "Returns the currently selected part type for the specified category,\nor `undefined` if no part is selected.\n\nParts can be selected per-category using the\n{{#crossLink \"AvatarWizard/select\"}}select{{/crossLink}} method.",
             "itemtype": "method",
             "name": "getSelected",
@@ -99,16 +122,16 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 389,
-            "description": "Selects the specified part for the specified category and updates the\nrendering of the avatar on the canvas.\n\nBoth the category and part/type names must be valid names registered\nin the `settings.json` file, as explained in the\n{{#crossLink \"AvatarWizard\"}}AvatarWizard constructor{{/crossLink}}.\n\nTo remove a currently selected part, invoke `select` for its category\nwithout specifying the `type` argument.",
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 343,
+            "description": "Selects the specified part for the specified category and updates the\nrendering of the avatar on the canvas.\n\nTo remove a currently selected part, invoke `select` for its category\nwithout specifying the `type` argument.",
             "itemtype": "method",
             "name": "select",
             "chainable": 1,
             "params": [
                 {
-                    "name": "category",
-                    "description": "String The category the part is being selected for."
+                    "name": "categoryName",
+                    "description": "String The category the part is being selected\nfor."
                 },
                 {
                     "name": "type",
@@ -127,8 +150,8 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 440,
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 393,
             "description": "Returns the current color for the specified category.\n\nThis value can be set per-category with the\n{{#crossLink \"AvatarWizard/setColor\"}}setColor{{/crossLink}} method\nor in the avatar descriptor specified to the\n{{#crossLink \"AvatarWizard/loadAvatar\"}}loadAvatar{{/crossLink}}\nmethod.\n\nThe return value is undefined if no color has been set.",
             "itemtype": "method",
             "name": "getColor",
@@ -144,8 +167,8 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 464,
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 415,
             "description": "Sets the color of the currently selected part for the specified\ncategory.",
             "itemtype": "method",
             "name": "setColor",
@@ -163,8 +186,8 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 507,
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 451,
             "description": "Returns an HTMLElement of the specified width and height containing a\nprerendered thumbnail of the avatar.\n\nThe exact type of HTML element is left unspecified: it may be an\nimage element as well as a canvas.",
             "itemtype": "method",
             "name": "getThumbnail",
@@ -189,7 +212,7 @@
                         },
                         {
                             "name": "configName",
-                            "description": "String The thumbnail configuration to use.\nIt must be the name of a valid thumbnail configuration registered in\nthe `thumbnails` field of the `settings.json` file.\n\nSee the\n}AvatarWizard constructor{{/crossLink}}\nfor more information.",
+                            "description": "String The thumbnail configuration to use.\nIt must be the name of a valid thumbnail configuration as per the\nreferred [Avaparts](http://gamepix-server-cs.cloudapp.net/v1/doc)\nserver (see the\n}constructor{{/crossLink}}\ndocumentation).",
                             "type": "#crossLink \"AvatarWizard\""
                         }
                     ]
@@ -201,8 +224,8 @@
             "class": "AvatarWizard"
         },
         {
-            "file": "js\\AvatarWizard.js",
-            "line": 533,
+            "file": "static\\js\\AvatarWizard.js",
+            "line": 476,
             "description": "Returns a data URI that encodes a PNG prerendered image of the\navatar of the specified width and height.",
             "itemtype": "method",
             "name": "getEncodedThumbnail",
@@ -227,7 +250,7 @@
                         },
                         {
                             "name": "configName",
-                            "description": "String The thumbnail configuration to use.\nIt must be the name of a valid thumbnail configuration registered in\nthe `thumbnails` field of the `settings.json` file.\n\nSee the\n}AvatarWizard constructor{{/crossLink}}\nfor more information.",
+                            "description": "String The thumbnail configuration to use.\nIt must be the name of a valid thumbnail configuration as per the\nreferred [Avaparts](http://gamepix-server-cs.cloudapp.net/v1/doc)\nserver (see the\n}constructor{{/crossLink}}\ndocumentation).",
                             "type": "#crossLink \"AvatarWizard\""
                         }
                     ]
